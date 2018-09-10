@@ -1,0 +1,5 @@
+.bitcoinNew_box, .weather_box {
+  height: 200px;
+  width: 200px;
+  border: 1px solid red;
+}
