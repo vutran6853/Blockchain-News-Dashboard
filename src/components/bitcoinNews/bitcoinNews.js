@@ -4,7 +4,7 @@ import css from '../profile/profile.css'
 import Profile from '../profile/profile';
 import { connect } from 'react-redux';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
-import Axios from 'axios';
+import axios from 'axios';
 
 global.fetch = require('node-fetch')
 const cc = require('cryptocompare')
@@ -25,7 +25,7 @@ class BitcoinNews extends Component {
 
   componentDidMount() {
     let {bitcoinData} = this.state;
-   Axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${bitcoinData}&tsyms=USD`)
+   axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${bitcoinData}&tsyms=USD`)
    .then((response) => {
      console.log(response.data.DISPLAY)
      this.setState({ allBitcoinPrice: response.data.DISPLAY })

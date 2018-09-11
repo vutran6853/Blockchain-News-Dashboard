@@ -4,7 +4,7 @@ let getUsers = (req, res, next) => {
 
   dbInstance.get_users()
   .then((response) => {
-    // console.log(response)
+     console.log(response)
     res.status(200).send(response)
   })
   .catch((error) => {

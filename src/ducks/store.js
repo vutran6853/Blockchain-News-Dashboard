@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
-import user from './userReducer';
+import  userReducer from './userReducer';
 import bitcoinNewReducer from './bitcoinNewReducer';
 
 
 // USE FOR MULT REDUCERS
 const combinedReducers = combineReducers({
-  // user: userReducer,
+  user: userReducer,
   bitcoinNew: bitcoinNewReducer 
 });
 
