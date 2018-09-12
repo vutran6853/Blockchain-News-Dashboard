@@ -1,13 +1,14 @@
 import { createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
-import  userReducer from './userReducer';
+import userReducer from './userReducer';
 import bitcoinNewReducer from './bitcoinNewReducer';
-
+import chartsReducer from './chartsReducer';
 
 // USE FOR MULT REDUCERS
 const combinedReducers = combineReducers({
   user: userReducer,
-  bitcoinNew: bitcoinNewReducer 
+  bitcoinNew: bitcoinNewReducer,
+  charts: chartsReducer
 });
 
 //  REDUX DEVTOOLS

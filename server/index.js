@@ -7,7 +7,7 @@ const port = process.env.SERVER_PORT || 3002;
 const app = express();
 
 let { getUsers } = require('./controllers/usersControllers')
-
+let { getCharts } = require('./controllers/chartsControllers');
 
 console.log(`weatherKey:`,process.env.REACT_APP_WEATHER_API_KEY)
 
@@ -24,6 +24,11 @@ app.use(json());
 
 // USER ENDPOINT SET-UP
 app.get('/api/user', getUsers)
+
+// CHARTS ENDPOINT SET-UP
+app.get('/api/bitcoin', getCharts)
+
+
 
 
 

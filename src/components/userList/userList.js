@@ -51,7 +51,7 @@ class UserList extends Component {
   }
 }
 
-// INPORT USER REDUCER SINCE WE HAVE MULT REDUCER SET-UP
+// IMPORT USER REDUCER SINCE WE HAVE MULT REDUCER SET-UP
 const  mapStateToProps = (state) => ({ ...state.user  })
 
 export default connect(mapStateToProps, { getUserData })(UserList);

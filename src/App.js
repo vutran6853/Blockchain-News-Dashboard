@@ -12,7 +12,7 @@ class App extends Component {
       <Provider store={ store }>
         <HashRouter>
           <div className="App">
-            
+          
             
 
             { routes }

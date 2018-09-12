@@ -5,9 +5,9 @@ import Profile from '../profile/profile';
 import { connect } from 'react-redux';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 import axios from 'axios';
+import csss from './bitcoinNews.css'
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col,CardGroup } from 'reactstrap';
 
-global.fetch = require('node-fetch')
-const cc = require('cryptocompare')
 var _ = require('lodash');
 
 
@@ -15,59 +15,67 @@ class BitcoinNews extends Component {
   constructor(props) {
     super(props);
 
-    // INITIAL LOCAL STATE
+    // INITIAL LOCAL STATE IF NEEDED
     this.state = {
-      bitcoinData: ['AE','ADA','AID','ANA','ANO','ARK','ASH','BAT','BNB','BNT','BTS','CMT','DCN','DGD','EEM','ELF','EOS','ETA','FUN','GAS','GNT','GXS','HOC','HOT','NEO','NXT','OAC','OMG','ONT','OST','ROP','SDT','SNT','TRX','TUM','ULS','USD','VES','VET','XRP','XTZ','ZIL','ZRX','TCD','TCP','BTC','KMD','ZEN','CNX','XVG','BCN','DCR','LTC','ZEC','BCD','BTM','NXS','ETC','DGB','HSR','XMR','XZC','SC','BTG','ELA','ETH'],
       allBitcoinPrice: []
-
     }
   }
 
-  componentDidMount() {
-    let {bitcoinData} = this.state;
-   axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${bitcoinData}&tsyms=USD`)
-   .then((response) => {
-     console.log(response.data.DISPLAY)
-     this.setState({ allBitcoinPrice: response.data.DISPLAY })
-   })
+  componentWillMount() {
+    this.setState({ allBitcoinPrice: this.props.getBitcoinData() })
   }
+
+ 
 
 
   render() {
-    let { allBitcoinPrice } = this.state;
-    let BitcoinPrice = allBitcoinPrice
-    let singleBitcoinItem = []
+    let bitcoinData = this.props.bitcoinNew.bitcoinData.data
+    // console.log(this.props.bitcoinNew.bitcoinData.data)
+    //  console.log(_.map(bitcoinData))
+    let displayLayerBitcoinData = _.map(bitcoinData)
+    console.log(_.map(displayLayerBitcoinData[0]))
+    let zeroLayerBitcoinData = _.map(displayLayerBitcoinData[0])
 
-    // _.forEach(BitcoinPrice, function(value, key) {
-    //   // console.log(key, value.USD)
-    //   singleBitcoinItem = key, value.USD
-    //   return singleBitcoinItem;
-    // })
-
-
-    let single = _.chain(BitcoinPrice)
-    _.forEach(BitcoinPrice, function(value, key) {
-      console.log(key, value.USD)
-      return BitcoinPrice
-    })
-    
-    let sin = _.map(BitcoinPrice, (value, index) => {
-      console.log(value.USD, index)
+    let final =  zeroLayerBitcoinData.map((value, index) => {
+      console.log('VALUE', value.USD, 'INDEX', index)
       return(
-        <div>
-          <p>{value}</p>
+        <div className='bitcoinMarket'>
+          <CardGroup>
+
+            <Card>
+              <CardImg />
+              <CardBody>
+                <CardTitle>{value.USD.FROMSYMBOL}</CardTitle>
+                <CardText>
+                  <p>CoinName: {value.USD.FROMSYMBOL}</p>
+                  <p>PRICE: {value.USD.PRICE}</p>
+                  <p>SYMBOL: {value.USD.TOSYMBOL}</p>
+                  <p>HIGH24: {value.USD.HIGH24HOUR}</p>
+                </CardText>
+                <Button className='btn btn-danger' >FAV</Button>
+              </CardBody>
+            </Card>
+          
+          </CardGroup>
+
+         
+          <p>CoinName: {value.USD.FROMSYMBOL}</p>
+          <p>PRICE: {value.USD.PRICE}</p>
+          <p>SYMBOL: {value.USD.TOSYMBOL}</p>
+          <p>HIGH24: {value.USD.HIGH24HOUR}</p>
         </div>
       )
     })
     
-     
-    
+
     return ( 
       <div>
+        <Profile/>
         <p>BitcoinNews Component</p>
         <button onClick={ () => this.props.getBitcoinData() }>Click</button>
-        <Profile/>
-        { sin }
+       
+        
+        {final}
       </div>
      );
   }

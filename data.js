@@ -1,27 +1,3 @@
-CREATE TABLE users (
-  user_id SERIAL PRIMARY KEY,
-  user_firstname VARCHAR(255),
-  user_lastname VARCHAR(255),
-  user_email VARCHAR(255),
-  user_url TEXT
-)
-
-INSERT INTO users (user_firstname, user_lastname, user_email, user_url )
-VALUES ('John', 'Smith', 'johnsmith879@gmail.com', 'url picture placeholder'),
-      ('Vu', 'Tran', 'vutran879@gmail.com', 'url picture placeholder')
-
-
-CREATE TABLE bitcoinInfo (
-  bitcoin_id SERIAL PRIMARY KEY,
-  bitcoin_symbol VARCHAR(255),
-  bitcoin_fullname VARCHAR(255),
-  bitcoin_name VARCHAR(255),
-  bitcoin_volume24hourto INTEGER
-)
-
-INSERT INTO bitcoinInfo (bitcoin_symbol, bitcoin_fullname, bitcoin_name, bitcoin_volume24hourto)
-VALUES 
-
 ('ETH', 'Ethereum (ETH)', 'Ethereum', 43276.00938647688),
 ('BCH', 'Bitcoin Cash (BCH)', 'Bitcoin Cash', 14826.824549641702),
 ('ETC', 'Ethereum Classic (ETC)', 'Ethereum Classic', 9055.393325437519),
@@ -42,3 +18,5 @@ VALUES
 ('XIN','Infinity Economics (XIN)','Infinity Economics', 1735.0088376514052),
 ('OMG','OmiseGo (OMG)','OmiseGo',1732.1856832263763),
 ('WAVES','Waves (WAVES)','Waves', 1677.1760849457733)
+
+
