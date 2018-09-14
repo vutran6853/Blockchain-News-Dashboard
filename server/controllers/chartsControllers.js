@@ -8,7 +8,7 @@ let getCharts = (req, res, next) => {
     res.status(200).send(response)
   })
   .catch((error) => {
-    res.statue(500).send('Oop, Something have Happen unable to complete this request')
+    res.status(500).send('Oop, Something have Happen unable to complete this request')
     // console.log(error);
   })
 

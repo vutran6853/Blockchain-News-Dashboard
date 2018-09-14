@@ -22,7 +22,7 @@ export default function getUserReducer(state = initialState, action) {
   switch(action.type) {
     case `${GET_USER}_FULFILLED`:
 
-    console.log(`${GET_USER}_FULFILLED`, action.payload.data)
+    // console.log(`${GET_USER}_FULFILLED`, action.payload.data)
     return {
       
       ...state,

@@ -1,7 +1,4 @@
 import axios from 'axios';
-global.fetch = require('node-fetch')
-const cc = require('cryptocompare')
-var _ = require('lodash');
 
 //  INITAL VALUE
 const BITCOINDATA = 'BITCOINDATA';
@@ -20,9 +17,8 @@ export function getBitcoinData(bitcoinData) {
   return {
     type: BITCOINDATA,
     payload: axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${topTrendCoin}&tsyms=USD`)        
-    
+                        
   }
-
 }
 
 // HANDLE STATE CHANGES
@@ -32,14 +28,10 @@ export default function bitcoinNewReducer(state = initialState, action) {
 
       // console.log(`${BITCOINDATA}_FULFILLED`, action.payload.data.DISPLAY)
     return {
-      
       ...state,
-      bitcoinData: action.payload
-      
+      bitcoinData: action.payload 
     }
-
     default: 
     return state;
   }
-
 }

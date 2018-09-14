@@ -17,7 +17,7 @@ class ProfileUser extends Component {
 
 
     return ( 
-      <div className='Container container'>
+      <div className='container profileBox'>
         
             <Link to='/'>
                     <Button>Home</Button>
@@ -25,7 +25,7 @@ class ProfileUser extends Component {
             
               
               <Link to='/bitcoinNews'>
-                    <Button>bitcoinNews</Button>
+                    <Button>BitcoinMarket</Button>
                     
                 </Link>
             

@@ -7,6 +7,7 @@ import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 import axios from 'axios';
 import csss from './bitcoinNews.css'
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col,CardGroup } from 'reactstrap';
+import NavBarHeader from '../dashboard/navBarHeader';
 
 var _ = require('lodash');
 
@@ -30,14 +31,14 @@ class BitcoinNews extends Component {
 
   render() {
     let bitcoinData = this.props.bitcoinNew.bitcoinData.data
-    // console.log(this.props.bitcoinNew.bitcoinData.data)
+    //  console.log(this.props.bitcoinNew.bitcoinData.data)
     //  console.log(_.map(bitcoinData))
     let displayLayerBitcoinData = _.map(bitcoinData)
-    console.log(_.map(displayLayerBitcoinData[0]))
-    let zeroLayerBitcoinData = _.map(displayLayerBitcoinData[0])
+    //  console.log(_.map(displayLayerBitcoinData[1]))
+    let zeroLayerBitcoinData = _.map(displayLayerBitcoinData[1])
 
     let final =  zeroLayerBitcoinData.map((value, index) => {
-      console.log('VALUE', value.USD, 'INDEX', index)
+      // console.log('VALUE', value.USD, 'INDEX', index)
       return(
         <div className='bitcoinMarket'>
           <CardGroup>
@@ -49,7 +50,7 @@ class BitcoinNews extends Component {
                 <CardText>
                   <p>CoinName: {value.USD.FROMSYMBOL}</p>
                   <p>PRICE: {value.USD.PRICE}</p>
-                  <p>SYMBOL: {value.USD.TOSYMBOL}</p>
+                  {/* <p>SYMBOL: {value.USD.TOSYMBOL}</p> */}
                   <p>HIGH24: {value.USD.HIGH24HOUR}</p>
                 </CardText>
                 <Button className='btn btn-danger' >FAV</Button>
@@ -59,10 +60,10 @@ class BitcoinNews extends Component {
           </CardGroup>
 
          
-          <p>CoinName: {value.USD.FROMSYMBOL}</p>
+          {/* <p>CoinName: {value.USD.FROMSYMBOL}</p>
           <p>PRICE: {value.USD.PRICE}</p>
           <p>SYMBOL: {value.USD.TOSYMBOL}</p>
-          <p>HIGH24: {value.USD.HIGH24HOUR}</p>
+          <p>HIGH24: {value.USD.HIGH24HOUR}</p> */}
         </div>
       )
     })
@@ -70,10 +71,9 @@ class BitcoinNews extends Component {
 
     return ( 
       <div>
-        <Profile/>
+        <NavBarHeader/>
         <p>BitcoinNews Component</p>
-        <button onClick={ () => this.props.getBitcoinData() }>Click</button>
-       
+
         
         {final}
       </div>

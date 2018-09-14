@@ -3,12 +3,14 @@ import promiseMiddleware from 'redux-promise-middleware';
 import userReducer from './userReducer';
 import bitcoinNewReducer from './bitcoinNewReducer';
 import chartsReducer from './chartsReducer';
+import allBitcoinListReducer from './allBitcoinListReducer';
 
 // USE FOR MULT REDUCERS
 const combinedReducers = combineReducers({
   user: userReducer,
   bitcoinNew: bitcoinNewReducer,
-  charts: chartsReducer
+  charts: chartsReducer,
+  allCoinList: allBitcoinListReducer
 });
 
 //  REDUX DEVTOOLS

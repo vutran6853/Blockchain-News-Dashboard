@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import Profile from '../profile/profile';
 import  { getUserData } from '../../ducks/userReducer';
 import { connect } from 'react-redux';
 import css from './user.css';
+import NavBarHeader from '../dashboard/navBarHeader';
+import Axios from 'axios';
 
 let _ = require('lodash');
 
@@ -12,19 +13,32 @@ class UserList extends Component {
 
     // LOCAL STATE IF NEEDED
     this.state = {
-      userData: []
+      userData: [],
+      favListData: []
     }
   }
   componentDidMount() {
-    this.setState({ userData:  this.props.getUserData()  })
+    this.setState({ userData:  this.props.getUserData() })
   } 
+
+  handleGetFav(id) {
+    console.log('INDEX: ', id)
+    Axios.get(`/api/user2/${id}`)
+    .then((response) => {
+      console.log(response)
+      this.setState({ favListData: response.data })
+    })
+  }
+
+  diplayFavList() {
+    console.log(this.state.favListData)
+  }
 
 
   render() { 
     let UserList = this.props.userData.data
-
     let displayUserList = _.map(UserList)                               // <-- _map FROM REDUCER
-    console.log('diplayUserList', displayUserList);
+    // console.log('diplayUserList', displayUserList);
 
     let displayList = displayUserList.map((value, index) => {         // <-- .map FROM RESULT OF _map
       console.log(value, index)
@@ -34,7 +48,7 @@ class UserList extends Component {
           <p>Email: {value.user_email}</p>
           <p>Picture: {value.user_url}</p>
           <p>Fav coin: 'pending...toDo'</p>
-          <button>History</button>
+          <button onClick={ () => this.handleGetFav(index) } >Get Fav</button>
         </div>
       )
     })
@@ -42,9 +56,9 @@ class UserList extends Component {
     return ( 
       <div>
         <p>UserList Component</p>
-        <Profile/>
+        <NavBarHeader/>
         
-        <input placeholder='BITCOIN Name'></input>
+       
         { displayList }
       </div>
      );
@@ -52,6 +66,6 @@ class UserList extends Component {
 }
 
 // IMPORT USER REDUCER SINCE WE HAVE MULT REDUCER SET-UP
-const  mapStateToProps = (state) => ({ ...state.user  })
+const  mapStateToProps = (state) => ({ ...state.user,   })
 
 export default connect(mapStateToProps, { getUserData })(UserList);

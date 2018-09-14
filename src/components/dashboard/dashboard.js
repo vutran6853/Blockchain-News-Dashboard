@@ -4,52 +4,29 @@ import BitcoinNews from '../bitcoinNews/bitcoinNews';
 import Profile from '../profile/profile';
 import Weather from '../weather/weather';
 import TodoProject from '../todoproject/todoproject';
+import NavBarHeader from './navBarHeader'
 import css from './dashboard.css';
-import { Container, Row, Col, Jumbotron, Button, ListGroup, ListGroupItem } from 'reactstrap';
+import { Row, Col, Jumbotron, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import bitcoinNews from '../bitcoinNews/bitcoinNews';
-import { Pagination } from 'antd';
-import 'antd/dist/antd.css';
 import Example from './dashBoardTopCoin';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class DashBoard extends Component {
   constructor(props) {
     super(props);
 
+    
   }
+  
 
   render() { 
      return ( 
       <div>
+        <NavBarHeader/>
+
           <Row>
-          <ListGroup>
-                <Link to='/'>
-                  <ListGroupItem active tag="button" action>
-                    Home
-                  </ListGroupItem>
-                </Link>
-                <Link to='/bitcoinNews'>
-                  <ListGroupItem active tag="button" action>
-                  bitcoinNews
-                  </ListGroupItem>
-                </Link>
-                <Link to='/charts'>
-                  <ListGroupItem active tag="button" action>
-                  charts
-                  </ListGroupItem>
-                </Link>
-                <Link to='/userList'>
-                  <ListGroupItem active tag="button" action>
-                  userList
-                  </ListGroupItem>
-                </Link>
-                <Link to='/todoProject'>
-                  <ListGroupItem active tag="button" action>
-                  todoProject
-                  </ListGroupItem>
-                </Link>
-            </ListGroup>
+          
 
             <Col xs="10">
               <Jumbotron>
