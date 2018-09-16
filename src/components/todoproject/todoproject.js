@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
 import css from './todoProject.css'
-import { Card, Button, message, Popover, Rate  } from 'antd';
+import { Card, Button, message, Popover, Rate, notification  } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
@@ -49,6 +49,12 @@ class ToDoProject extends Component {
     })
   }
   
+  openNotification = () => {
+    notification.open({
+      message: 'Complete',
+      description: 'Add to Fav List ^.^',
+    });
+  };
 
   
 
@@ -82,7 +88,7 @@ class ToDoProject extends Component {
                     type='dashed' 
                     onClick={ () => { this.info();
                                       this.handelChange(index);
-                            
+                                      this.openNotification()
                             
                             } }>Add to Fav </Button>
             

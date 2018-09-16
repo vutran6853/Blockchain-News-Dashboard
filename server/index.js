@@ -8,7 +8,7 @@ const app = express();
 
 let { getUsers, getFavlist } = require('./controllers/usersControllers');
 let { getCharts } = require('./controllers/chartsControllers');
-let { getBitcoinList, postBitcoinlistID } = require('./controllers/allbitcoinControllers');
+let { getBitcoinList, postBitcoinlistID, deleteFavCoinID } = require('./controllers/allbitcoinControllers');
 
 // console.log(`weatherKey:`,process.env.REACT_APP_WEATHER_API_KEY)
 
@@ -38,9 +38,9 @@ app.get('/api/bitcoin', getCharts)
 app.get('/api/allbitcoinlist', getBitcoinList)
 
 
-//
+// FAVORITE ENDPOINT SET-UP
 app.post('/api/favorite/:id', postBitcoinlistID)
-
+app.delete('/api/favorite/:coinindex/:userid', deleteFavCoinID)
 
 
 

@@ -21,7 +21,7 @@ let postBitcoinlistID = (req, res, next) => {
                                     //  POST DATA TO DATABASE
   dbInstance.post_BitcoinlistID([req.params.id, req.query.user_id ])
   .then((response) => {
-    // console.log(response)
+     console.log(response)
     res.status(200).send(response)
   })
   .catch((error) => {
@@ -29,7 +29,25 @@ let postBitcoinlistID = (req, res, next) => {
   })
 }
 
+
+let deleteFavCoinID = (req, res, next) => {
+  console.log(req , 'DELETE')
+
+  const dbInstance = req.app.get('db');
+
+  dbInstance.delete_FavCoinID([req.params.coinindex, req.params.userid ])
+  .then((response) => {
+    console.log(response)
+    res.status(200).send(response)
+  })
+  .catch((error) => {
+    console.log(`Oh, Fail to DELETE coin`, error)
+  })
+  
+}
+
 module.exports = {
   getBitcoinList,
-  postBitcoinlistID
+  postBitcoinlistID,
+  deleteFavCoinID
 }

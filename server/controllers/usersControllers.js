@@ -31,6 +31,7 @@ let getFavlist = (req, res, next) => {
 
 }
 
+
 module.exports = {
   getUsers,
   getFavlist

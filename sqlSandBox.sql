@@ -122,7 +122,14 @@ VALUES
 ('https://www.cryptocompare.com/media/20079/acoin.png', 'ACoin (ACOIN)', 'Acoin is an SHA-256 Bitcoin clone. The block reward varies with a block reward of 2-10x normal roughly every 1 in ten blocks. The block reward initially starts at 1 and reduces by 50% every 6 months.', 'SHA256')
 
 
+--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 CREATE TABLE favorite (
-  bitcoinlist_id INTEGER,
-  user_id INTEGER
+  bitcoinlist_id INTEGER REFERENCES allBitcoinList ,
+  user_id INTEGER REFERENCES users(user_id)
 )
+
+
+INSERT INTO favorite (bitcoinlist_id, user_id)
+VALUES ($1, $2);
+

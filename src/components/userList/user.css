@@ -3,3 +3,17 @@
   /* height: 100px;
   width: 100px; */
 }
+
+.userListMap {
+  border: 5px solid lightseagreen;
+  
+}
+
+.favCoinListBox > p  {
+  background-color: yellowgreen;
+  border: 2px solid black;
+}
+
+.imageBox {
+  background-color: brown;
+}

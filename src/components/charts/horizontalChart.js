@@ -19,8 +19,8 @@ class TopCoinChart extends Component {
           datasets: [ 
             {
               data: [],
-              backgroundColor: ['Pink','Yellow','blue', 'white', 'lightblue','lightgreen', 'Pink','Yellow','blue', 'white', 'lightblue'],
-              hoverBackgroundColor: ['Pink','Yellow','blue', 'white', 'lightblue','lightgreen', 'Pink','Yellow','blue', 'white', 'lightblue']
+              backgroundColor: ['green','Yellow','blue', 'red', 'lightblue','lightgreen', 'pink','Yellow','blue', 'red', 'blue'],
+              hoverBackgroundColor: ['green','Yellow','blue', 'red', 'lightblue','lightgreen', 'pink','Yellow','blue', 'red', 'blue']
             }
           ]
       }
