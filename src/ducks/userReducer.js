@@ -17,6 +17,8 @@ export function getUserData() {
   }
 }
 
+
+
 // HANDLE STATE CHANGES
 export default function getUserReducer(state = initialState, action) {
   switch(action.type) {

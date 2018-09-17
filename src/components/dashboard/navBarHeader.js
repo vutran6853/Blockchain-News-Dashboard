@@ -44,25 +44,31 @@ class NavBarHeader extends Component {
 
                <Link to='/bitcoinNews'>
                   <ListGroupItem action>
-                  bitcoinMarket
+                    bitcoinMarket
                   </ListGroupItem>
                 </Link>
 
                 <Link to='/charts'>
                   <ListGroupItem action>
-                  CyproCharts
+                    CyproCharts
                   </ListGroupItem>
                 </Link>
 
                 <Link to='/userList'>
                   <ListGroupItem action>
-                  CyproUser
+                    CyproUser
                   </ListGroupItem>
                 </Link>
 
                 <Link to='/todoProject'>
                   <ListGroupItem action>
-                  todoProject
+                    todoProject
+                  </ListGroupItem>
+                </Link>
+                
+                <Link to='/LoginSignUp'>
+                  <ListGroupItem action>
+                    Login/SignUp
                   </ListGroupItem>
                 </Link>
 

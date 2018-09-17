@@ -6,7 +6,7 @@ const port = process.env.SERVER_PORT || 3002;
 const cors = require('cors');
 const app = express();
 
-let { getUsers, getFavlist } = require('./controllers/usersControllers');
+let { getUsers, getFavlist, postUser, postlogin } = require('./controllers/usersControllers');
 let { getCharts } = require('./controllers/chartsControllers');
 let { getBitcoinList, postBitcoinlistID, deleteFavCoinID } = require('./controllers/allbitcoinControllers');
 
@@ -29,6 +29,8 @@ app.use(json());
 // USER ENDPOINT SET-UP
 app.get('/api/user', getUsers)
 app.get('/api/user2/:id', getFavlist)
+app.post(`/api/user`, postUser)
+app.post('/api/user/login', postlogin)
 
 
 // CHARTS ENDPOINT SET-UP

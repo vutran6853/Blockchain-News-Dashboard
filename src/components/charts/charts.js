@@ -5,7 +5,7 @@ import { getChartsData } from '../../ducks/chartsReducer';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 import TopCoinChart from './horizontalChart';
 import BitcoinVolume24 from './BitcoinVolume24';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col,  DropdownMenu, DropdownItem , DropdownToggle, ButtonDropdown  } from 'reactstrap';
 import NavBarHeader from '../dashboard/navBarHeader';
 
 import css from './charts.css'
@@ -14,13 +14,18 @@ class Charts extends Component {
   constructor(props) {
     super(props);
 
-      // LOCAL STATE IF NEEDED
-      this.state = {
-       
-      }
-      
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
   }
 
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+  
 
   render() { 
 
@@ -28,6 +33,7 @@ class Charts extends Component {
 
 
       <div>
+        
         <NavBarHeader/>
           <Container>
           <p>Charts Component</p>

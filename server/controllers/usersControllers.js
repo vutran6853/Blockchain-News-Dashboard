@@ -14,6 +14,9 @@ let getUsers = (req, res, next) => {
 
 }
 
+
+
+
 let getFavlist = (req, res, next) => {
 
   const dbInstance = req.app.get('db')
@@ -28,11 +31,43 @@ let getFavlist = (req, res, next) => {
     // console.log(error);
   })
 
+}
 
+let postUser = (req, res, next) => {
+   console.log(req)
+  const dbInstance = req.app.get('db')
+
+  dbInstance.post_user([req.body.firstName, req.body.lastName, req.body.email, req.body.password]) 
+  .then((response) => {
+    // console.log(response)
+    res.status(200).send(response)
+  })
+  .catch((error) => {
+    // console.log(error)
+    res.status(500).send('Fail to post new User!')
+  }) 
+
+}
+
+let postlogin = (req, res, next) => {
+  console.log(req)
+  const dbInstance = req.app.get('db')
+
+  dbInstance.post_login([req.body.user_email, req.body.user_password]) 
+  .then((response) => {
+     console.log(response)
+    res.status(200).send(response)
+  })
+  .catch((error) => {
+    // console.log(error)
+    res.status(500).send('Fail to post new User!')
+  }) 
 }
 
 
 module.exports = {
   getUsers,
-  getFavlist
+  getFavlist,
+  postUser,
+  postlogin
 }

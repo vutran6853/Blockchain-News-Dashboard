@@ -1,6 +1,11 @@
-.bitcoinMarket {
+/* .bitcoinMarket {
   border: 5px solid burlywood;
   height: 300px;
   width: 300px;
   float: right;
+} */
+
+#btn2 {
+  background-color: #120f44;
+  border: 5px solid yellow;
 }

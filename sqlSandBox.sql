@@ -3,13 +3,14 @@ CREATE TABLE users (
   user_firstname VARCHAR(255),
   user_lastname VARCHAR(255),
   user_email VARCHAR(255),
+  user_password VARCHAR(255),
   user_url TEXT
 )
 
-INSERT INTO users (user_firstname, user_lastname, user_email, user_url )
-VALUES ('John', 'Smith', 'johnsmith879@gmail.com', 'url picture placeholder'),
-      ('Vu', 'Tran', 'vutran879@gmail.com', 'url picture placeholder'),
-      ('Keney', 'Fed', 'keneyfed@gmail.com', 'url picture placeholder')
+INSERT INTO users (user_firstname, user_lastname, user_email, user_password, user_url )
+VALUES ('Danial', 'Fay', 'danialfay29@gmail.com', 'sercetPassword', 'url picture placeholder'),
+      ('Eric', 'Go', 'ericgo111@gmail.com', 'JavascriptIsWeild', 'url picture placeholder'),
+      ('butteryfly', 'death', 'butteryfly999@gmail.com', '1234567890',  'url picture placeholder')
 
 --///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -132,4 +133,6 @@ CREATE TABLE favorite (
 
 INSERT INTO favorite (bitcoinlist_id, user_id)
 VALUES ($1, $2);
+
+--///////////////////////////////////////////////////////////////////
 

@@ -5,7 +5,7 @@ import Profile from '../profile/profile';
 import { connect } from 'react-redux';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 import axios from 'axios';
-// import csss from './bitcoinNews.css'
+ import csss from './bitcoinNews.css'
 import css from '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 
 
@@ -55,7 +55,7 @@ class BitcoinNews extends Component {
                   {/* <p>SYMBOL: {value.USD.TOSYMBOL}</p> */}
                   <p>HIGH24: {value.USD.HIGH24HOUR}</p>
                 </CardText>
-                <Button className='btn' >FAV</Button>
+                <Button  color="danger" >FAV</Button>
               </CardBody>
             </Card>
           
