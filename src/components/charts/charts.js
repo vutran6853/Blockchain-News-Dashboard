@@ -7,7 +7,7 @@ import TopCoinChart from './horizontalChart';
 import BitcoinVolume24 from './BitcoinVolume24';
 import { Container, Row, Col,  DropdownMenu, DropdownItem , DropdownToggle, ButtonDropdown  } from 'reactstrap';
 import NavBarHeader from '../dashboard/navBarHeader';
-
+import LineChart from './lineChart';
 import css from './charts.css'
 
 class Charts extends Component {
@@ -36,7 +36,7 @@ class Charts extends Component {
         
         <NavBarHeader/>
           <Container>
-          <p>Charts Component</p>
+         
           <Row>
             <Col>
               <TopCoinChart/>
@@ -45,6 +45,11 @@ class Charts extends Component {
           <Row>
             <Col>
               <BitcoinVolume24/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <LineChart/>
             </Col>
           </Row>
           

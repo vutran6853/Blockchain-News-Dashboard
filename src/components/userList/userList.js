@@ -73,9 +73,7 @@ class UserList extends Component {
           <p><strong>Email: </strong> {value.user_email}</p>
           <p><strong>Picture: </strong> {value.user_url}</p>
           <p><strong>Fav coin: </strong> 'pending...toDo'</p>
-          {/* <button onClick={ () => { this.handleGetFav(index);
-                                   
-          }} >Get Fav</button> */}
+        
         
           <UserFavCoinList handleGetFavId={index}  />
 
@@ -85,7 +83,6 @@ class UserList extends Component {
 
     return ( 
       <div>
-        <p>UserList Component</p>
         <NavBarHeader/>
         
        

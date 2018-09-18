@@ -1,4 +1,4 @@
-.horizontalBarBox {
+.horizontalBarBox, .lineBox {
 
 	border: 5px solid rebeccapurple;
 	
@@ -9,3 +9,4 @@
 
 	margin: 10px;
 }
+

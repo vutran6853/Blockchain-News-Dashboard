@@ -41,7 +41,7 @@ app.get('/api/allbitcoinlist', getBitcoinList)
 
 
 // FAVORITE ENDPOINT SET-UP
-app.post('/api/favorite/:id', postBitcoinlistID)
+app.post('/api/favorite/:id/1', postBitcoinlistID)
 app.delete('/api/favorite/:coinindex/:userid', deleteFavCoinID)
 
 

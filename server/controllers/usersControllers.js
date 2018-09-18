@@ -53,7 +53,7 @@ let postlogin = (req, res, next) => {
   console.log(req)
   const dbInstance = req.app.get('db')
 
-  dbInstance.post_login([req.body.user_email, req.body.user_password]) 
+  dbInstance.post_login([req.query.params.email]) 
   .then((response) => {
      console.log(response)
     res.status(200).send(response)

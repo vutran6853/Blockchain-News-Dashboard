@@ -28,8 +28,8 @@ class LoginSignUp extends Component {
   }
 
   handleChangeSumit() {
-    let { email, password } = this.state
-    axios.post(`/api/user/login`, { email, password })
+    let { email } = this.state
+    axios.post(`/api/user/login`, { email })
     .then((response) => {
       console.log(response)
     })

@@ -43,7 +43,7 @@ class ToDoProject extends Component {
   // POST ID TO FAVORITE DB
   handelChange(id) {
     console.log('INDEX', id)
-    axios.post(`/api/favorite/${id}`)
+    axios.post(`/api/favorite/${id}/1`)
     .then((response) => {
       // console.log(response)
     })
