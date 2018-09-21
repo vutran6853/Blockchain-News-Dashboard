@@ -24,7 +24,7 @@ export function getHistoryCoinData() {
     payload: axios.get('https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=alltime&?format=json')
   }
 }
-console.log(initialState.historyCoinData)
+// console.log(initialState.historyCoinData)
 
 // HANDLE STATE CHANGES
 export default function getChartsReducer(state = initialState, action) {

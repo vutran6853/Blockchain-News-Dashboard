@@ -15,11 +15,8 @@ class UserFavCoinList extends Component {
       singleUserFavList: []
     }
 
-
   }
 
-
-  
   notify = () => {
 
     toast("Default Notification !");
@@ -69,9 +66,6 @@ class UserFavCoinList extends Component {
    
   }
 
-  
-
-
   render() { 
     // console.log(this.state.favListData)
     let { favListData } = this.state
@@ -95,7 +89,6 @@ class UserFavCoinList extends Component {
     })
    
 
-    
     return ( 
         <div className='userListMap' >
         <ToastContainer autoClose={1000} />

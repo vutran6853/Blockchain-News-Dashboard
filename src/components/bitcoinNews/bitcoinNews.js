@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-// import css from '../profile/profile.css'
-import Profile from '../profile/profile';
 import { connect } from 'react-redux';
-import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
+import { getBitcoinData, getSevenDayInfo } from '../../ducks/bitcoinNewReducer';
 import axios from 'axios';
- import csss from './bitcoinNews.css'
-import css from '../../../node_modules/bootstrap/dist/css/bootstrap.css'
-
-
+import { Table } from 'reactstrap';
+import BitcoinNewsTableNav from './bitcoinNewsTableNav';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col,CardGroup } from 'reactstrap';
 import NavBarHeader from '../dashboard/navBarHeader';
+import css from './bitcoinNews.css';
+
 var _ = require('lodash');
 
 
@@ -20,53 +17,85 @@ class BitcoinNews extends Component {
 
     // INITIAL LOCAL STATE IF NEEDED
     this.state = {
-      allBitcoinPrice: []
+      allBitcoinPrice: [],
+      singleObjectArrayBitcoinInfo: [],
+      sevenDayBitcoinData: [],
+      bitcoinImageArray: []
+
     }
   }
 
-  componentWillMount() {
-    this.setState({ allBitcoinPrice: this.props.getBitcoinData() })
+  componentDidMount() {
+    let { topTrendCoin } = this.state;
+    // setInterval(() => {
+      this.props.getBitcoinData()
+      .then((response) => {
+        console.log(response)
+        this.setState({ allBitcoinPrice: response.value.data.DISPLAY })
+      
+      })
+    // }, 10000)
+      
+ 
+    this.props.getSevenDayInfo()
+    .then((response) => {
+        // console.log(response.value.data.Data)
+      this.setState({ sevenDayBitcoinData: response.value.data.Data })
+    })
+
+   
   }
 
  
 
+  
+
 
   render() {
-    let bitcoinData = this.props.bitcoinNew.bitcoinData.data
-    //  console.log(this.props.bitcoinNew.bitcoinData.data)
-    //  console.log(_.map(bitcoinData))
-    let displayLayerBitcoinData = _.map(bitcoinData)
-    //  console.log(_.map(displayLayerBitcoinData[1]))
-    let zeroLayerBitcoinData = _.map(displayLayerBitcoinData[1])
+    let { allBitcoinPrice } = this.state
+    let { sevenDayBitcoinData } = this.state
+    let singleSevenhigh = []
+    let singleSevenlow = []
+    let singleSeventime = []
+    // console.log(allBitcoinPrice)
+    //  console.log(sevenDayBitcoinData)
 
-    let final =  zeroLayerBitcoinData.map((value, index) => {
-      // console.log('VALUE', value.USD, 'INDEX', index)
+    let mapDisplay = _.map(allBitcoinPrice)
+    // console.log(mapDisplay)
+
+    for(let key in sevenDayBitcoinData) {
+      //  console.log('VALUE: ', sevenDayBitcoinData[key], 'KEY: ', key )
+       singleSevenhigh.push(sevenDayBitcoinData[key].high)
+       singleSevenlow.push(sevenDayBitcoinData[key].low)
+       singleSeventime.push(sevenDayBitcoinData[key].time)
+    }
+
+
+    let singleObjectCoinInfo = []             // <- ALL SINGLE OBJECT ARRAY STORE
+    console.log(singleObjectCoinInfo)  
+
+   let loopMainCyproList = mapDisplay.forEach((value, index) => {       // LOOP EACH OBJECT INTO SINGLE OBJECT
+      singleObjectCoinInfo.push(value.USD)
+    })
+    // console.log(singleObjectCoinInfo)
+ 
+   let displayCyproList = singleObjectCoinInfo.map((value, index) => {
+        //  console.log('VALUE: ', value, 'INDEX: ', index)
+    
       return(
-        <div className='bitcoinMarket'>
-          <CardGroup>
 
-            <Card>
-              <CardImg  className/>
-              <CardBody>
-                <CardTitle>{value.USD.FROMSYMBOL}</CardTitle>
-                <CardText>
-                  <p>CoinName: {value.USD.FROMSYMBOL}</p>
-                  <p>PRICE: {value.USD.PRICE}</p>
-                  {/* <p>SYMBOL: {value.USD.TOSYMBOL}</p> */}
-                  <p>HIGH24: {value.USD.HIGH24HOUR}</p>
-                </CardText>
-                <Button  color="danger" >FAV</Button>
-              </CardBody>
-            </Card>
-          
-          </CardGroup>
+        <tbody>
+          <tr key={ index }>
+            <td><strong>{ index }</strong></td>
+            <td>{ value.FROMSYMBOL }</td>
+            <td><span className='priceBox'>{ value.PRICE }</span></td>
+            <td>{ value.HIGH24HOUR }</td>
+            <td>{ value.LOWDAY }</td>
+            <td>{ value.MKTCAP }</td>
+            <td><span className='changeprice24Box'>{ value.CHANGEPCT24HOUR }%</span></td>
+          </tr>
+        </tbody>
 
-         
-          {/* <p>CoinName: {value.USD.FROMSYMBOL}</p>
-          <p>PRICE: {value.USD.PRICE}</p>
-          <p>SYMBOL: {value.USD.TOSYMBOL}</p>
-          <p>HIGH24: {value.USD.HIGH24HOUR}</p> */}
-        </div>
       )
     })
     
@@ -74,10 +103,15 @@ class BitcoinNews extends Component {
     return ( 
       <div>
         <NavBarHeader/>
-        <p>BitcoinNews Component</p>
-
         
-        {final}
+        
+        <Table bordered hover >
+          <BitcoinNewsTableNav/>
+          { displayCyproList }
+         
+      
+        </Table>     
+
       </div>
      );
   }
@@ -89,4 +123,4 @@ function mapStateToProps(state) {
 
 
  
-export default connect(mapStateToProps, { getBitcoinData } )(BitcoinNews);
+export default connect(mapStateToProps, { getBitcoinData, getSevenDayInfo } )(BitcoinNews);

@@ -39,17 +39,17 @@ class Charts extends Component {
          
           <Row>
             <Col>
+              <LineChart/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
               <TopCoinChart/>
             </Col>
           </Row>
           <Row>
             <Col>
               <BitcoinVolume24/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <LineChart/>
             </Col>
           </Row>
           

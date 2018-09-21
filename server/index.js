@@ -36,6 +36,7 @@ app.post('/api/user/login', postlogin)
 // CHARTS ENDPOINT SET-UP
 app.get('/api/bitcoin', getCharts)
 
+
 // ALLBITCOINLIST ENDPOINT SET-UP
 app.get('/api/allbitcoinlist', getBitcoinList)
 

@@ -4,7 +4,7 @@ let getCharts = (req, res, next) => {
 
   dbInstance.get_charts()
   .then((response) => {
-    console.log(response)
+    // console.log(response)
     res.status(200).send(response)
   })
   .catch((error) => {
@@ -12,9 +12,10 @@ let getCharts = (req, res, next) => {
     // console.log(error);
   })
 
-
-  
 }
+
+
+
 
 module.exports = {
   getCharts

@@ -44,21 +44,7 @@ class UserList extends Component {
   //   })
   // }
 
-  
-
-
   render() { 
-    // console.log(this.props)
-    // let favList = this.state.favListData
-    // let displayfavList = favList.map((value, index) => {
-    //   console.log(value, index)
-    //   return(
-    //     <div>
-    //       <img src={value.bitcoin_imageurl}></img>
-    //     </div>
-    //   )
-    // })
-
 
 
     let UserList = this.props.userData.data
@@ -85,7 +71,6 @@ class UserList extends Component {
       <div>
         <NavBarHeader/>
         
-       
         { displayList }
       </div>
      );

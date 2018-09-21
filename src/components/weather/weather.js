@@ -23,17 +23,6 @@ class Weather extends Component {
 
   }
 
-  //   componentDidMount() {
-  //   axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=78660,us&APPID=${WEATHER_KEY}`)
-  //   .then((response) => {
-  //     console.log(response)
-  //     this.setState({ weatherData: response.data })
-  //   })
-  //   .catch((error) => {
-  //     console.log(`Fail to get Weather Data`, error)
-  //   })
-  // }
-
 
   updateNewWeather() {
     let { zipCode } = this.state;
@@ -44,11 +33,9 @@ class Weather extends Component {
     })
   };
   
-  
 
   render() { 
-    
-    
+
     let {weatherData} = this.state;
     let mainLayerWeather = weatherData.main
     let mainLayerWeather1 = _.map(mainLayerWeather)

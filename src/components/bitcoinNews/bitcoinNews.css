@@ -1,11 +1,38 @@
-/* .bitcoinMarket {
-  border: 5px solid burlywood;
-  height: 300px;
-  width: 300px;
-  float: right;
-} */
-
 #btn2 {
   background-color: #120f44;
   border: 5px solid yellow;
 }
+
+.priceBox{
+  color: black;
+  border-radius: 5%;
+
+  animation-name: priceBox;
+  animation-duration: 10s
+}
+
+
+.changeprice24Box {
+  animation-name: changeprice24Box;
+  animation-duration: 1s
+}
+
+@keyframes priceBox {
+  from {
+    background-color: #ee1f1f;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+@keyframes changeprice24Box {
+  from {
+    background-color: green;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+

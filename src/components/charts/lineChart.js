@@ -49,16 +49,11 @@ class LineChart extends Component {
     })
   }
 
-  sendBitcoinDataToSQL() {
-    let { label } = this.state
-    let { data } = this.state.data.datasets[0]
-    console.log(label, data)
-  }
+  
   
   
   render() { 
-    console.log(this.state)
-    this.sendBitcoinDataToSQL()
+
     let { allHistoryData } = this.state;
     let { data } = this.state.data.datasets[0]
     let { labels } = this.state.data;
@@ -67,15 +62,15 @@ class LineChart extends Component {
       // console.log('VALUE: ', allHistoryData[key], 'KEY:', key)
       data.push(allHistoryData[key].high)
       labels.push(allHistoryData[key].time.replace(/\s\d\d\:\d\d\:\d\d/g, ''))
-      data.sort()
-      labels.sort()
+      // data.sort()
+      // labels.sort()
 
     }
 
   
     
     return ( 
-      <div className='lineBox'>
+      <div className='lineBox  jello-horizontal'>
       <p className=' h3'>BITCOIN(BTC) High Point Ever in History of Cypro</p>
 
         <Line data={this.state.data} 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Profile from '../profile/profile';
 import { connect } from 'react-redux';
 import { Pie, HorizontalBar,Bar,Bubble     } from 'react-chartjs-2';
 import { getChartsData } from '../../ducks/chartsReducer';

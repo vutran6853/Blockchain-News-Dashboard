@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
 import css from './todoProject.css'
-import { Card, Button, message, Popover, Rate, notification  } from 'antd';
+import { Card, Button, message, Popover, Rate, notification, BackTop, Icon } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
@@ -62,11 +62,7 @@ class ToDoProject extends Component {
     let { allCoinListData } = this.state 
     //  console.log(allCoinListData)
     let { Meta } = Card;
-    console.log(this.state.favoriteID)
-    
-
-    
-
+    // console.log(this.state.favoriteID)
 
     let displayCoinList = allCoinListData.map((value, index) => {
       let content = (
@@ -95,10 +91,7 @@ class ToDoProject extends Component {
             <Popover content={ content } title={value.bitcoin_fullname}>
               <Button >More Info</Button>
             </Popover>
-            
-            
-             
-            
+
           </Card>
        
         </div>
@@ -110,8 +103,9 @@ class ToDoProject extends Component {
       <div>
         <NavBarHeader/>
 
-       
         { displayCoinList }
+
+        <BackTop></BackTop>
       </div>
      );
   }

@@ -19,21 +19,17 @@ class DashBoard extends Component {
     
   }
   
-
   render() { 
      return ( 
       <div>
         <NavBarHeader/>
 
           <Row>
-          
 
             <Col xs="10">
               <Jumbotron>
                 <h1 className="display-6">Top Trending CyptoCoin</h1>
 
-                 
-                
               </Jumbotron>
 
               <Jumbotron>
@@ -47,7 +43,6 @@ class DashBoard extends Component {
             </Col>
 
           </Row>
-
 
       </div>
      );

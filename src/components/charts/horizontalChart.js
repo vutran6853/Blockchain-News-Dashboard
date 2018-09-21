@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Profile from '../profile/profile';
 import { connect } from 'react-redux';
 import { HorizontalBar, Bar, Doughnut,Line } from 'react-chartjs-2';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
