@@ -7,7 +7,7 @@ const SEVENDAYINFO = 'SEVENDAYINFO';
 //  INITIAL STATE
 const initialState = {
   bitcoinData: [],
-  topTrendCoin: ['BTC','ZEC','DGD','LTC','DASH','DGB','AE','ADA','ZEN','XMR','ETC','AID', 'DOGE', 'BIX', 'XUC',  'ARK', 'BAT','BNB','BNT','BTS','CMT','DCN','ELF','EOS','ETA','FUN','GAS','GNT','GXS','HOT','NEO','NXT','OMG','ONT','OST','SNT','TRX','VET','XRP','XTZ','ZIL','ZRX', 'BCH', 'KMD','CNX','XVG','BCN','DCR','BCD','BTM','NXS','HSR','XZC','SC','BTG','ELA','ETH', 'MTL', 'GVT', 'CHAT', 'MTN', 'KNC', 'BCPT', 'ZIP', 'DADI', 'ENG', 'HPB'],
+  topTrendCoin: ['BTC','ZEC','DGD','LTC','DASH','DGB','ADA','ZEN','XMR','ETC','ETH', 'DOGE', 'BIX', 'XUC', 'BAT','BNB','BNT', 'BCH', 'BTS','CMT','DCN','ELF','EOS', 'FUN','GAS','GNT','GXS','HOT','NEO','NXT','OMG','OST','SNT','TRX','VET','XRP','XTZ','ZIL','ZRX', 'WOMEN', 'KMD','CNX','XVG','BCN','DCR','BCD','BTM','NXS','HSR','XZC','BTG','AID', 'MTL', 'GVT', 'CHAT', 'MTN', 'KNC', 'ZIP', 'DADI', 'ENG', 'HPB'],
   sevenDayBitcoinData: []
 }
 

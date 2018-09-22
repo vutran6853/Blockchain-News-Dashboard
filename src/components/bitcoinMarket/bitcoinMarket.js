@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBitcoinData, getSevenDayInfo } from '../../ducks/bitcoinNewReducer';
+import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
 import axios from 'axios';
 import { Table } from 'reactstrap';
-import BitcoinNewsTableNav from './bitcoinNewsTableNav';
+import BitcoinMarketTableNav from './bitcoinMarketTableNav';
+import BitcoinImage from './bitcoinImage';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col,CardGroup } from 'reactstrap';
 import NavBarHeader from '../dashboard/navBarHeader';
-import css from './bitcoinNews.css';
+import css from './bitcoinMarket.css';
 
 var _ = require('lodash');
 
 
-class BitcoinNews extends Component {
+class BitcoinMarket extends Component {
   constructor(props) {
     super(props);
 
@@ -20,7 +22,7 @@ class BitcoinNews extends Component {
       allBitcoinPrice: [],
       singleObjectArrayBitcoinInfo: [],
       sevenDayBitcoinData: [],
-      bitcoinImageArray: []
+    
 
     }
   }
@@ -30,49 +32,29 @@ class BitcoinNews extends Component {
     // setInterval(() => {
       this.props.getBitcoinData()
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         this.setState({ allBitcoinPrice: response.value.data.DISPLAY })
       
       })
     // }, 10000)
       
- 
     this.props.getSevenDayInfo()
     .then((response) => {
         // console.log(response.value.data.Data)
       this.setState({ sevenDayBitcoinData: response.value.data.Data })
     })
-
    
   }
-
- 
-
-  
-
 
   render() {
     let { allBitcoinPrice } = this.state
     let { sevenDayBitcoinData } = this.state
-    let singleSevenhigh = []
-    let singleSevenlow = []
-    let singleSeventime = []
-    // console.log(allBitcoinPrice)
-    //  console.log(sevenDayBitcoinData)
-
+    
     let mapDisplay = _.map(allBitcoinPrice)
     // console.log(mapDisplay)
 
-    for(let key in sevenDayBitcoinData) {
-      //  console.log('VALUE: ', sevenDayBitcoinData[key], 'KEY: ', key )
-       singleSevenhigh.push(sevenDayBitcoinData[key].high)
-       singleSevenlow.push(sevenDayBitcoinData[key].low)
-       singleSeventime.push(sevenDayBitcoinData[key].time)
-    }
-
-
     let singleObjectCoinInfo = []             // <- ALL SINGLE OBJECT ARRAY STORE
-    console.log(singleObjectCoinInfo)  
+    //  console.log(singleObjectCoinInfo)  
 
    let loopMainCyproList = mapDisplay.forEach((value, index) => {       // LOOP EACH OBJECT INTO SINGLE OBJECT
       singleObjectCoinInfo.push(value.USD)
@@ -87,6 +69,7 @@ class BitcoinNews extends Component {
         <tbody>
           <tr key={ index }>
             <td><strong>{ index }</strong></td>
+            <td></td>
             <td>{ value.FROMSYMBOL }</td>
             <td><span className='priceBox'>{ value.PRICE }</span></td>
             <td>{ value.HIGH24HOUR }</td>
@@ -98,7 +81,12 @@ class BitcoinNews extends Component {
 
       )
     })
-    
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   
+     
+
 
     return ( 
       <div>
@@ -106,9 +94,9 @@ class BitcoinNews extends Component {
         
         
         <Table bordered hover >
-          <BitcoinNewsTableNav/>
+          <BitcoinMarketTableNav/>
           { displayCyproList }
-         
+          <BitcoinImage/>
       
         </Table>     
 
@@ -123,4 +111,4 @@ function mapStateToProps(state) {
 
 
  
-export default connect(mapStateToProps, { getBitcoinData, getSevenDayInfo } )(BitcoinNews);
+export default connect(mapStateToProps, { getBitcoinData, getSevenDayInfo, getAllCoinData } )(BitcoinMarket);

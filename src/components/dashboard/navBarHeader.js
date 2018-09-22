@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import Charts from '../charts/charts';
-import BitcoinNews from '../bitcoinNews/bitcoinNews';
+import bitcoinMarket from '../bitcoinMarket/bitcoinMarket';
 import Profile from '../profile/profile';
 import Weather from '../weather/weather';
-import TodoProject from '../todoproject/todoproject';
+import cyproInfo from '../cyproInfo/cyproInfo';
 import css from './dashboard.css';
 import { Row, Col, Jumbotron, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import bitcoinNews from '../bitcoinNews/bitcoinNews';
 import Example from './dashBoardTopCoin';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Container,Button } from 'reactstrap';
@@ -42,9 +41,9 @@ class NavBarHeader extends Component {
                   </ListGroupItem>
                 </Link>
 
-               <Link to='/bitcoinNews'>
+               <Link to='/bitcoinMarket'>
                   <ListGroupItem action>
-                    bitcoinMarket
+                    BitcoinMarket
                   </ListGroupItem>
                 </Link>
 
@@ -60,9 +59,9 @@ class NavBarHeader extends Component {
                   </ListGroupItem>
                 </Link>
 
-                <Link to='/todoProject'>
+                <Link to='/cyproInfo'>
                   <ListGroupItem action>
-                    todoProject
+                    CyproInfo
                   </ListGroupItem>
                 </Link>
                 

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
-import css from './todoProject.css'
+import css from './cyproInfo.css'
 import { Card, Button, message, Popover, Rate, notification, BackTop, Icon } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
-class ToDoProject extends Component {
+class CyproInfo extends Component {
   constructor(props) {
     super(props);
 
@@ -115,4 +115,4 @@ class ToDoProject extends Component {
 // IMPORT Charts REDUCER SINCE WE HAVE MULT REDUCER SET-UP
 const mapStateToProps = (state) => ({ ...state.allCoinList })
 
-export default connect(mapStateToProps, { getAllCoinData }) (ToDoProject);
+export default connect(mapStateToProps, { getAllCoinData }) (CyproInfo);

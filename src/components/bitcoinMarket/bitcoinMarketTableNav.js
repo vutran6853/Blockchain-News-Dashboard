@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
+import BitcoinImage from './bitcoinImage';
+
 var _ = require('lodash');
 
-class BitcoinNewsTableNav extends Component {
+class BitcoinMarketTableNav extends Component {
   constructor(props) {
     super(props)
 
@@ -28,7 +30,9 @@ class BitcoinNewsTableNav extends Component {
     return(
           <thead>
             <tr>
+         
               <th><strong>#</strong></th>
+              <th>PIC</th>
               <th><strong>COINS</strong></th>
               <th><strong>Price</strong></th>
               <th><strong>Change 24 Period</strong></th>
@@ -44,4 +48,4 @@ class BitcoinNewsTableNav extends Component {
 
 const mapStateToProps = (state) => ({ ...state.bitcoinData })
 
-export default connect(mapStateToProps, { getBitcoinData })(BitcoinNewsTableNav)
+export default connect(mapStateToProps, { getBitcoinData })(BitcoinMarketTableNav)

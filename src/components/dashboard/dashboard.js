@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import Charts from '../charts/charts';
-import BitcoinNews from '../bitcoinNews/bitcoinNews';
+import BitcoinMarket from '../bitcoinMarket/bitcoinMarket';
 import Profile from '../profile/profile';
 import Weather from '../weather/weather';
-import TodoProject from '../todoproject/todoproject';
+import cyproInfo from '../cyproInfo/cyproInfo';
 import NavBarHeader from './navBarHeader'
-import css from './dashboard.css';
 import { Row, Col, Jumbotron, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import bitcoinNews from '../bitcoinNews/bitcoinNews';
-import Example from './dashBoardTopCoin';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 class DashBoard extends Component {
