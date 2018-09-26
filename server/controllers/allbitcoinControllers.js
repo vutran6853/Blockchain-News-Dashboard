@@ -46,8 +46,24 @@ let deleteFavCoinID = (req, res, next) => {
   
 }
 
+let getBitcoinImage = (req, res, next) => {
+
+  const dbInstance = req.app.get('db');
+
+  dbInstance.get_allBitcoinImage()
+  .then((response) => {
+    // console.log(response)
+    res.status(200).send(response)
+  })
+  .catch((error) => {
+    res.status(500).send('Fail to request this data', error)
+  })
+
+}
+
 module.exports = {
   getBitcoinList,
   postBitcoinlistID,
-  deleteFavCoinID
+  deleteFavCoinID,
+  getBitcoinImage
 }

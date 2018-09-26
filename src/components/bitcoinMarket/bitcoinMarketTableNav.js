@@ -22,6 +22,9 @@ class BitcoinMarketTableNav extends Component {
       this.setState({ sortBitcoinInfo: response.value.data.DISPLAY })
       
     })
+
+
+    
     
   }
   
@@ -32,7 +35,7 @@ class BitcoinMarketTableNav extends Component {
             <tr>
          
               <th><strong>#</strong></th>
-              <th>PIC</th>
+              <th><strong>Pic</strong></th>
               <th><strong>COINS</strong></th>
               <th><strong>Price</strong></th>
               <th><strong>Change 24 Period</strong></th>

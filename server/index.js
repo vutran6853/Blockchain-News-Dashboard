@@ -8,7 +8,7 @@ const app = express();
 
 let { getUsers, getFavlist, postUser, postlogin } = require('./controllers/usersControllers');
 let { getCharts } = require('./controllers/chartsControllers');
-let { getBitcoinList, postBitcoinlistID, deleteFavCoinID } = require('./controllers/allbitcoinControllers');
+let { getBitcoinList, postBitcoinlistID, deleteFavCoinID, getBitcoinImage } = require('./controllers/allbitcoinControllers');
 
 // console.log(`weatherKey:`,process.env.REACT_APP_WEATHER_API_KEY)
 
@@ -45,7 +45,7 @@ app.get('/api/allbitcoinlist', getBitcoinList)
 app.post('/api/favorite/:id/1', postBitcoinlistID)
 app.delete('/api/favorite/:coinindex/:userid', deleteFavCoinID)
 
-
+app.get('/api/bitcoinImage', getBitcoinImage)
 
 
 

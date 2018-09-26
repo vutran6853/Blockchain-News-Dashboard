@@ -28,7 +28,7 @@ class Weather extends Component {
     let { zipCode } = this.state;
     axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${ zipCode },us&APPID=${WEATHER_KEY}`)
     .then((response) => {
-      console.log(response.data)
+      // console.log(response.data)
        this.setState({ weatherData: response.data })
     })
   };
@@ -43,14 +43,14 @@ class Weather extends Component {
     let fahrenheitTemp = Math.round(temp);    // <= ROUND MATH
 
     let descriptionLayerWeather = weatherData.weather;
-    console.log(descriptionLayerWeather)
+    // console.log(descriptionLayerWeather)
     let descriptionLayerWeatherIndex =   _.map(descriptionLayerWeather, 'main')
     let finaldescription = descriptionLayerWeatherIndex[0]
     // console.log(descriptionLayerWeatherIndex[0])
      
   
      const imgageOfTheWeatherFN = () => {
-      console.log(finaldescription)
+      // console.log(finaldescription)
       switch (finaldescription) {
         
         case 'Clouds': 

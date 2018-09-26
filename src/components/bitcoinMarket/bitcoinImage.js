@@ -32,7 +32,7 @@ class BitcoinImage extends Component {
     }
     
     let displayImageBitcoin = bitcoinImageArray.map((value2, index) => {
-       console.log(value2, index)
+      //  console.log(value2, index)
        
       return(
         <div key={value2}>

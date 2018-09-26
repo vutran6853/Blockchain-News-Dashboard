@@ -31,7 +31,7 @@ class NavBarHeader extends Component {
 
         <div>
           <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">CyproZone</NavbarBrand>
+          <NavbarBrand href="/">CryptoZone</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="offset-md-3 " navbar>
@@ -43,19 +43,19 @@ class NavBarHeader extends Component {
 
                <Link to='/bitcoinMarket'>
                   <ListGroupItem action>
-                    BitcoinMarket
+                    CryptoMarket
                   </ListGroupItem>
                 </Link>
 
                 <Link to='/charts'>
                   <ListGroupItem action>
-                    CyproCharts
+                    CryptoCharts
                   </ListGroupItem>
                 </Link>
 
                 <Link to='/userList'>
                   <ListGroupItem action>
-                    CyproUser
+                    CryptoUser
                   </ListGroupItem>
                 </Link>
 
