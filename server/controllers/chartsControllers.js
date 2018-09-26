@@ -14,9 +14,6 @@ let getCharts = (req, res, next) => {
 
 }
 
-
-
-
 module.exports = {
   getCharts
 }

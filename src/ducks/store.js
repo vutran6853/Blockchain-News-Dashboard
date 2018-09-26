@@ -18,7 +18,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const middlewares = composeEnhancers(applyMiddleware(promiseMiddleware()));
 
-
 // STORE COMBINREDUCER AND MIDDLEWARE INTO STORE
 const store = createStore(combinedReducers, middlewares)
 

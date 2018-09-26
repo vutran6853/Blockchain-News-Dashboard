@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
-import css from './cyproInfo.css'
+import css from './cryptoInfo.css'
 import { Card, Button, message, Popover, Rate, notification, BackTop, Icon } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
-class CyproInfo extends Component {
+class CryptoInfo extends Component {
   constructor(props) {
     super(props);
 
@@ -19,8 +19,6 @@ class CyproInfo extends Component {
 
      this.handelChange = this.handelChange.bind(this);
   }
-  
-  
   
   // GET DATA FROM REDUX AND STORE TO LOCAL STATE
   componentDidMount() {
@@ -48,15 +46,13 @@ class CyproInfo extends Component {
       // console.log(response)
     })
   }
-  
+
   openNotification = () => {
     notification.open({
       message: 'Complete',
       description: 'Add to Fav List ^.^',
     });
   };
-
-  
 
   render() {
     let { allCoinListData } = this.state 
@@ -91,7 +87,6 @@ class CyproInfo extends Component {
             <Popover content={ content } title={value.bitcoin_fullname}>
               <Button >More Info</Button>
             </Popover>
-
           </Card>
        
         </div>
@@ -110,9 +105,8 @@ class CyproInfo extends Component {
      );
   }
 }
-
  
 // IMPORT Charts REDUCER SINCE WE HAVE MULT REDUCER SET-UP
 const mapStateToProps = (state) => ({ ...state.allCoinList })
 
-export default connect(mapStateToProps, { getAllCoinData }) (CyproInfo);
+export default connect(mapStateToProps, { getAllCoinData }) (CryptoInfo);

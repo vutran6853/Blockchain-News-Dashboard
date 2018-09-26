@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
-import BitcoinImage from './bitcoinImage';
 
 var _ = require('lodash');
 
@@ -23,9 +22,6 @@ class BitcoinMarketTableNav extends Component {
       
     })
 
-
-    
-    
   }
   
   render() {
@@ -33,7 +29,6 @@ class BitcoinMarketTableNav extends Component {
     return(
           <thead>
             <tr>
-         
               <th><strong>#</strong></th>
               <th><strong>Pic</strong></th>
               <th><strong>COINS</strong></th>
@@ -42,7 +37,6 @@ class BitcoinMarketTableNav extends Component {
               <th><strong>Low Period</strong></th>
               <th><strong>Market Cap</strong></th>
               <th><strong>Change 24Hour</strong></th>
-
             </tr>
           </thead>
     )

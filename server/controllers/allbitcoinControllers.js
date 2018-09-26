@@ -13,7 +13,6 @@ let getBitcoinList = (req, res, next) => {
 
 }
 
-
 let postBitcoinlistID = (req, res, next) => {
   // console.log(req)
   const dbInstance = req.app.get('db');
@@ -28,7 +27,6 @@ let postBitcoinlistID = (req, res, next) => {
     res.status(500).send('Fail to POST this data', error)
   })
 }
-
 
 let deleteFavCoinID = (req, res, next) => {
   console.log(req , 'DELETE')

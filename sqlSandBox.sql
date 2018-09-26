@@ -167,14 +167,12 @@ VALUES
 ('https://www.cryptocompare.com/media/27010480/garlic.png', 'Garlicoin (GRLC)', 'Garlicoin was formed on a few simple fundamentals - cheap and fast transactions, low barrier to entry and total focus on the community. These fundamentals have been put into practice, resulting in: 40 second block times allowing blazingly fast confirmations, our ASIC resistant proof-of-work algorithm means anyone with a GPU can contribute to mining, and many important decisions have been made by the rapidly growing Garlicoin community.', 'N/A'),
 ('https://www.cryptocompare.com/media/20079/acoin.png', 'ACoin (ACOIN)', 'Acoin is an SHA-256 Bitcoin clone. The block reward varies with a block reward of 2-10x normal roughly every 1 in ten blocks. The block reward initially starts at 1 and reduces by 50% every 6 months.', 'SHA256')
 
-
 --////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 CREATE TABLE favorite (
   bitcoinlist_id INTEGER REFERENCES allBitcoinList ,
   user_id INTEGER REFERENCES users(user_id)
 )
-
 
 INSERT INTO favorite (bitcoinlist_id, user_id)
 VALUES ($1, $2);
@@ -266,6 +264,5 @@ VALUES ($1, $2, $3, $4, $5, $6);
 ('7499.34', '7499.34', '7215.64', '7215.64', 'Nov 4 2017', '107161.5543'),
 ('7454.44', '7454.44', '7043.37', '7043.37', 'Nov 3 2017', '165812.7165'),
 ('7354.8', '7354.8', '6762.35', '6762.35', 'Nov 2 2017', '257129.8641')
-
 
 --////////////////////////////////////////////////////////////////////////////////////////////////////////

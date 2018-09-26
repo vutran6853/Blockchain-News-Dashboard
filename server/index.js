@@ -14,7 +14,6 @@ let { getBitcoinList, postBitcoinlistID, deleteFavCoinID, getBitcoinImage } = re
 
 app.use(cors())
 
-
 //  MASSIVE CONNECT TO SQL SYSTEM FUNCTIONALITY
 massive(process.env.CONNECTION_STRING)
 .then(dbInstace => {
@@ -22,7 +21,6 @@ massive(process.env.CONNECTION_STRING)
   app.set('db', dbInstace)
 })
 .catch(error => console.log('DANGER! : ', error));
-
 
 app.use(json());
 
@@ -39,24 +37,12 @@ app.get('/api/bitcoin', getCharts)
 
 // ALLBITCOINLIST ENDPOINT SET-UP
 app.get('/api/allbitcoinlist', getBitcoinList)
+app.get('/api/bitcoinImage', getBitcoinImage)
 
 
 // FAVORITE ENDPOINT SET-UP
 app.post('/api/favorite/:id/1', postBitcoinlistID)
 app.delete('/api/favorite/:coinindex/:userid', deleteFavCoinID)
-
-app.get('/api/bitcoinImage', getBitcoinImage)
-
-
-
-
-
-
-
-
-
-
-
 
 
 

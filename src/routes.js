@@ -4,7 +4,7 @@ import DashBoard from './components/dashboard/dashboard';
 import BitcoinMarket from './components/bitcoinMarket/bitcoinMarket';
 import Charts from './components/charts/charts';
 import UserList from './components/userList/userList';
-import CyproInfo from './components/cyproInfo/cyproInfo';
+import CryptoInfo from './components/cryptoInfo/cryptoInfo';
 import LoginPage from './components/Login_Signup/logingPage';
 import SignUp from './components/Login_Signup/SignUpPage';
 
@@ -19,7 +19,7 @@ export default (
       <Route path='/bitcoinMarket' component={ BitcoinMarket } ></Route>
       <Route path='/charts' component={ Charts } ></Route>
       <Route path='/userList' component={ UserList } ></Route>
-      <Route path='/cyproInfo' component={ CyproInfo } ></Route>  
+      <Route path='/cryptoInfo' component={ CryptoInfo } ></Route>  
       <Route path='/LoginSignUp' component={ LoginPage } ></Route>
       <Route path='/SignUp' component={ SignUp } ></Route>
     </Switch>

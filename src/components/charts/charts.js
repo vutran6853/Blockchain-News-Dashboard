@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import Profile from '../profile/profile';
 import { connect } from 'react-redux';
 import { getChartsData } from '../../ducks/chartsReducer';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 import TopCoinChart from './horizontalChart';
 import BitcoinVolume24 from './BitcoinVolume24';
-import { Container, Row, Col,  DropdownMenu, DropdownItem , DropdownToggle, ButtonDropdown  } from 'reactstrap';
+import { Container, Row, Col,  DropdownMenu} from 'reactstrap';
 import NavBarHeader from '../dashboard/navBarHeader';
 import LineChart from './lineChart';
 import css from './charts.css'
@@ -26,38 +25,31 @@ class Charts extends Component {
     });
   }
   
-
   render() { 
 
     return ( 
-
-
       <div>
-        
+
         <NavBarHeader/>
           <Container>
-         
-          <Row>
-            <Col>
-              <LineChart/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <TopCoinChart/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <BitcoinVolume24/>
-            </Col>
-          </Row>
-          
-          
+            <Row>
+              <Col>
+                <LineChart/>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <TopCoinChart/>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <BitcoinVolume24/>
+              </Col>
+            </Row>
           </Container>
-       
+
       </div>
-     
      );
   }
 }

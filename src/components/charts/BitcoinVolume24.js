@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Pie, HorizontalBar,Bar,Bubble     } from 'react-chartjs-2';
+import { Pie, HorizontalBar,Bar,Bubble } from 'react-chartjs-2';
 import { getChartsData } from '../../ducks/chartsReducer';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 
@@ -28,7 +28,6 @@ class BitcoinVolume24 extends Component {
 
   }
 
-
   // GET DATA FROM REDUX AND STORE TO LOCAL STATE
   componentDidMount() {
     this.props.getChartsData().then((response) => {
@@ -38,10 +37,6 @@ class BitcoinVolume24 extends Component {
 
 
   } 
-
-  
-
-
 
   render() { 
      // console.log(this.props.chartsbitcoinData.data)
@@ -66,7 +61,6 @@ class BitcoinVolume24 extends Component {
      );
   }
 }
-
 
 // IMPORT Charts REDUCER SINCE WE HAVE MULT REDUCER SET-UP
 const mapStateToProps = (state) => ({ ...state.charts, ...state.bitcoinNew })

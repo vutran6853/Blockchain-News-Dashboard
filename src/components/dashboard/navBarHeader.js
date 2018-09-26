@@ -3,7 +3,7 @@ import Charts from '../charts/charts';
 import bitcoinMarket from '../bitcoinMarket/bitcoinMarket';
 import Profile from '../profile/profile';
 import Weather from '../weather/weather';
-import cyproInfo from '../cyproInfo/cyproInfo';
+import cryptoInfo from '../cryptoInfo/cryptoInfo';
 import css from './dashboard.css';
 import { Row, Col, Jumbotron, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -59,9 +59,9 @@ class NavBarHeader extends Component {
                   </ListGroupItem>
                 </Link>
 
-                <Link to='/cyproInfo'>
+                <Link to='/cryptoInfo'>
                   <ListGroupItem action>
-                    CyproInfo
+                    CryptoInfo
                   </ListGroupItem>
                 </Link>
                 

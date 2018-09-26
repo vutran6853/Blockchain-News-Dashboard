@@ -49,9 +49,6 @@ class LineChart extends Component {
     })
   }
 
-  
-  
-  
   render() { 
 
     let { allHistoryData } = this.state;
@@ -67,23 +64,18 @@ class LineChart extends Component {
 
     }
 
-  
-    
     return ( 
-      <div className='lineBox  jello-horizontal'>
+      <div className='lineBox jello-horizontal'>
       <p className=' h3'>BITCOIN(BTC) High Point Ever in History of Cypro</p>
-
         <Line data={this.state.data} 
         width={2}
         height={1}
-        
         
         />
       </div>
      );
   }
 }
-
 
 // IMPORT Charts REDUCER SINCE WE HAVE MULT REDUCER SET-UP
 const mapStateToProps = (state) => ({ ...state.charts })

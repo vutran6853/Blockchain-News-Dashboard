@@ -14,9 +14,6 @@ let getUsers = (req, res, next) => {
 
 }
 
-
-
-
 let getFavlist = (req, res, next) => {
 
   const dbInstance = req.app.get('db')
@@ -63,7 +60,6 @@ let postlogin = (req, res, next) => {
     res.status(500).send('Fail to post new User!')
   }) 
 }
-
 
 module.exports = {
   getUsers,

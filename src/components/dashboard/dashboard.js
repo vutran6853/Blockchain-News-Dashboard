@@ -3,7 +3,7 @@ import Charts from '../charts/charts';
 import BitcoinMarket from '../bitcoinMarket/bitcoinMarket';
 import Profile from '../profile/profile';
 import Weather from '../weather/weather';
-import cyproInfo from '../cyproInfo/cyproInfo';
+import cryptoInfo from '../cryptoInfo/cryptoInfo';
 import NavBarHeader from './navBarHeader'
 import DashBoardNews from './dashboardNews';
 import { Row, Col, Jumbotron, ListGroup, ListGroupItem } from 'reactstrap';

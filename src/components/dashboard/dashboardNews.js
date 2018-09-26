@@ -13,7 +13,6 @@ class DashBoardNews extends Component{
       cyproNews2: []
     }
 
-
   }
   componentDidMount() {
     axiso.get('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')
@@ -28,7 +27,6 @@ class DashBoardNews extends Component{
     let { cyproNews } = this.state
   // console.log(this.state)   
     let { Meta } = Card;
-    
 
     let displayCyproNews = cyproNews.map((value, index) => {
        console.log('VALUE: ', value, 'INDEX: ', index)
@@ -49,8 +47,6 @@ class DashBoardNews extends Component{
       
       )
     })
-
-
 
     return(
       <div className='mainBox'>

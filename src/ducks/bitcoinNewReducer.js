@@ -31,7 +31,6 @@ export function getSevenDayInfo() {
   }
 }
 
-
 // HANDLE STATE CHANGES
 export default function bitcoinNewReducer(state = initialState, action) {
   switch(action.type) {
