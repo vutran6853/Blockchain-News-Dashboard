@@ -24,6 +24,12 @@ massive(process.env.CONNECTION_STRING)
 
 app.use(json());
 
+const path = require('path'); // Usually moved to the start of file
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
 // USER ENDPOINT SET-UP
 app.get('/api/user', getUsers)
 app.get('/api/user2/:id', getFavlist)
