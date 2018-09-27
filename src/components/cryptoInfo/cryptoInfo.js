@@ -70,7 +70,7 @@ class CryptoInfo extends Component {
       // console.log(value, index)
       return(
         <div className='coinListBox' key={ value.id }>
-          <Card hoverable
+            <Card hoverable
                 style={{ width: 270, height: 290, padding: 10} }
                 cover={<img alt={value.bitcoin_fullname} src={value.bitcoin_imageurl} style={{ width: 210, height: 190} } />}>
             <Meta title={value.bitcoin_fullname}

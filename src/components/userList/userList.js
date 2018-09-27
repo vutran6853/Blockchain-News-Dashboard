@@ -4,9 +4,9 @@ import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
 import { connect } from 'react-redux';
 import css from './user.css';
 import NavBarHeader from '../dashboard/navBarHeader';
-import axios from 'axios';
-import UserFavCoinList from './userListMap';
-import { displayFavCoinList } from './userListMap';
+import UserFavCoinList from './userFavCoinList';
+// import { displayFavCoinList } from './userFavCoinList';
+import { Table } from 'reactstrap';
 
 let _ = require('lodash');
 
@@ -46,7 +46,6 @@ class UserList extends Component {
 
   render() { 
 
-
     let UserList = this.props.userData.data
     let displayUserList = _.map(UserList)                               // <-- _map FROM REDUCER
 
@@ -54,24 +53,40 @@ class UserList extends Component {
       // console.log(value, index)
 
       return (
-        <div key={index} className='userListBox'>
-          <p><strong>Name: </strong>   {value.user_firstname} {value.user_lastname}</p>
-          <p><strong>Email: </strong> {value.user_email}</p>
-          <p><strong>Picture: </strong> {value.user_url}</p>
-          <p><strong>Fav coin: </strong> 'pending...toDo'</p>
         
-        
-          <UserFavCoinList handleGetFavId={index}  />
+         <tbody key={index} className='userListBox'>
+            <tr>
+              <th scope="row">{index + 1}</th>
+              <td><img src={value.user_url} ></img></td>
+              <td>{value.user_firstname} {value.user_lastname}</td>
+              <td>{value.user_email}</td>
+  
+              <UserFavCoinList handleGetFavId={index}  />
 
-        </div>
+            </tr>
+
+          </tbody>
+
       )
     })
 
     return ( 
       <div>
+
         <NavBarHeader/>
-        
-        { displayList }
+          <Table bordered >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Fav List</th>
+              </tr>
+            </thead>
+            { displayList }
+          </Table>
+
       </div>
      );
   }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import UserList from './userList';
 import axios from 'axios';
-import { Button, notification } from 'antd';
-import { ToastContainer, toast } from 'react-toastify';
+import { Button, notification, Switch  } from 'antd';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class UserFavCoinList extends Component {
   constructor(props) {
@@ -12,24 +12,18 @@ class UserFavCoinList extends Component {
     this.state = {
       favListData: [],
       allCoinListData: [],
-      singleUserFavList: []
+      singleUserFavList: [],
+      theme: 'dark',
+      current: 1,
     }
+  } 
 
-  }
-
-  notify = () => {
-
-    toast("Default Notification !");
-
-    toast.success("Success Notification !", {
-      position: toast.POSITION.TOP_CENTER
+  openNotification = () => {
+    notification.open({
+      message: 'Complete',
+      description: `Remove Coin from  Fav List !` ,
     });
-
-    toast.error("Error Notification !", {
-      position: toast.POSITION.TOP_LEFT
-    });
-
-  }
+  };
 
   // GET FAVORITE COIN FROM USER ID
   handleGetFav(id) {
@@ -50,11 +44,10 @@ class UserFavCoinList extends Component {
     axios.delete(`/api/favorite/${coinindex}/${userid + 1}`)
     .then((response) => {
       console.log(response)
-      
     })
     .catch((error) => {
       console.log('Oh Fail to Delete', error)
-      toast.error('Fail to remove Coin from list')
+      // toast.error('Fail to remove Coin from list')
     })
 
     axios.get(`/api/user2/${userid + 1}`)
@@ -62,41 +55,38 @@ class UserFavCoinList extends Component {
       console.log(response)
       this.setState({ favListData: response.data })
     })
-
-   
   }
 
   render() { 
+
     // console.log(this.state.favListData)
     let { favListData } = this.state
-   let displayFavCoinList = favListData.map((value, index) => {
-      console.log('value', value, 'index', index)
+    let displayFavCoinList = favListData.map((value, index) => {
+      // console.log('value', value, 'index', index)
       return(
-        <div className='favCoinListBox' >
+       
+        <div className='favCoinListBox'>
           <p><strong>Name: </strong>{value.bitcoin_fullname}</p>
           <div className='imageBox'>
             <img src={value.bitcoin_imageurl}></img>
             <Button className='ant-btn-primary' 
                     onClick={() => {this.handleDeleteFavCoin(value.bitcoinlist_id,this.props.handleGetFavId)
-                                    {this.notify}
+                                    {this.openNotification()}
                     }} >Delete Coin</Button>
           </div>
-          
           <p><strong>Algorithm: </strong>{value.bitcoin_algorithm}</p>
-         
         </div>
+
       )
     })
    
 
     return ( 
-        <div className='userListMap' >
-        <ToastContainer autoClose={1000} />
-          <p>UserFavCoinList Component</p>
-          <button onClick={ () => { this.handleGetFav(this.props.handleGetFavId);
-                                   
-                                  }} >Get Fav</button>
-          <span >{displayFavCoinList}</span>
+        <div className='userListMap'   >
+       
+          <button onClick={ () => { this.handleGetFav(this.props.handleGetFavId)}} >Get Fav</button>
+
+          <span >{displayFavCoinList}</span>        
         </div>
      );
   }

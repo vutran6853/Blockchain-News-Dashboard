@@ -12,6 +12,17 @@ VALUES ('Danial', 'Fay', 'danialfay29@gmail.com', 'sercetPassword', 'url picture
       ('Eric', 'Go', 'ericgo111@gmail.com', 'JavascriptIsWeild', 'url picture placeholder'),
       ('butteryfly', 'death', 'butteryfly999@gmail.com', '1234567890',  'url picture placeholder')
 
+
+
+UPDATE users
+SET user_firstname = 'Steven', 
+	user_lastname = 'coby',
+	user_email = 'stevencoby7264@myspace.com',
+	user_password = 'oldschool',
+	user_url = 'url picture placeholder'
+WHERE user_id = 5;
+
+
 --///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 CREATE TABLE bitcoinInfo (

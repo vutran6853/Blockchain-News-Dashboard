@@ -1,3 +1,7 @@
+.body1 {
+  background-color: #1c1f21;
+}
+
 #card {
   border: 2px solid blue;
   width: 265px;
@@ -50,3 +54,4 @@
 .mainBox {
   border: 2px solid darkgreen;
 }
+

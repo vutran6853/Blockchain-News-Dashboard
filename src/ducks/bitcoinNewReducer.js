@@ -17,8 +17,7 @@ export function getBitcoinData() {
   //  console.log(topTrendCoin)
   return {
     type: BITCOINDATA,
-    payload: axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${topTrendCoin}&tsyms=USD`)        
-                        
+    payload: axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${topTrendCoin}&tsyms=USD`)                
   }
 }
 

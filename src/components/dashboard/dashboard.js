@@ -18,7 +18,7 @@ class DashBoard extends Component {
   
   render() { 
      return ( 
-      <div>
+      <div className='body1'>
         <NavBarHeader/>
 
           <Row >

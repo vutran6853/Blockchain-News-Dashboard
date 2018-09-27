@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
-
+import { Switch, Button } from 'antd'; 
+// import BitcoinMarketSwitchButton from './bitcoinMarket'
 var _ = require('lodash');
 
 class BitcoinMarketTableNav extends Component {
@@ -10,7 +11,7 @@ class BitcoinMarketTableNav extends Component {
 
     this.state = {
       sortBitcoinInfo: [],
-      activeSortData: []
+      activeSortData: [],
     }
   }
 
@@ -23,9 +24,9 @@ class BitcoinMarketTableNav extends Component {
     })
 
   }
-  
+
   render() {
-  
+
     return(
           <thead>
             <tr>
@@ -36,7 +37,12 @@ class BitcoinMarketTableNav extends Component {
               <th><strong>Change 24 Period</strong></th>
               <th><strong>Low Period</strong></th>
               <th><strong>Market Cap</strong></th>
-              <th><strong>Change 24Hour</strong></th>
+              <th>
+              
+                <strong>Change 24Hour</strong>
+                
+              </th>
+              {/* <th><BitcoinMarketSwitchButton/></th> */}
             </tr>
           </thead>
     )

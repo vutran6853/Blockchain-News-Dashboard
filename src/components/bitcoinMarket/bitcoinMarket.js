@@ -5,10 +5,10 @@ import { getAllCoinData, getBitcoinImageData } from '../../ducks/allBitcoinListR
 import axios from 'axios';
 import { Table } from 'reactstrap';
 import BitcoinMarketTableNav from './bitcoinMarketTableNav';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col,CardGroup } from 'reactstrap';
+import { Icon, Switch } from 'antd'
 import NavBarHeader from '../dashboard/navBarHeader';
 import css from './bitcoinMarket.css';
-import classNames from 'classnames';
+
 var _ = require('lodash');
 
 class BitcoinMarket extends Component {
@@ -21,8 +21,12 @@ class BitcoinMarket extends Component {
       singleObjectArrayBitcoinInfo: [],
       sevenDayBitcoinData: [],
       allbitcoinImageArray: [],
-      isHighPriceMap: []
+      isHighPriceMap: [],
+      id: 'Test1',
+      current: 1
     }
+    this.changeTheme = this.changeTheme.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +37,7 @@ class BitcoinMarket extends Component {
         // console.log(response)
         this.setState({ allBitcoinPrice: response.value.data.DISPLAY })
       } )
-     , 9000 );
+     , 10000 );
    
     
 
@@ -84,6 +88,7 @@ class BitcoinMarket extends Component {
        if(singlePricePropsData[i] > singlePricePrevProps[i]) {
         //  console.log('TOO HIGH')
          test1.push(true)
+         
         //  this.setState({ isHighPrice: '0' })
        } else if(singlePricePropsData[i] === singlePricePrevProps[i]) {
         //  console.log('TOO SAME')
@@ -102,7 +107,7 @@ class BitcoinMarket extends Component {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     } else {
-      console.log('FALSE')
+      // console.log('FALSE')
     }
   }  
 
@@ -127,6 +132,29 @@ class BitcoinMarket extends Component {
     }
     return ''
   }
+
+  handleIronChange(num) {
+    let { isHighPriceMap } = this.state
+    if(isHighPriceMap[num] === true) {
+      console.log('UP') 
+      return 'arrow-up'
+    } else if(isHighPriceMap[num] === false) {
+      console.log('DOWN')
+      return 'arrow-down'
+    }
+    return ''
+  }
+
+  changeTheme(value) {
+    this.setState({ id: value ? 'Test1' : 'Test2' })
+  }
+
+  handleClick(e) {
+    console.log('event')
+    this.setState({ current: e.key })
+  }
+  
+
 
   render() {
     let { allBitcoinPrice } = this.state
@@ -160,7 +188,12 @@ class BitcoinMarket extends Component {
             <td><img src={ this.state.allbitcoinImageArray[index] } ></img></td>
             <td>{ value.FROMSYMBOL }</td>
             <td>
-              <span className={'priceBox ' + this.handlePriceChange(index)}>{ value.PRICE }</span>
+              <span className={'priceBox ' + this.handlePriceChange(index)}
+                    
+              >{ value.PRICE }
+                   
+              </span>
+              <span className={ this.handleIronChange(index) } ></span>
             </td>
             <td>{ value.HIGH24HOUR }</td>
             <td>{ value.LOWDAY }</td>
@@ -174,8 +207,14 @@ class BitcoinMarket extends Component {
 
     return ( 
       <div>
+        <Switch
+          checked={this.state.id === 'Test1'}
+          onChange={this.changeTheme}
+          checkedChildren="Test2"
+          unCheckedChildren="Test1"
+        />
         <NavBarHeader/>
-           <Table bordered hover >
+           <Table  bordered hover id={this.state.id} onClick={this.handleClick}   selectedKeys={[this.state.current]}  >
               <BitcoinMarketTableNav/>
                 { displayCyproList }
           </Table>
