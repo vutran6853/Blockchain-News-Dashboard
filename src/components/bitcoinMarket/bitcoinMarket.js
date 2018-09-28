@@ -5,7 +5,7 @@ import { getAllCoinData, getBitcoinImageData } from '../../ducks/allBitcoinListR
 import axios from 'axios';
 import { Table } from 'reactstrap';
 import BitcoinMarketTableNav from './bitcoinMarketTableNav';
-import { Icon, Switch } from 'antd'
+import { Icon, Switch, BackTop } from 'antd'
 import NavBarHeader from '../dashboard/navBarHeader';
 import css from './bitcoinMarket.css';
 
@@ -22,7 +22,7 @@ class BitcoinMarket extends Component {
       sevenDayBitcoinData: [],
       allbitcoinImageArray: [],
       isHighPriceMap: [],
-      id: 'Test1',
+      id: 'Turn Lights On',
       current: 1
     }
     this.changeTheme = this.changeTheme.bind(this);
@@ -50,6 +50,8 @@ class BitcoinMarket extends Component {
    
   }
 
+  // GET PREVPRO AND PREVSTATE TO CHECK AND COMPARE DATA
+  
   componentDidUpdate(prevProps, prevState) {
     if(prevProps != this.props && prevProps.bitcoinNew.bitcoinData.data) {
       let prevPropsData = prevProps.bitcoinNew.bitcoinData.data.RAW;
@@ -146,15 +148,13 @@ class BitcoinMarket extends Component {
   }
 
   changeTheme(value) {
-    this.setState({ id: value ? 'Test1' : 'Test2' })
+    this.setState({ id: value ? 'Turn_Lights_On' : 'Turn_Lights_off' })
   }
 
   handleClick(e) {
     console.log('event')
     this.setState({ current: e.key })
   }
-  
-
 
   render() {
     let { allBitcoinPrice } = this.state
@@ -206,18 +206,23 @@ class BitcoinMarket extends Component {
     })
 
     return ( 
-      <div>
-        <Switch
-          checked={this.state.id === 'Test1'}
-          onChange={this.changeTheme}
-          checkedChildren="Test2"
-          unCheckedChildren="Test1"
-        />
+      <div >
+        
+
         <NavBarHeader/>
-           <Table  bordered hover id={this.state.id} onClick={this.handleClick}   selectedKeys={[this.state.current]}  >
+
+           <Table className='cryptoMarketTable m-0' responsive size="sm" bordered hover id={this.state.id} onClick={this.handleClick}   selectedKeys={[this.state.current]}  >
               <BitcoinMarketTableNav/>
                 { displayCyproList }
           </Table>
+          <div className='switchToggleBackgroundColor'>
+              <Switch checked={this.state.id === 'Turn_Lights_On'}
+                      onChange={this.changeTheme}
+                      checkedChildren="Turn Lights On"
+                      unCheckedChildren="Turn Lights off"/>
+          
+          </div>
+          
       </div>
      );
   }

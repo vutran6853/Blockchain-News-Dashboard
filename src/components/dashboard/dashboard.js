@@ -18,10 +18,10 @@ class DashBoard extends Component {
   
   render() { 
      return ( 
-      <div className='body1'>
+      <div >
         <NavBarHeader/>
 
-          <Row >
+          <Row className='body1' >
 
             <Col xs="10" className='entireCol'>
               <Jumbotron>

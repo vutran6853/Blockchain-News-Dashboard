@@ -30,14 +30,14 @@ class NavBarHeader extends Component {
     
     return ( 
 
-        <div>
+     
           <Navbar className='body1'  light expand="md">
           <NavbarBrand href="/">
             <img src={image} style={{'width': '70px', 'height': '70px'}} ></img>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="offset-md-3" navbar>
+              <Nav className="offset-md-1" navbar>
                 <Link to='/'>
                   <ListGroupItem  action  className='body1'>
                     Home
@@ -77,7 +77,7 @@ class NavBarHeader extends Component {
               </Nav>
             </Collapse>
           </Navbar>
-        </div> 
+        
     );
   }
 }

@@ -14,7 +14,6 @@ class CryptoInfo extends Component {
       allCoinListData: [],
       modal: false,
       favoriteID: [],
-    
      }
 
      this.handelChange = this.handelChange.bind(this);
@@ -30,9 +29,9 @@ class CryptoInfo extends Component {
   }
 
   // POPUP MESSAGE WHEN USER CLICK ON FAV
-  info() {
-    message.info('Add to Fav List ^.^')
-  }
+  // info() {
+  //   message.info('Add to Fav List ^.^')
+  // }
 
   handleChangeStar(value) {
     this.setState({ valueOfStar: value })
@@ -69,21 +68,18 @@ class CryptoInfo extends Component {
       )
       // console.log(value, index)
       return(
-        <div className='coinListBox' key={ value.id }>
-            <Card hoverable
+        <div className='coinListBox  ' key={ value.id }>
+            <Card 
                 style={{ width: 270, height: 290, padding: 10} }
-                cover={<img alt={value.bitcoin_fullname} src={value.bitcoin_imageurl} style={{ width: 210, height: 190} } />}>
-            <Meta title={value.bitcoin_fullname}
-                  description=''/>
+                cover={<img alt={value.bitcoin_fullname} id='hoverImage'  src={value.bitcoin_imageurl} style={{ width: 210, height: 190} } />}>
+            <Meta title={value.bitcoin_fullname}/>
           
             <Button style={{ margin: 3} } 
                     type='dashed' 
-                    onClick={ () => { this.info();
-                                      this.handelChange(index);
+                    onClick={ () => { this.handelChange(index);
                                       this.openNotification()
-                            
-                            } }>Add to Fav </Button>
-            
+                            } }>Add to Fav</Button>
+
             <Popover content={ content } title={value.bitcoin_fullname}>
               <Button >More Info</Button>
             </Popover>

@@ -1,18 +1,17 @@
-#Test1 {
+
+#Turn_Lights_On {
   background-color: #1c1f21;
   color: white;
 }
 
-#Test2 {
-  background-color: #5df107;
-  color: white;
+#Turn_Lights_off {
+  background-color: white;
+  color: black;
 }
 
-.tableBox2 {
-  background-color: #ffffff;
-  color: white;
+.cryptoMarketTable {
+  color: black;
 }
-
 
 .changeprice24Box {
   animation-name: changeprice24Box;
@@ -21,9 +20,7 @@
 }
 
 .priceBox {
-  color: white;
   border-radius: 5%;
-  background-color: #1c1f21;
 }
 
 .highPriceBox {
@@ -44,25 +41,28 @@
 
 
 .arrow-up {
-  
     width: 0; 
     height: 0; 
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-
     border-bottom: 10px solid green;
 }
 
 .arrow-down {
-
+  
   width: 0; 
   height: 0; 
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-
-  border-top: 10px solid black;
+  border-top: 10px solid red;
 }
 
+.switchToggleBackgroundColor {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: #1c1f21;
+}
 
 @keyframes priceBoxhighPriceBox {
   from {
@@ -70,7 +70,7 @@
     
   }
   to {
-    background-color: #f5f5f5;
+    background-color: white;
   }
 }
 

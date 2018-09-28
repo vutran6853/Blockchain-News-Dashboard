@@ -1,5 +1,15 @@
 .coinListBox {
-  border: 5px solid lightsalmon;
-  display: inline-block
-  
+  border: 1px solid lightblue;
+  display: inline-block;
+  margin-left: 40px;
+  margin-top: 5px;
+}
+
+.wobble-hor-bottom {
+	animation: wobble-hor-bottom 0.8s both;
+}
+
+#hoverImage:hover {
+  transform: skew(-10deg);
+  animation-duration: 1s;
 }
