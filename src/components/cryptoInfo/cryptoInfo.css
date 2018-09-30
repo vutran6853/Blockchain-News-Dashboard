@@ -9,6 +9,10 @@
 	animation: wobble-hor-bottom 0.8s both;
 }
 
+#hoverImage {
+  margin: 5px;
+}
+
 #hoverImage:hover {
   transform: skew(-10deg);
   animation-duration: 1s;

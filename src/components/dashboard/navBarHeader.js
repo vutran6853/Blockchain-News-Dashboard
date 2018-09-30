@@ -29,15 +29,13 @@ class NavBarHeader extends Component {
   render() { 
     
     return ( 
-
-     
-          <Navbar className='body1'  light expand="md">
+          <Navbar className='navbarBox' expand="md">
           <NavbarBrand href="/">
             <img src={image} style={{'width': '70px', 'height': '70px'}} ></img>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="offset-md-1" navbar>
+              <Nav className="justify-content-md-center container" navbar  color="dark" >
                 <Link to='/'>
                   <ListGroupItem  action  className='body1'>
                     Home

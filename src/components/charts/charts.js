@@ -4,6 +4,9 @@ import { getChartsData } from '../../ducks/chartsReducer';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 import TopCoinChart from './horizontalChart';
 import BitcoinVolume24 from './BitcoinVolume24';
+import TopTrendingCryptoCoin from '../dashboard/toptrendingcrytocoin';
+import ZecTrendingCrypto from '../dashboard/zecTrendingCrypto';
+import EthTrendingCrypto from '../dashboard/ethTrendingCrypto';
 import { Container, Row, Col,  DropdownMenu} from 'reactstrap';
 import NavBarHeader from '../dashboard/navBarHeader';
 import LineChart from './lineChart';
@@ -28,27 +31,23 @@ class Charts extends Component {
   render() { 
 
     return ( 
-      <div>
-
+      <div className='container'>
         <NavBarHeader/>
-          <Container>
-            <Row>
-              <Col>
-                <LineChart/>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <TopCoinChart/>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <BitcoinVolume24/>
-              </Col>
-            </Row>
-          </Container>
 
+
+
+     
+
+
+              <LineChart/>
+    
+              <TopCoinChart/>
+
+              <BitcoinVolume24/>
+
+
+
+        
       </div>
      );
   }

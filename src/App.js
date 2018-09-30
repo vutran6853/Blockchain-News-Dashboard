@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './ducks/store';
 import routes from './routes';
 import 'antd/dist/antd.css';
-
+import css from './index.css'
 class App extends Component {
   render() {
     return (

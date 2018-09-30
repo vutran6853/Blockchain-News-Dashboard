@@ -91,7 +91,7 @@ class Weather extends Component {
       }
 
      }
-    console.log(imgageOfTheWeatherFN())
+    // console.log(imgageOfTheWeatherFN())
 
     return ( 
       <div>

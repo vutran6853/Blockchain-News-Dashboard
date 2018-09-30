@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, FormGroup,  Input, Button, Checkbox } from 'reactstrap';
 import css from './login_SignUp.css';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
@@ -45,53 +45,49 @@ class LoginSignUp extends Component {
   render() {
     console.log(this.state)
 
-    let FormItem = Form.Item
+    // let FormGroup = Form.Item
     return(
 
       <div>
+        <div className='container text-center'>
+          <label sm={2} className='text-center'><strong>Login Page </strong></label>
+        </div>
 
-
-
-        
-
-        <label sm={2}><strong>Login Page </strong></label>
-
-        <Form className='formBox'>
+        <Form className='formBox container '>
           <label sm={2}><strong>Email:</strong></label>
-          <FormItem>  
+          {/* <FormGroup>   */}
             <Input type='text' 
                     placeholder='Email..:'
                     value={ this.state.email }
                     onChange={ (e) => this.handleEmail(e.target.value) }
                     required={true}
             ></Input>
-          </FormItem>
+          {/* </FormGroup> */}
 
           <label sm={2}><strong>Password:</strong></label>
-          <FormItem>  
+          <FormGroup>  
             <Input type='password' 
                     placeholder='Enter Last Name:'
                     value={ this.state.password }
                     onChange={ (e) => this.handlePassword(e.target.value) }
                     required={true}
             ></Input>
-          </FormItem>
+          </FormGroup>
 
-          <FormItem>
+          <FormGroup>
             <Link to='/SignUp'>
                 <Button type='danger' className='ant-btn-primary' >Sign up</Button>
             </Link>
 
             <Link to='/'>
               <Button type='danger' 
-                      className='ant-btn-primary' 
+                      className='ant-btn-primary m-1' 
                       onClick={ () => this.handleChangeSumit() }
               >Submit</Button>
             </Link>
-          </FormItem>
+          </FormGroup>
         </Form>
 
-        
 
       </div>
     )

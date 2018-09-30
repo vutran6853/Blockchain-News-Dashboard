@@ -2,6 +2,11 @@
   border: 2px solid black;
 }
 
+.userListBox > tr > td > img {
+  height: 100px;
+  width: 100px;
+}
+
 .userListMap {
   border: 5px solid lightseagreen;
   

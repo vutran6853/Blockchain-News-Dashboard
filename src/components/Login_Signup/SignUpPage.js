@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { Form, Icon, Input, Checkbox } from 'antd';
+import { Form, Icon, FormGroup, Input, Checkbox } from 'reactstrap';
 import Axios from 'axios';
 
 
@@ -31,63 +31,58 @@ class SignUp extends Component{
   render() {
     console.log(this.state)
 
-    let FormItem = Form.Item
+    // let FormItem = Form.Item
 
     return(
       <div>
+        <div className='container text-center'>
+          <label sm={2}><strong>Register Page </strong></label>
+        </div>
 
-       
-
-
-
-        <label sm={2}><strong>Register Page </strong></label>
-
-        <Form className='formBox'>
+        <Form className='formBox container'>
           <label sm={2}><strong>First Name:</strong></label>
-          <FormItem>  
+          <FormGroup>  
             <Input type='text' 
                     placeholder='Enter First Name:'
                     value={ this.state.firstName }
                     onChange={ (e) => this.setState({ firstName: e.target.value  }) }
                     required={true}
             ></Input>
-          </FormItem>
+          </FormGroup>
 
           <label sm={2}><strong>Last Name:</strong></label>
-          <FormItem>  
+          <FormGroup>  
             <Input type='text' 
                     placeholder='Enter Last Name:'
                     value={ this.state.lastName }
                     onChange={ (e) => this.setState({ lastName: e.target.value  }) }
                     required={true}
             ></Input>
-          </FormItem>
+          </FormGroup>
 
           <label sm={2}><strong>Email:</strong></label>
-          <FormItem>  
+          <FormGroup>  
             <Input type='email' 
                     placeholder='Enter Email:'
                     value={ this.state.email }
                     onChange={ (e) => this.setState({ email: e.target.value  }) }
                     required={true}
             ></Input>
-          </FormItem>
+          </FormGroup>
 
           <label sm={2}><strong>Password:</strong></label>
-          <FormItem>  
+          <FormGroup>  
             <Input type='password' 
                     placeholder='Enter password:'
                     value={ this.state.password }
                     onChange={ (e) => this.setState({ password: e.target.value  }) }
                     required={true}
             ></Input>
-          </FormItem>
+          </FormGroup>
 
-
-
-          <FormItem>
+          <FormGroup>
             <Link to='/'>
-              <Button color='success' >Cancel</Button>
+              <Button color='success' className='m-1' >Cancel</Button>
             </Link>
 
            <Link to='/'>
@@ -95,7 +90,7 @@ class SignUp extends Component{
                       onClick={ () => this.handleSumit() }
               >Register</Button>
             </Link>
-          </FormItem>
+          </FormGroup>
         </Form>
 
 

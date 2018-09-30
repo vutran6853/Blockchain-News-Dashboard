@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import Charts from '../charts/charts';
 import BitcoinMarket from '../bitcoinMarket/bitcoinMarket';
-import Profile from '../profile/profile';
+
 import Weather from '../weather/weather';
 import cryptoInfo from '../cryptoInfo/cryptoInfo';
 import NavBarHeader from './navBarHeader'
 import DashBoardNews from './dashboardNews';
+import TopTrendingCryptoCoin from './toptrendingcrytocoin';
+import ZecTrendingCrypto from './zecTrendingCrypto';
+import EthTrendingCrypto from './ethTrendingCrypto';
+import TopTrendingBTCPie from './topTrendingBTC';
 import { Row, Col, Jumbotron, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import css from './dashboard.css'
+
 class DashBoard extends Component {
   constructor(props) {
     super(props);
@@ -18,31 +23,31 @@ class DashBoard extends Component {
   
   render() { 
      return ( 
-      <div >
+      <div>
         <NavBarHeader/>
+          <Col xs='8'>
+            <TopTrendingCryptoCoin />
+            <TopTrendingBTCPie  />
+          </Col>
+          
+          <Col xs='8'>
+            <ZecTrendingCrypto/>
+          </Col>
 
-          <Row className='body1' >
+          <Col xs='8'>
+            <EthTrendingCrypto/>
+          </Col>
 
-            <Col xs="10" className='entireCol'>
-              <Jumbotron>
-                <h1 className="display-6">Top Trending CryptoCoin</h1>
+          <Col xs='8'>
+            <ZecTrendingCrypto/>
+          </Col>
 
-              </Jumbotron>
-
-              <Jumbotron>
-                <h1 className="display-6">Weather Section</h1>
-                <Weather/>
-              </Jumbotron>
-
-              <Jumbotron>
-                <div className='header headerBox' >
-                  <h3>CryptoZone is the perfect place to learn about crypto currencies and start to understand some of the fundamental concepts behind the blockchain.</h3>
-                </div>
-                <DashBoardNews/>
-              </Jumbotron>
-            </Col>
-
-          </Row>
+          <div className='missionSectionBox'>
+            <p className="display-6 p-5">Mission</p>
+            <p>Our vision is to make one central app to manage all your business solutions on one platform</p>
+          </div>
+           
+          <DashBoardNews/>
 
       </div>
      );
