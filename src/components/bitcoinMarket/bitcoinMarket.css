@@ -27,7 +27,7 @@
   background-color: #f5f5f5;
   border-radius: 5%;
   animation-name: priceBoxhighPriceBox;
-  animation-duration: 40s
+  animation-duration: 2s
 }
 
 .lowPriceBox {
@@ -35,7 +35,7 @@
   border-radius: 5%;
   background-color: #f5f5f5;
   animation-name: priceBoxlowPriceBox;
-  animation-duration: 10s
+  animation-duration: 2s
 }
 
 

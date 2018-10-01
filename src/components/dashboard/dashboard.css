@@ -104,6 +104,7 @@
 
 
 .coinapihighPriceBox {
+  animation-name: arrowuphighPriceBox;
 
   animation-duration: 10s;
   color: blue;
@@ -111,6 +112,7 @@
 }
 
 .coinapilowPriceBox {
+  animation-name: arrowdownlowPriceBox;
 
   animation-duration: 10s;
   font-variant-east-asian: jis78;
@@ -127,6 +129,7 @@
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid blue;
+  animation-duration: 2s
 }
 
 .arrow-down {
@@ -136,4 +139,25 @@
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 15px solid orange;
+  animation-duration: 2s
 } 
+
+/* @keyframes arrowuphighPriceBox {
+  from {
+    border-bottom: 10px solid blue;
+    
+  }
+  to {
+    border-bottom: 10px solid white;
+  }
+}
+
+@keyframes arrowdownlowPriceBox {
+  from {
+    border-top: 15px solid orange;
+    
+  }
+  to {
+    border-bottom: 10px solid white;
+  }
+} */

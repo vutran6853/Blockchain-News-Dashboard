@@ -68,7 +68,7 @@ class DashBoard extends Component {
     .catch((error) => {
       console.log('Fail to Fetch Data', error)
     })
-    , 5000 );
+    , 6000 );
 
   }
   
