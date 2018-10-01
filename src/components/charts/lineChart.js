@@ -65,7 +65,7 @@ class LineChart extends Component {
     }
 
     return ( 
-      <div className='lineBox jello-horizontal'>
+      <div className='lineBox jello-horizontal m-2'>
       <p className=' h3'>BITCOIN(BTC) High Point Ever in History of Cypro</p>
         <Line data={this.state.data} 
         width={2}

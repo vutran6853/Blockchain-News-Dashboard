@@ -52,7 +52,7 @@ class DashBoardNews extends Component{
       <div className='mainBox'>
         
         <div className='header headerBox' >
-            <p className="p-5">CryptoZone is the perfect place to learn about crypto currencies and start to understand some of the fundamental concepts behind the blockchain.</p>
+            <p className="p-5">CryptoZone is the perfect place to learn about Crypto currencies and start to understand some of the fundamental concepts behind the blockchain.</p>
         </div>
         
         <div className='container'>

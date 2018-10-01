@@ -1,3 +1,4 @@
 .formBox {
-  border: 5px solid yellowgreen;
+  border: 1px solid yellowgreen;
+  border-radius: 1.5%;
 }

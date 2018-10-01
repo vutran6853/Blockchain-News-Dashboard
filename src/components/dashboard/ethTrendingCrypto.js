@@ -8,32 +8,11 @@ class EthTrendingCrypto extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      topTrendingCoin: ['BTC', 'ETH', 'ZEC', 'DASH'], 
-      currentPrice: [],
-      usd:  ['1', '3', 4],
-      TrendingCoinName: [],
-      TrendingCoinPrice: []
-     }
-  }
-  componentDidMount() {
-    let { topTrendingCoin } = this.state;
-
-    this.timerID = setInterval( () => 
-    axios.get(`https://min-api.cryptocompare.com/data/histominute?fsym=ETH&tsym=GBP&limit=30`)
-    .then((response) => {
-      // console.log(response)
-      this.setState({ currentPrice: response.data.Data })
-    })
-    .catch((error) => {
-      console.log(`Fail to Fetch Data`, error)
-    })
-     , 15000 );
-     
+  
   }
 
   render() { 
-    let { currentPrice } = this.state;
+    let  currentPrice  = this.props.data;
     // console.log(currentPrice)
     let displayCryptoDate = [];   // STORE CRYPTODATE DATA
     let displayCrtptoPrice = []   // STORE CRYPTODATE PRICE
@@ -94,8 +73,7 @@ class EthTrendingCrypto extends Component {
     return ( 
       <div className='topTrendingCryptoETHBox'>
         { displayCurrentTrending }
-       
-        
+
           <Line  data={data} width="700" id='btcLineGraphBox' />
         
       </div>

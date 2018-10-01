@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Line } from 'react-chartjs-2';
+import {Line, Pie, Bar, Polar, Bubble } from 'react-chartjs-2';
 var _ = require('lodash');
 const moment = require('moment');
 
-class ZecTrendingCrypto extends Component {
+class TestTrendingCrypto extends Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,7 @@ class ZecTrendingCrypto extends Component {
   componentDidMount() {
 
     this.timerID = setInterval( () => 
-    axios.get(`https://min-api.cryptocompare.com/data/histominute?fsym=ZEC&tsym=GBP&limit=30`)
+    axios.get(`https://min-api.cryptocompare.com/data/histominute?fsym=ZEC&tsym=GBP&limit=10`)
     .then((response) => {
       // console.log(response)
       this.setState({ currentPrice: response.data.Data })
@@ -59,10 +59,20 @@ class ZecTrendingCrypto extends Component {
       labels: displayCryptoDate,
       datasets: [
         {
-          label: 'ZEC',
+          label: 'test',
           fill: false,
           lineTension: 0.1,
           backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FF6384',
+            '#36A2EB',
+            '#FF6384',
+            '#36A2EB',
+            '#FF6384',
+            '#36A2EB',
+            '#FF6384',
+            '#36A2EB',
             '#FF6384',
             '#36A2EB',
             '#FFCE56'
@@ -81,7 +91,7 @@ class ZecTrendingCrypto extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 5,
           pointHitRadius: 10,
-          data: displayCrtptoPrice
+          data:  [{x:10,y:20,r:5}]
         }
       ]
     };
@@ -91,11 +101,11 @@ class ZecTrendingCrypto extends Component {
         { displayCurrentTrending }
        
         
-          <Line  data={data} width="700" id='btcLineGraphBox' />
+          <Bubble  data={data} width="700" id='btcLineGraphBox' />
         
       </div>
      );
   }
 }
  
-export default ZecTrendingCrypto;
+export default TestTrendingCrypto;

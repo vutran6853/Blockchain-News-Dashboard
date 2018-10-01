@@ -1,34 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Line } from 'react-chartjs-2';
+import {Line, Pie } from 'react-chartjs-2';
 var _ = require('lodash');
 const moment = require('moment');
 
-class ZecTrendingCrypto extends Component {
+class BtcTrendingCrypto extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentPrice: [],
-     }
+    
   }
-  componentDidMount() {
-
-    this.timerID = setInterval( () => 
-    axios.get(`https://min-api.cryptocompare.com/data/histominute?fsym=ZEC&tsym=GBP&limit=30`)
-    .then((response) => {
-      // console.log(response)
-      this.setState({ currentPrice: response.data.Data })
-    })
-    .catch((error) => {
-      console.log(`Fail to Fetch Data`, error)
-    })
-     , 11000 );
-     
-  }
-
+  
   render() { 
-    let { currentPrice } = this.state;
+    // console.log(this.props.data)
+    let  currentPrice = this.props.data;
     // console.log(currentPrice)
     let displayCryptoDate = [];   // STORE CRYPTODATE DATA
     let displayCrtptoPrice = []   // STORE CRYPTODATE PRICE
@@ -45,13 +30,13 @@ class ZecTrendingCrypto extends Component {
     let displayCurrentTrending = currentPrice.map((value, index) => {
       displayCrtptoPrice.push(value.close)
       // console.log('VALUE: ', value, 'INDEX:', index)
+      
       return(
         <div key={index} className='topTrendingCryproBox'>
-          
+
         </div>
       )
     })
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,7 +44,7 @@ class ZecTrendingCrypto extends Component {
       labels: displayCryptoDate,
       datasets: [
         {
-          label: 'ZEC',
+          label: 'BTC',
           fill: false,
           lineTension: 0.1,
           backgroundColor: [
@@ -67,7 +52,7 @@ class ZecTrendingCrypto extends Component {
             '#36A2EB',
             '#FFCE56'
             ],
-          borderColor: 'red',
+          borderColor: 'rgba(75,192,192,1)',
           borderCapStyle: 'butt',
           borderDash: [],
           borderDashOffset: 0.0,
@@ -87,15 +72,15 @@ class ZecTrendingCrypto extends Component {
     };
 
     return ( 
-      <div className='topTrendingCryptoZECBox'>
+      <div className='topTrendingCryptoBTCBox'>
         { displayCurrentTrending }
-       
-        
-          <Line  data={data} width="700" id='btcLineGraphBox' />
-        
+
+        <Line data={data} width="700" id='btcLineGraphBox' />
+        {/* <CoinApi/> */}
+
       </div>
      );
   }
 }
  
-export default ZecTrendingCrypto;
+export default BtcTrendingCrypto;

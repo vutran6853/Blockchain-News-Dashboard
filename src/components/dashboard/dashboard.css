@@ -83,32 +83,57 @@
  */
 
 .topTrendingCryptoBTCBox {
-  border: 2px solid blue;
+  border: 1px solid  rgb(186, 182, 182);
   margin-bottom: 5px;
 }
 
 .topTrendingCryptoZECBox {
-  border: 2px solid red;
+  border: 1px solid  rgb(186, 182, 182);
   margin-bottom: 5px;
 }
 
 .topTrendingCryptoETHBox {
-  border: 2px solid red;
+  border: 1px solid  rgb(186, 182, 182);
   margin-bottom: 5px;
 }
 
-
-
-/* 
-
-.coinapiBTC > p{
-  border: 5px solid rgb(134, 26, 26);
-  color: white;
-  margin-left: 150px;
-  display: inline-block;
-  text-align: center;
+.displayTrendingCoinBox {
+  border: 1px solid  rgb(186, 182, 182);
+  
 }
 
-#coinapiBTC {
-  border: 2px solid darkblue;
-} */
+
+.coinapihighPriceBox {
+
+  animation-duration: 10s;
+  color: blue;
+  background-color: none;
+}
+
+.coinapilowPriceBox {
+
+  animation-duration: 10s;
+  font-variant-east-asian: jis78;
+  color: orange;
+  background-color: none;
+}
+
+
+
+.arrow-up {
+  display: inline-block;
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid blue;
+}
+
+.arrow-down {
+  display: inline-block;
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid orange;
+} 

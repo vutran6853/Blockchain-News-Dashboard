@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import UserList from './userList';
 import axios from 'axios';
-import { Button, notification, Switch  } from 'antd';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {  notification, Switch  } from 'antd';
+import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class UserFavCoinList extends Component {
   constructor(props) {
@@ -69,10 +69,11 @@ class UserFavCoinList extends Component {
           <p><strong>Name: </strong>{value.bitcoin_fullname}</p>
           <div className='imageBox'>
             <img src={value.bitcoin_imageurl}></img>
-            <Button className='ant-btn-primary' 
+            <Button color="success" 
+                    style={{height: '5px', paddingBottom: '20px' }}
                     onClick={() => {this.handleDeleteFavCoin(value.bitcoinlist_id,this.props.handleGetFavId)
                                     {this.openNotification()}
-                    }} >Delete Coin</Button>
+                    }}  >Delete Coin</Button>
           </div>
           <p><strong>Algorithm: </strong>{value.bitcoin_algorithm}</p>
         </div>
@@ -84,7 +85,7 @@ class UserFavCoinList extends Component {
     return ( 
         <div className='userListMap'   >
        
-          <button onClick={ () => { this.handleGetFav(this.props.handleGetFavId)}} >Get Fav</button>
+          <Button color='success' style={{height: '5px', paddingBottom: '20px' }} onClick={ () => { this.handleGetFav(this.props.handleGetFavId)}} >Get Fav</Button>
 
           <span >{displayFavCoinList}</span>        
         </div>
