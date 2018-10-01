@@ -9,11 +9,9 @@
 
 .userListMap {
   border: 1px solid lightseagreen;
-  
 }
 
 .userListMap > button {
-  /* height: 20px; */
   font-size: 10px;
 }
 

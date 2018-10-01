@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { Form, Icon, FormGroup, Input, Checkbox } from 'reactstrap';
-import Axios from 'axios';
-
+import { Form, FormGroup, Input } from 'reactstrap';
+import axios from 'axios';
 
 class SignUp extends Component{
   constructor(props) {
@@ -18,21 +17,13 @@ class SignUp extends Component{
   }
 
   handleSumit() {
-    
     let { firstName, lastName, email, password } = this.state;
     //  let fullInfo = {firstName, lastName, email, password}
     // console.log(fullInfo)
-    Axios.post(`/api/user`, { firstName, lastName, email, password })
-
+    axios.post(`/api/user`, { firstName, lastName, email, password })
   };
-
   
-
   render() {
-    console.log(this.state)
-
-    // let FormItem = Form.Item
-
     return(
       <div>
         <div className='container text-center'>
@@ -92,14 +83,9 @@ class SignUp extends Component{
             </Link>
           </FormGroup>
         </Form>
-
-
-        
       </div>
     )
   }
-
-
 }
 
 export default SignUp;

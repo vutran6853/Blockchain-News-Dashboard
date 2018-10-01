@@ -12,10 +12,8 @@ import SignUp from './components/Login_Signup/SignUpPage';
 
 export default (
   <div>
-
     <Switch>
       <Route exact path='/' component={ DashBoard } ></Route>
-
       <Route path='/bitcoinMarket' component={ BitcoinMarket } ></Route>
       <Route path='/charts' component={ Charts } ></Route>
       <Route path='/userList' component={ UserList } ></Route>
@@ -23,7 +21,6 @@ export default (
       <Route path='/LoginSignUp' component={ LoginPage } ></Route>
       <Route path='/SignUp' component={ SignUp } ></Route>
     </Switch>
-
   </div>
 )
 

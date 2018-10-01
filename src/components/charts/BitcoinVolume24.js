@@ -34,8 +34,6 @@ class BitcoinVolume24 extends Component {
       //    console.log(response.value.data)
     this.setState({ bitcoinInfo:  response.value.data  })
     });
-
-
   } 
 
   render() { 
@@ -46,17 +44,14 @@ class BitcoinVolume24 extends Component {
        // console.log(chartsData[key])
        this.state.data1.datasets[0].data.push(chartsData[key].bitcoin_volume24hourto)
      }
-
     
     return ( 
       <div className='container  barchartBox '>
         <p className=' h3'>BitCoin BY VOLUME IN LAST 24 (USD)</p>
 
         <Bar data={this.state.data1} 
-        width={10}
-        height={5}
-        // legend={'Blue'}
-        />
+              width={10}
+              height={5}/>
       </div>
      );
   }

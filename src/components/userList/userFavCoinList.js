@@ -36,7 +36,6 @@ class UserFavCoinList extends Component {
     })
   }
 
-
   // FUNCTION TO REMOVE COIN FROM UNIQUE USER   
   //  AND RENDER LOCAL STATE UPDATE LIST
   handleDeleteFavCoin(coinindex, userid ) {
@@ -69,11 +68,12 @@ class UserFavCoinList extends Component {
           <p><strong>Name: </strong>{value.bitcoin_fullname}</p>
           <div className='imageBox'>
             <img src={value.bitcoin_imageurl}></img>
-            <Button color="success" 
-                    style={{height: '5px', paddingBottom: '20px' }}
-                    onClick={() => {this.handleDeleteFavCoin(value.bitcoinlist_id,this.props.handleGetFavId)
-                                    {this.openNotification()}
-                    }}  >Delete Coin</Button>
+              <Button color="success" 
+                      style={{height: '5px', paddingBottom: '20px' }}
+                      onClick={() => {this.handleDeleteFavCoin(value.bitcoinlist_id,this.props.handleGetFavId)
+                                      {this.openNotification()}
+                      }} >Delete Coin
+              </Button>
           </div>
           <p><strong>Algorithm: </strong>{value.bitcoin_algorithm}</p>
         </div>
@@ -81,11 +81,13 @@ class UserFavCoinList extends Component {
       )
     })
    
-
     return ( 
-        <div className='userListMap'   >
+        <div className='userListMap'>
        
-          <Button color='success' style={{height: '5px', paddingBottom: '20px' }} onClick={ () => { this.handleGetFav(this.props.handleGetFavId)}} >Get Fav</Button>
+          <Button color='success' 
+                  style={{height: '5px', paddingBottom: '20px' }} 
+                  onClick={ () => { this.handleGetFav(this.props.handleGetFavId)}} >Get Fav
+          </Button>
 
           <span >{displayFavCoinList}</span>        
         </div>

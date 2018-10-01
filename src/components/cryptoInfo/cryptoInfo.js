@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
 import css from './cryptoInfo.css'
-import { Card, Button, message, Popover, Rate, notification, BackTop, Icon } from 'antd';
+import { Card, Button, Popover, notification, BackTop, Icon } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
@@ -27,11 +27,6 @@ class CryptoInfo extends Component {
       this.setState({ allCoinListData: response.value.data })
     })
   }
-
-  // POPUP MESSAGE WHEN USER CLICK ON FAV
-  // info() {
-  //   message.info('Add to Fav List ^.^')
-  // }
 
   handleChangeStar(value) {
     this.setState({ valueOfStar: value })

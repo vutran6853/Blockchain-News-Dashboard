@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import css from './index.css'
 class App extends Component {
   render() {
+    
     return (
 
       <Provider store={ store }>

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import css from './user.css';
 import NavBarHeader from '../dashboard/navBarHeader';
 import UserFavCoinList from './userFavCoinList';
-// import { displayFavCoinList } from './userFavCoinList';
 import { Table } from 'reactstrap';
 
 let _ = require('lodash');
@@ -20,7 +19,6 @@ class UserList extends Component {
       allCoinListData: [],
       favListData: []
     }
-
   }
 
   componentDidMount() {
@@ -53,20 +51,15 @@ class UserList extends Component {
       // console.log(value, index)
 
       return (
-        
          <tbody key={index} className='userListBox'>
             <tr>
               <th scope="row">{index + 1}</th>
               <td><img src={value.user_url} ></img></td>
               <td>{value.user_firstname} {value.user_lastname}</td>
               <td>{value.user_email}</td>
-  
               <UserFavCoinList handleGetFavId={index}  />
-
             </tr>
-
           </tbody>
-
       )
     })
 

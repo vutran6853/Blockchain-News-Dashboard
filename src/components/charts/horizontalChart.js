@@ -36,52 +36,52 @@ class TopCoinChart extends Component {
 
   } 
 
-    //  FUNCTION FOR BAR GRAPH INFO .../// 
-    bitcoinPrice2Bar() {
-      // console.log(this.state.bitcoinInfo2)
-      let { bitcoinInfo2 } = this.state;
-      let { data5 } = this.state;
-      let { label5 } = this.state;
-      let { data } = this.state.data2.datasets[0];
-      let { labels } = this.state.data2
-      let displayLayerBitcoinInfo = bitcoinInfo2.RAW;
-      let matchData = {};  
-      let top11Coin = []; // <- STORE ONLY 11 COIN 
-  
-      ////// THIS SECTION OF CODE WILL CREATE NEW OJBECT WITH DATA,LABELS    //////
-      // console.log(displayLayerBitcoinInfo)
-      let lodashMap = _.map(displayLayerBitcoinInfo)
-      // console.log(lodashMap)
-      lodashMap.forEach((element, index) => {
-        // console.log('VALUE', element.USD, 'INDEX', index)
-        data5.push(element.USD.PRICE)
-        label5.push(element.USD.FROMSYMBOL)
-        label5.forEach((key, index) => {    // <= CREATE NEW OJBECT WITH DATA,LABELS
-          matchData[key] = data5[index]
-        })
+  //  FUNCTION FOR BAR GRAPH INFO .../// 
+  bitcoinPrice2Bar() {
+    // console.log(this.state.bitcoinInfo2)
+    let { bitcoinInfo2 } = this.state;
+    let { data5 } = this.state;
+    let { label5 } = this.state;
+    let { data } = this.state.data2.datasets[0];
+    let { labels } = this.state.data2
+    let displayLayerBitcoinInfo = bitcoinInfo2.RAW;
+    let matchData = {};  
+    let top11Coin = []; // <- STORE ONLY 11 COIN 
+
+    ////// THIS SECTION OF CODE WILL CREATE NEW OJBECT WITH DATA,LABELS    //////
+    // console.log(displayLayerBitcoinInfo)
+    let lodashMap = _.map(displayLayerBitcoinInfo)
+    // console.log(lodashMap)
+    lodashMap.forEach((element, index) => {
+      // console.log('VALUE', element.USD, 'INDEX', index)
+      data5.push(element.USD.PRICE)
+      label5.push(element.USD.FROMSYMBOL)
+      label5.forEach((key, index) => {    // <= CREATE NEW OJBECT WITH DATA,LABELS
+        matchData[key] = data5[index]
       })
-      // console.log(matchData)
-  
-      //// THIS SECTION OF CODE WILL FIND ONLY TOP 10 COIN FROM LIST IS >= 10  ////
-      // console.log(Object.entries(matchData))
-      let miniArray = Object.entries(matchData)   // <= COVENT OBJECT TO NEW ARRAY WITH KEY AND VALUE
-      miniArray.map((value, index) => {
-        // console.log('VALUE: ', value,'INDEX: ', index)
-        if(value[1] >= 10) {
-          // console.log('VALUE: ' , value)
-          top11Coin.push(value)
-        }
-      })
-      
-      // console.log(top11Coin)
-      top11Coin.map((value, index) => {
-        // console.log('VALUE', value, 'INDEX',  index)
-        data.push(value[1])
-        labels.push(value[0])
-      })
-      // console.log(data)
-      // console.log(labels)
-    }
+    })
+    // console.log(matchData)
+
+    //// THIS SECTION OF CODE WILL FIND ONLY TOP 10 COIN FROM LIST IS >= 10  ////
+    // console.log(Object.entries(matchData))
+    let miniArray = Object.entries(matchData)   // <= COVENT OBJECT TO NEW ARRAY WITH KEY AND VALUE
+    miniArray.map((value, index) => {
+      // console.log('VALUE: ', value,'INDEX: ', index)
+      if(value[1] >= 10) {
+        // console.log('VALUE: ' , value)
+        top11Coin.push(value)
+      }
+    })
+    
+    // console.log(top11Coin)
+    top11Coin.map((value, index) => {
+      // console.log('VALUE', value, 'INDEX',  index)
+      data.push(value[1])
+      labels.push(value[0])
+    })
+    // console.log(data)
+    // console.log(labels)
+  }
 
   render() {
     this.bitcoinPrice2Bar()   // <- INVOKE FUNCTION

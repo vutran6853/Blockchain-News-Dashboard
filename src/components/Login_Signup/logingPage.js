@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Icon, FormGroup,  Input, Button, Checkbox } from 'reactstrap';
+import { Form, FormGroup,  Input, Button } from 'reactstrap';
 import css from './login_SignUp.css';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
@@ -13,9 +13,6 @@ class LoginSignUp extends Component {
         password: ''
 
       }
-    
-
-
   } 
 
   handleSumit = (e) => {
@@ -43,7 +40,7 @@ class LoginSignUp extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
 
     // let FormGroup = Form.Item
     return(
@@ -55,14 +52,12 @@ class LoginSignUp extends Component {
 
         <Form className='formBox container '>
           <label sm={2}><strong>Email:</strong></label>
-          {/* <FormGroup>   */}
             <Input type='text' 
                     placeholder='Email..:'
                     value={ this.state.email }
                     onChange={ (e) => this.handleEmail(e.target.value) }
                     required={true}
             ></Input>
-          {/* </FormGroup> */}
 
           <label sm={2}><strong>Password:</strong></label>
           <FormGroup>  
@@ -88,15 +83,10 @@ class LoginSignUp extends Component {
           </FormGroup>
         </Form>
 
-
       </div>
     )
-
   }
-
-
 }
-
 
 export default LoginSignUp;
 

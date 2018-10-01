@@ -23,7 +23,7 @@ class ZecTrendingCrypto extends Component {
     .catch((error) => {
       console.log(`Fail to Fetch Data`, error)
     })
-     , 11000 );
+     , 2000 );
      
   }
 

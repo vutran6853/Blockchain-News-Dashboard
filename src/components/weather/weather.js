@@ -18,11 +18,8 @@ class Weather extends Component {
       weatherData: [],
       zipCode: ''
      }
-
      this.updateNewWeather = this.updateNewWeather.bind(this);
-
   }
-
 
   updateNewWeather() {
     let { zipCode } = this.state;
@@ -35,7 +32,6 @@ class Weather extends Component {
   
 
   render() { 
-
     let {weatherData} = this.state;
     let mainLayerWeather = weatherData.main
     let mainLayerWeather1 = _.map(mainLayerWeather)
@@ -47,7 +43,6 @@ class Weather extends Component {
     let descriptionLayerWeatherIndex =   _.map(descriptionLayerWeather, 'main')
     let finaldescription = descriptionLayerWeatherIndex[0]
     // console.log(descriptionLayerWeatherIndex[0])
-     
   
      const imgageOfTheWeatherFN = () => {
       // console.log(finaldescription)

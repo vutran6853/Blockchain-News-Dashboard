@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import css from './profile.css';
 import { Link } from 'react-router-dom';
-
-import { ListGroup, ListGroupItem, Button, Container } from 'reactstrap';
+import {Button } from 'reactstrap';
 
 class ProfileUser extends Component {
   constructor(props) {

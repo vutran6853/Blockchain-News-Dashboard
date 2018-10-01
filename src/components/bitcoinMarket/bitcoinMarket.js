@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBitcoinData, getSevenDayInfo } from '../../ducks/bitcoinNewReducer';
 import { getAllCoinData, getBitcoinImageData } from '../../ducks/allBitcoinListReducer';
-import axios from 'axios';
 import { Table } from 'reactstrap';
 import BitcoinMarketTableNav from './bitcoinMarketTableNav';
-import { Icon, Switch, BackTop } from 'antd'
+import { Switch } from 'antd'
 import NavBarHeader from '../dashboard/navBarHeader';
 import css from './bitcoinMarket.css';
 
@@ -37,9 +36,7 @@ class BitcoinMarket extends Component {
         // console.log(response)
         this.setState({ allBitcoinPrice: response.value.data.DISPLAY })
       } )
-     , 10000 );
-   
-    
+     , 5000 );
 
     this.props.getBitcoinImageData()
     .then((response) => {
@@ -51,7 +48,6 @@ class BitcoinMarket extends Component {
   }
 
   // GET PREVPRO AND PREVSTATE TO CHECK AND COMPARE DATA
-  
   componentDidUpdate(prevProps, prevState) {
     if(prevProps != this.props && prevProps.bitcoinNew.bitcoinData.data) {
       let prevPropsData = prevProps.bitcoinNew.bitcoinData.data.RAW;
@@ -82,7 +78,6 @@ class BitcoinMarket extends Component {
       })
       // console.log(singlePricePropsData)
 
-
       let test1 = []
       for(let i = 0; i < singlePricePrevProps.length; i++) {
       //  console.log('index',i , 'VALUE1:', singlePricePrevProps[i])
@@ -103,11 +98,8 @@ class BitcoinMarket extends Component {
 
        }
       }
-       console.log(test1);
+      //  console.log(test1);
       this.setState({isHighPriceMap: test1});
-  
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     } else {
       // console.log('FALSE')
     }
@@ -178,21 +170,15 @@ class BitcoinMarket extends Component {
     })
 
    let displayCyproList = singleObjectCoinInfo.map((value, index) => {
-          // console.log('VALUE: ', value, 'INDEX: ', index)
-            
+          // console.log('VALUE: ', value, 'INDEX: ', index)  
       return(
-        
         <tbody>
           <tr key={ index }>
             <td><strong>{ index }</strong></td>
             <td><img src={ this.state.allbitcoinImageArray[index] } ></img></td>
             <td>{ value.FROMSYMBOL }</td>
             <td>
-              <span className={'priceBox ' + this.handlePriceChange(index)}
-                    
-              >{ value.PRICE }
-                   
-              </span>
+              <span className={'priceBox ' + this.handlePriceChange(index)}>{ value.PRICE }</span>
               <span className={ this.handleIronChange(index) } ></span>
             </td>
             <td>{ value.HIGH24HOUR }</td>
@@ -207,8 +193,7 @@ class BitcoinMarket extends Component {
 
     return ( 
       <div >
-        
-
+ 
         <NavBarHeader/>
 
            <Table className='cryptoMarketTable m-0' responsive size="sm" bordered hover id={this.state.id} onClick={this.handleClick}   selectedKeys={[this.state.current]}  >
@@ -220,7 +205,6 @@ class BitcoinMarket extends Component {
                       onChange={this.changeTheme}
                       checkedChildren="Turn Lights On"
                       unCheckedChildren="Turn Lights off"/>
-          
           </div>
           
       </div>

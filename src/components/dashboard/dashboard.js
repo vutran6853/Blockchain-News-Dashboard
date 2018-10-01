@@ -43,7 +43,7 @@ class DashBoard extends Component {
     .catch((error) => {
       console.log(`Fail to Fetch Data`, error)
     })
-     , 10000 );
+     , 1000 );
 ////////////////////////////////////////////////////////////////////////////////////////////////////
  
      this.timerID = setInterval( () => 
@@ -55,7 +55,7 @@ class DashBoard extends Component {
     .catch((error) => {
       console.log(`Fail to Fetch Data`, error)
     })
-     , 20000 );
+     , 1000 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     let { NameTrendingPrice } = this.state
@@ -104,7 +104,7 @@ class DashBoard extends Component {
           </div>
 
           <div className='missionSectionBox'>
-            <p className="display-6 p-5">Mission</p>
+            <p className="display-6 p-5">Our Mission</p>
             <p>Our vision is to make one central app to manage all your business solutions on one platform</p>
           </div>
            
