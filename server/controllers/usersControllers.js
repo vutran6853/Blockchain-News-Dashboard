@@ -4,7 +4,7 @@ let getUsers = (req, res, next) => {
 
   dbInstance.get_users()
   .then((response) => {
-     console.log(response)
+    //  console.log(response)
     res.status(200).send(response)
   })
   .catch((error) => {
@@ -14,13 +14,29 @@ let getUsers = (req, res, next) => {
 
 }
 
+let getUserByID = (req, res, next) => {
+    //  console.log(req)
+    const dbInstance = req.app.get('db');
+
+    dbInstance.get_userByID(req.params.id)
+    .then((response) => {
+      // console.log(response)
+      res.status(200).send(response)
+    })
+    .catch((error) => {
+      res.status(500).send('Oop, Something have Happen unable to complete this request')
+      // console.log(error);  
+    })
+}
+
+
 let getFavlist = (req, res, next) => {
 
   const dbInstance = req.app.get('db')
 
   dbInstance.get_Favlist(req.params.id)
   .then((response) => {
-    console.log(response)
+    // console.log(response)
     res.status(200).send(response)
   })
   .catch((error) => {
@@ -30,8 +46,26 @@ let getFavlist = (req, res, next) => {
 
 }
 
+let editUserInfo = (req, res, next) => {
+  console.log(req.query)
+  console.log('BODY: ', req.body)
+  console.log('params: ', req.params)
+
+  const dbInstance = req.app.get('db')
+
+  dbInstance.edit_user([req.query.newname, req.query.id ]) 
+  .then((response) => {
+    // console.log(response)
+    res.status(200).send(response)
+  })
+  .catch((error) => {
+    //  console.log(error)
+    res.status(500).send('Fail to post Edit User!')
+  }) 
+}
+
 let postUser = (req, res, next) => {
-   console.log(req)
+  //  console.log(req)
   const dbInstance = req.app.get('db')
 
   dbInstance.post_user([req.body.firstName, req.body.lastName, req.body.email, req.body.password]) 
@@ -47,12 +81,12 @@ let postUser = (req, res, next) => {
 }
 
 let postlogin = (req, res, next) => {
-  console.log(req)
+  // console.log(req)
   const dbInstance = req.app.get('db')
 
   dbInstance.post_login([req.query.params.email]) 
   .then((response) => {
-     console.log(response)
+    //  console.log(response)
     res.status(200).send(response)
   })
   .catch((error) => {
@@ -65,5 +99,7 @@ module.exports = {
   getUsers,
   getFavlist,
   postUser,
-  postlogin
+  postlogin,
+  getUserByID,
+  editUserInfo
 }

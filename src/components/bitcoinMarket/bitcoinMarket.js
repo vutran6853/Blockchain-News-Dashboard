@@ -33,10 +33,10 @@ class BitcoinMarket extends Component {
    this.timerID = setInterval( () => 
       this.props.getBitcoinData()
       .then((response) => {
-        // console.log(response)
+        //  console.log('ME', response.value.data.DISPLAY)
         this.setState({ allBitcoinPrice: response.value.data.DISPLAY })
       } )
-     , 5000 );
+     , 3000 );
 
     this.props.getBitcoinImageData()
     .then((response) => {
@@ -44,7 +44,6 @@ class BitcoinMarket extends Component {
         return value.bitcoin_imageurl
        }) : null  })
     })
-   
   }
 
   // GET PREVPRO AND PREVSTATE TO CHECK AND COMPARE DATA
@@ -61,8 +60,8 @@ class BitcoinMarket extends Component {
       // console.log(multMapPrevPropsData)
       // console.log(multMapPropsData)
 
-      console.log('prevProps: ', multMapPrevPropsData[0].USD.PRICE)
-      console.log('currrentProps: ', multMapPropsData[0].USD.PRICE)
+      // console.log('prevProps: ', multMapPrevPropsData[0].USD.PRICE)
+      // console.log('currrentProps: ', multMapPropsData[0].USD.PRICE)
       
       let singlePricePrevProps = []
       multMapPrevPropsData.map((value, index) => {
@@ -80,14 +79,15 @@ class BitcoinMarket extends Component {
 
       let test1 = []
       for(let i = 0; i < singlePricePrevProps.length; i++) {
-      //  console.log('index',i , 'VALUE1:', singlePricePrevProps[i])
+       console.log('index',i , 'VALUE1:', singlePricePrevProps[i])
       //  console.log('index',i , 'VALUE2:', singlePricePropsData[i])
-       if(singlePricePropsData[i] > singlePricePrevProps[i]) {
+        let currentDoctored = this.applyJitter(singlePricePropsData[i])
+       if(currentDoctored > singlePricePrevProps[i]) {
         //  console.log('TOO HIGH')
          test1.push(true)
          
         //  this.setState({ isHighPrice: '0' })
-       } else if(singlePricePropsData[i] === singlePricePrevProps[i]) {
+       } else if(currentDoctored === singlePricePrevProps[i]) {
         //  console.log('TOO SAME')
          test1.push('')
         //  this.setState({ isSamePrice: '' })
@@ -130,10 +130,10 @@ class BitcoinMarket extends Component {
   handleIronChange(num) {
     let { isHighPriceMap } = this.state
     if(isHighPriceMap[num] === true) {
-      console.log('UP') 
+      // console.log('UP') 
       return 'arrow-up'
     } else if(isHighPriceMap[num] === false) {
-      console.log('DOWN')
+      // console.log('DOWN')
       return 'arrow-down'
     }
     return ''
@@ -146,6 +146,22 @@ class BitcoinMarket extends Component {
   handleClick(e) {
     console.log('event')
     this.setState({ current: e.key })
+  }
+
+  applyJitter(float) {
+    let rand = Math.random();
+    console.log('rand', rand)
+    if(rand > .666) {
+      console.log('VALUE2:', float +0.1);
+      return float + 0.1;
+    } else if ( rand < .333) {
+      console.log('VALUE2:', float -0.1);
+      return float - 0.1;
+    } else {
+      console.log('VALUE2:', float);
+      return float;
+    }
+
   }
 
   render() {

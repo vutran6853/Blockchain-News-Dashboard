@@ -6,6 +6,7 @@ import css from './user.css';
 import NavBarHeader from '../dashboard/navBarHeader';
 import UserFavCoinList from './userFavCoinList';
 import { Table } from 'reactstrap';
+import EditUser from './editUser';
 
 let _ = require('lodash');
 
@@ -51,13 +52,14 @@ class UserList extends Component {
       // console.log(value, index)
 
       return (
-         <tbody key={index} className='userListBox'>
+         <tbody key={value.user_id} className='userListBox'>
             <tr>
-              <th scope="row">{index + 1}</th>
+              <th scope="row">{value.user_id}</th>
               <td><img src={value.user_url} ></img></td>
               <td>{value.user_firstname} {value.user_lastname}</td>
               <td>{value.user_email}</td>
-              <UserFavCoinList handleGetFavId={index}  />
+              <UserFavCoinList handleGetFavId={value.user_id}  />
+              <EditUser handleGetUserID={value.user_id} />
             </tr>
           </tbody>
       )

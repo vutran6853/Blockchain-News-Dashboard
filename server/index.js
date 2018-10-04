@@ -6,7 +6,7 @@ const port = process.env.SERVER_PORT || 3002;
 const cors = require('cors');
 const app = express();
 
-let { getUsers, getFavlist, postUser, postlogin } = require('./controllers/usersControllers');
+let { getUsers, getFavlist, postUser, postlogin, getUserByID, editUserInfo } = require('./controllers/usersControllers');
 let { getCharts } = require('./controllers/chartsControllers');
 let { getBitcoinList, postBitcoinlistID, deleteFavCoinID, getBitcoinImage } = require('./controllers/allbitcoinControllers');
 
@@ -30,10 +30,10 @@ app.use( express.static( `${__dirname}/../build` ) );
 
 // USER ENDPOINT SET-UP
 app.get('/api/user', getUsers)
-app.get('/api/user2/:id', getFavlist)
+app.get('/api/user/:id', getUserByID)
 app.post(`/api/user`, postUser)
 app.post('/api/user/login', postlogin)
-
+app.put('/api/user', editUserInfo)
 
 // CHARTS ENDPOINT SET-UP
 app.get('/api/bitcoin', getCharts)
@@ -45,6 +45,7 @@ app.get('/api/bitcoinImage', getBitcoinImage)
 
 
 // FAVORITE ENDPOINT SET-UP
+app.get('/api/user2/:id', getFavlist)
 app.post('/api/favorite/:id/1', postBitcoinlistID)
 app.delete('/api/favorite/:coinindex/:userid', deleteFavCoinID)
 
