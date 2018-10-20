@@ -34,7 +34,7 @@
 }
 
 .cardbody {
-  /* border: 1px solid rgb(77, 77, 64); */
+  border: 1px solid rgb(77, 77, 64);
   overflow: hidden;
   text-overflow: ellipsis;
   height: 150px;
@@ -43,7 +43,7 @@
 }
 
 .cardTitleBox {
-  /* border: 2px solid rebeccapurple; */
+  border: 2px solid rebeccapurple;
   height: 100px;
   overflow: hidden;
   color:green;
@@ -51,7 +51,7 @@
 }
 
 .cardImg {
-  /* border: 2px solid red; */
+  border: 2px solid red;
   max-width: 100px;
   height: 100px;
   margin-left: 85px;
@@ -74,13 +74,13 @@
   background-color: #1c1f21;
 }
 
-/* .currentTrendingBox {
+.currentTrendingBox {
   border: 2px solid red;
   display: inline-block;
   padding: 10px;
   margin: 10px;
 }
- */
+
 
 .topTrendingCryptoBTCBox {
   border: 1px solid  rgb(186, 182, 182);
@@ -142,7 +142,7 @@
   animation-duration: 2s
 } 
 
-/* @keyframes arrowuphighPriceBox {
+@keyframes arrowuphighPriceBox {
   from {
     border-bottom: 10px solid blue;
     
@@ -160,4 +160,7 @@
   to {
     border-bottom: 10px solid white;
   }
-} */
+} 
+
+
+

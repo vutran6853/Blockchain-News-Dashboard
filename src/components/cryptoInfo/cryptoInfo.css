@@ -11,7 +11,7 @@
 
 #hoverImage {
   margin: 5px;
-}
+} 
 
 #hoverImage:hover {
   transform: skew(-10deg);

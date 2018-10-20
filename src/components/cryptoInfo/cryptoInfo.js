@@ -6,6 +6,9 @@ import { Card, Button, Popover, notification, BackTop, Icon } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
+
+    
+
 class CryptoInfo extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +51,15 @@ class CryptoInfo extends Component {
     });
   };
 
+  
+
+   
+
+
   render() {
+
+  
+
     let { allCoinListData } = this.state 
     //  console.log(allCoinListData)
     let { Meta } = Card;
@@ -63,7 +74,7 @@ class CryptoInfo extends Component {
       )
       // console.log(value, index)
       return(
-        <div className='coinListBox  ' key={ value.id }>
+        <div className='coinListBox' id="coinBox" key={ value.id }>
             <Card 
                 style={{ width: 270, height: 290, padding: 10} }
                 cover={<img alt={value.bitcoin_fullname} id='hoverImage'  src={value.bitcoin_imageurl} style={{ width: 210, height: 190} } />}>
@@ -84,9 +95,18 @@ class CryptoInfo extends Component {
       )
     })
 
+    
+
     return ( 
      
       <div>
+ 
+     
+
+       
+
+         
+        
         <NavBarHeader/>
 
         { displayCoinList }
@@ -96,6 +116,7 @@ class CryptoInfo extends Component {
      );
   }
 }
+
  
 // IMPORT Charts REDUCER SINCE WE HAVE MULT REDUCER SET-UP
 const mapStateToProps = (state) => ({ ...state.allCoinList })

@@ -5,6 +5,9 @@ import Profile from '../profile/profile';
 import Weather from '../weather/weather';
 import cryptoInfo from '../cryptoInfo/cryptoInfo';
 
+import {TweenLite} from "gsap/TweenLite";
+
+
 import { Link } from 'react-router-dom';
 // import Example from './dashBoardTopCoin';
 import image from './cryptozone1.png'
@@ -27,11 +30,17 @@ class NavBarHeader extends Component {
   }
 
   render() { 
-    
+
     return ( 
           <Navbar className='navbarBox' expand="md">
           <NavbarBrand href="/">
-            <img src={image} style={{'width': '70px', 'height': '70px'}} ></img>
+            <div id='logo1' >
+              <img src={image} ></img>
+
+            </div>
+
+           
+            
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
