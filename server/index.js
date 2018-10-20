@@ -15,12 +15,12 @@ let { getBitcoinList, postBitcoinlistID, deleteFavCoinID, getBitcoinImage } = re
 app.use(cors())
 
 //  MASSIVE CONNECT TO SQL SYSTEM FUNCTIONALITY
-massive(process.env.CONNECTION_STRING)
-.then(dbInstace => {
-  // console.log('Copy of dbInstace', dbInstace )
-  app.set('db', dbInstace)
-})
-.catch(error => console.log('DANGER! : ', error));
+// massive(process.env.CONNECTION_STRING)
+// .then(dbInstace => {
+//   // console.log('Copy of dbInstace', dbInstace )
+//   app.set('db', dbInstace)
+// })
+// .catch(error => console.log('DANGER! : ', error));
 
 app.use(json());
 
