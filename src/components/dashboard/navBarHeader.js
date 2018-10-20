@@ -4,16 +4,13 @@ import bitcoinMarket from '../bitcoinMarket/bitcoinMarket';
 import Profile from '../profile/profile';
 import Weather from '../weather/weather';
 import cryptoInfo from '../cryptoInfo/cryptoInfo';
-
-import {TweenLite} from "gsap/TweenLite";
-
-
 import { Link } from 'react-router-dom';
 // import Example from './dashBoardTopCoin';
 import image from './cryptozone1.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Collapse,Navbar,NavbarToggler,NavbarBrand,Nav, ListGroupItem } from 'reactstrap';
 import css from './dashboard.css';
+
 class NavBarHeader extends Component {
   constructor(props) {
     super(props);
@@ -35,15 +32,15 @@ class NavBarHeader extends Component {
           <Navbar className='navbarBox' expand="md">
           <NavbarBrand href="/">
             <div id='logo1' >
-              <img src={image} ></img>
+              <img src={ image } ></img>
 
             </div>
 
            
             
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle}/>
-            <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={ this.toggle }/>
+            <Collapse isOpen={ this.state.isOpen } navbar>
               <Nav className="justify-content-md-center container" navbar  color="dark" >
                 <Link to='/'>
                   <ListGroupItem  action  className='body1'>
