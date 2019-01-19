@@ -10,17 +10,15 @@ let { getUsers, getFavlist, postUser, postlogin, getUserByID, editUserInfo } = r
 let { getCharts } = require('./controllers/chartsControllers');
 let { getBitcoinList, postBitcoinlistID, deleteFavCoinID, getBitcoinImage } = require('./controllers/allbitcoinControllers');
 
-// console.log(`weatherKey:`,process.env.REACT_APP_WEATHER_API_KEY)
-
 app.use(cors())
 
 //  MASSIVE CONNECT TO SQL SYSTEM FUNCTIONALITY
-// massive(process.env.CONNECTION_STRING)
-// .then(dbInstace => {
-//   // console.log('Copy of dbInstace', dbInstace )
-//   app.set('db', dbInstace)
-// })
-// .catch(error => console.log('DANGER! : ', error));
+massive(process.env.CONNECTION_STRING)
+.then(dbInstace => {
+  // console.log('Copy of dbInstace', dbInstace )
+  app.set('db', dbInstace)
+})
+.catch(error => console.log('DANGER! : ', error));
 
 app.use(json());
 
@@ -38,18 +36,14 @@ app.put('/api/user', editUserInfo)
 // CHARTS ENDPOINT SET-UP
 app.get('/api/bitcoin', getCharts)
 
-
 // ALLBITCOINLIST ENDPOINT SET-UP
 app.get('/api/allbitcoinlist', getBitcoinList)
 app.get('/api/bitcoinImage', getBitcoinImage)
-
 
 // FAVORITE ENDPOINT SET-UP
 app.get('/api/user2/:id', getFavlist)
 app.post('/api/favorite/:id/1', postBitcoinlistID)
 app.delete('/api/favorite/:coinindex/:userid', deleteFavCoinID)
-
-
 
 app.listen(port, () => {
   console.log(`Server is UP and listening on port ${ port }`);

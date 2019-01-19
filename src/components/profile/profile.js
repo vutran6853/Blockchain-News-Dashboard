@@ -6,14 +6,11 @@ import {Button } from 'reactstrap';
 class ProfileUser extends Component {
   constructor(props) {
     super(props);
-
   }
 
   render() { 
-
     return ( 
       <div className='container profileBox'>
-
         <Link to='/'>
                 <Button>Home</Button>
         </Link>
@@ -33,7 +30,6 @@ class ProfileUser extends Component {
         <Link to='/todoProject'>
             <Button>todoProject</Button>
         </Link>
-
       </div>
      );
   }

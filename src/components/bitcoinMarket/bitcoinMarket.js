@@ -8,7 +8,7 @@ import { Switch } from 'antd'
 import NavBarHeader from '../dashboard/navBarHeader';
 import css from './bitcoinMarket.css';
 
-var _ = require('lodash');
+let lodash = require('lodash');
 
 class BitcoinMarket extends Component {
   constructor(props) {
@@ -29,21 +29,19 @@ class BitcoinMarket extends Component {
   }
 
   componentDidMount() {
- 
    this.timerID = setInterval( () => 
       this.props.getBitcoinData()
       .then((response) => {
         //  console.log('ME', response.value.data.DISPLAY)
         this.setState({ allBitcoinPrice: response.value.data.DISPLAY })
-      } )
-     , 3000 );
+      }), 3000);
 
     this.props.getBitcoinImageData()
     .then((response) => {
       this.setState({ allbitcoinImageArray: response.value.data ? response.value.data.map((value, index) => {
         return value.bitcoin_imageurl
-       }) : null  })
-    })
+       }) : null })
+    });
   }
 
   // GET PREVPRO AND PREVSTATE TO CHECK AND COMPARE DATA
@@ -51,54 +49,32 @@ class BitcoinMarket extends Component {
     if(prevProps != this.props && prevProps.bitcoinNew.bitcoinData.data) {
       let prevPropsData = prevProps.bitcoinNew.bitcoinData.data.RAW;
       let propsData = this.props.bitcoinNew.bitcoinData.data.RAW;
+      let multMapPrevPropsData = lodash.map(prevPropsData)
+      let multMapPropsData = lodash.map(propsData)
 
-      //  console.log(prevPropsData)  
-      //   console.log(currentStateData)
-
-      let multMapPrevPropsData = _.map(prevPropsData)
-      let multMapPropsData = _.map(propsData)
-      // console.log(multMapPrevPropsData)
-      // console.log(multMapPropsData)
-
-      // console.log('prevProps: ', multMapPrevPropsData[0].USD.PRICE)
-      // console.log('currrentProps: ', multMapPropsData[0].USD.PRICE)
-      
       let singlePricePrevProps = []
       multMapPrevPropsData.map((value, index) => {
-        // console.log(value.USD.PRICE, index)
         singlePricePrevProps.push(value.USD.PRICE)
-      })
-      // console.log(singlePricePrevProps)
+      });
 
       let singlePricePropsData = []
       multMapPropsData.map((value, index) => {
-        // console.log(value.USD.PRICE, index)
         singlePricePropsData.push(value.USD.PRICE)
-      })
-      // console.log(singlePricePropsData)
+      });
 
       let test1 = []
+
       for(let i = 0; i < singlePricePrevProps.length; i++) {
-       console.log('index',i , 'VALUE1:', singlePricePrevProps[i])
-      //  console.log('index',i , 'VALUE2:', singlePricePropsData[i])
         let currentDoctored = this.applyJitter(singlePricePropsData[i])
        if(currentDoctored > singlePricePrevProps[i]) {
-        //  console.log('TOO HIGH')
          test1.push(true)
-         
-        //  this.setState({ isHighPrice: '0' })
        } else if(currentDoctored === singlePricePrevProps[i]) {
-        //  console.log('TOO SAME')
          test1.push('')
-        //  this.setState({ isSamePrice: '' })
        } else {
-        //  console.log('TOO LOW')
          test1.push(false)
-        //  this.setState({ isLowPrice: '1' })
-
        }
       }
-      //  console.log(test1);
+
       this.setState({isHighPriceMap: test1});
     } else {
       // console.log('FALSE')
@@ -107,17 +83,12 @@ class BitcoinMarket extends Component {
 
   findpicforlistcoin(fromsymbol) {
     let { allbitcoinImageArray } = this.state
-    // console.log(allbitcoinImageArray)
-    // console.log(fromsymbol)
-
     let fitlerimage = allbitcoinImageArray.forEach((element, index) => {
       // console.log(element.bitcoin_fullname.match(/\(([^()]+)\)/)['1'])
     })
-
   }
 
   handlePriceChange(num) {
-    //  console.log('value.PRICE', num)
     let { isHighPriceMap } = this.state
     if(isHighPriceMap[num] === true) {
       return 'highPriceBox'
@@ -130,10 +101,8 @@ class BitcoinMarket extends Component {
   handleIronChange(num) {
     let { isHighPriceMap } = this.state
     if(isHighPriceMap[num] === true) {
-      // console.log('UP') 
       return 'arrow-up'
     } else if(isHighPriceMap[num] === false) {
-      // console.log('DOWN')
       return 'arrow-down'
     }
     return ''
@@ -150,30 +119,27 @@ class BitcoinMarket extends Component {
 
   applyJitter(float) {
     let rand = Math.random();
-    console.log('rand', rand)
+
     if(rand > .666) {
-      console.log('VALUE2:', float +0.1);
+      // console.log('VALUE2:', float +0.1);
       return float + 0.1;
     } else if ( rand < .333) {
-      console.log('VALUE2:', float -0.1);
+      // console.log('VALUE2:', float -0.1);
       return float - 0.1;
     } else {
-      console.log('VALUE2:', float);
+      // console.log('VALUE2:', float);
       return float;
     }
 
   }
 
   render() {
-    let { allBitcoinPrice } = this.state
-    let { sevenDayBitcoinData } = this.state
-    // console.log(this.state.allbitcoinImageArray)
-    let { allbitcoinImageArray } = this.state
+    let { allBitcoinPrice, sevenDayBitcoinData, allbitcoinImageArray } = this.state
 
-    let mapDisplay = _.map(allBitcoinPrice)
+    let mapDisplay = lodash.map(allBitcoinPrice)
     //  console.log(mapDisplay)
 
-    let mapImage = _.map(allbitcoinImageArray)
+    let mapImage = lodash.map(allbitcoinImageArray)
       // console.log(mapImage)
 
     let singleObjectCoinInfo = []             // <- ALL SINGLE OBJECT ARRAY STORE
@@ -182,8 +148,7 @@ class BitcoinMarket extends Component {
 
    let loopMainCyproList = mapDisplay.forEach((value, index) => {       // LOOP EACH OBJECT INTO SINGLE OBJECT
       singleObjectCoinInfo.push(value.USD)
-
-    })
+    });
 
    let displayCyproList = singleObjectCoinInfo.map((value, index) => {
           // console.log('VALUE: ', value, 'INDEX: ', index)  
@@ -203,15 +168,12 @@ class BitcoinMarket extends Component {
             <td><span className='changeprice24Box' >{ value.CHANGEPCT24HOUR }%</span></td>
           </tr>
         </tbody>
-       
       )
-    })
+    });
 
     return ( 
       <div >
- 
         <NavBarHeader/>
-
            <Table className='cryptoMarketTable m-0' responsive size="sm" bordered hover id={this.state.id} onClick={this.handleClick}   selectedKeys={[this.state.current]}  >
               <BitcoinMarketTableNav/>
                 { displayCyproList }
@@ -222,7 +184,6 @@ class BitcoinMarket extends Component {
                       checkedChildren="Turn Lights On"
                       unCheckedChildren="Turn Lights off"/>
           </div>
-          
       </div>
      );
   }

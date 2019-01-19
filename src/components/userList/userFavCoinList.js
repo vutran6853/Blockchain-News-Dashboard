@@ -27,11 +27,9 @@ class UserFavCoinList extends Component {
 
   // GET FAVORITE COIN FROM USER ID
   handleGetFav(id) {
-    console.log('INDEX: ', (id + 1))
-    
     axios.get(`/api/user2/${id + 1}`)
     .then((response) => {
-      console.log(response)
+      // console.log(response)
       this.setState({ favListData: response.data })
     })
   }
@@ -39,10 +37,10 @@ class UserFavCoinList extends Component {
   // FUNCTION TO REMOVE COIN FROM UNIQUE USER   
   //  AND RENDER LOCAL STATE UPDATE LIST
   handleDeleteFavCoin(coinindex, userid ) {
-    console.log('COIN INDEX: ', coinindex, 'USER INDEX: ', userid)
+    // console.log('COIN INDEX: ', coinindex, 'USER INDEX: ', userid)
     axios.delete(`/api/favorite/${coinindex}/${userid + 1}`)
     .then((response) => {
-      console.log(response)
+      // console.log(response)
     })
     .catch((error) => {
       console.log('Oh Fail to Delete', error)
@@ -51,19 +49,17 @@ class UserFavCoinList extends Component {
 
     axios.get(`/api/user2/${userid + 1}`)
     .then((response) => {
-      console.log(response)
+      // console.log(response)
       this.setState({ favListData: response.data })
     })
   }
 
   render() { 
-
-    // console.log(this.state.favListData)
     let { favListData } = this.state
+
     let displayFavCoinList = favListData.map((value, index) => {
       // console.log('value', value, 'index', index)
-      return(
-       
+      return(   
         <div className='favCoinListBox'>
           <p><strong>Name: </strong>{value.bitcoin_fullname}</p>
           <div className='imageBox'>
@@ -77,19 +73,16 @@ class UserFavCoinList extends Component {
           </div>
           <p><strong>Algorithm: </strong>{value.bitcoin_algorithm}</p>
         </div>
-
       )
-    })
+    });
    
     return ( 
         <div className='userListMap'>
-       
           <Button color='success' 
-                  style={{height: '5px', paddingBottom: '20px' }} 
-                  onClick={ () => { this.handleGetFav(this.props.handleGetFavId)}} >Get Fav
+                  style={ { height: '5px', paddingBottom: '20px' } } 
+                  onClick={ () => { this.handleGetFav(this.props.handleGetFavId) } }>Get Fav
           </Button>
-
-          <span >{displayFavCoinList}</span>        
+          <span >{ displayFavCoinList }</span>        
         </div>
      );
   }

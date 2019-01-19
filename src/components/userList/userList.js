@@ -8,7 +8,7 @@ import UserFavCoinList from './userFavCoinList';
 import { Table } from 'reactstrap';
 import EditUser from './editUser';
 
-let _ = require('lodash');
+let lodash = require('lodash');
 
 class UserList extends Component {
   constructor(props) {
@@ -44,30 +44,27 @@ class UserList extends Component {
   // }
 
   render() { 
-
     let UserList = this.props.userData.data
-    let displayUserList = _.map(UserList)                               // <-- _map FROM REDUCER
+    let displayUserList = lodash.map(UserList)                               // <-- _map FROM REDUCER
 
     let displayList = displayUserList.map((value, index) => {         // <-- .map FROM RESULT OF _map
       // console.log(value, index)
-
       return (
-         <tbody key={value.user_id} className='userListBox'>
+         <tbody key={ value.user_id } className='userListBox'>
             <tr>
-              <th scope="row">{value.user_id}</th>
-              <td><img src={value.user_url} ></img></td>
-              <td>{value.user_firstname} {value.user_lastname}</td>
-              <td>{value.user_email}</td>
-              <UserFavCoinList handleGetFavId={value.user_id}  />
-              <EditUser handleGetUserID={value.user_id} />
+              <th scope="row">{ value.user_id }</th>
+              <td><img src={ value.user_url } ></img></td>
+              <td>{ value.user_firstname } { value.user_lastname }</td>
+              <td>{ value.user_email }</td>
+              <UserFavCoinList handleGetFavId={ value.user_id }  />
+              <EditUser handleGetUserID={ value.user_id } />
             </tr>
           </tbody>
       )
-    })
+    });
 
     return ( 
       <div>
-
         <NavBarHeader/>
           <Table bordered >
             <thead>
@@ -81,7 +78,6 @@ class UserList extends Component {
             </thead>
             { displayList }
           </Table>
-
       </div>
      );
   }

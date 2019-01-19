@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Pie, HorizontalBar,Bar,Bubble } from 'react-chartjs-2';
 import { getChartsData } from '../../ducks/chartsReducer';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
-
 import css from './charts.css'
-var _ = require('lodash');
+
+let lodash = require('lodash');
 
 class BitcoinVolume24 extends Component {
   constructor(props) {
@@ -30,16 +30,16 @@ class BitcoinVolume24 extends Component {
 
   // GET DATA FROM REDUX AND STORE TO LOCAL STATE
   componentDidMount() {
-    this.props.getChartsData().then((response) => {
-      //    console.log(response.value.data)
-    this.setState({ bitcoinInfo:  response.value.data  })
+    this.props.getChartsData()
+    .then((response) => {
+      this.setState({ bitcoinInfo:  response.value.data  })
     });
   } 
 
   render() { 
-     // console.log(this.props.chartsbitcoinData.data)
      let chartsData = this.props.chartsbitcoinData.data
      let singleData =[]
+     
      for(let key in chartsData) {
        // console.log(chartsData[key])
        this.state.data1.datasets[0].data.push(chartsData[key].bitcoin_volume24hourto)
@@ -48,7 +48,6 @@ class BitcoinVolume24 extends Component {
     return ( 
       <div className='container  barchartBox '>
         <p className=' h3'>BitCoin BY VOLUME IN LAST 24 (USD)</p>
-
         <Bar data={this.state.data1} 
               width={10}
               height={5}/>

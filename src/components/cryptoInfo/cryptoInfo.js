@@ -6,9 +6,6 @@ import { Card, Button, Popover, notification, BackTop, Icon } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
-
-    
-
 class CryptoInfo extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +15,6 @@ class CryptoInfo extends Component {
       modal: false,
       favoriteID: [],
      }
-
      this.handelChange = this.handelChange.bind(this);
   }
   
@@ -51,73 +47,49 @@ class CryptoInfo extends Component {
     });
   };
 
-  
-
-   
-
-
   render() {
-
-  
-
     let { allCoinListData } = this.state 
-    //  console.log(allCoinListData)
     let { Meta } = Card;
-    // console.log(this.state.favoriteID)
 
     let displayCoinList = allCoinListData.map((value, index) => {
       let content = (
         <div>
-          <p><strong>Description: </strong> {value.bitcoin_description}</p>
-          <p><strong>Algorithm: </strong> {value.bitcoin_algorithm}</p>
+          <p><strong>Description: </strong> { value.bitcoin_description }</p>
+          <p><strong>Algorithm: </strong> { value.bitcoin_algorithm }</p>
         </div>
       )
-      // console.log(value, index)
+
       return(
         <div className='coinListBox' id="coinBox" key={ value.id }>
             <Card 
                 style={{ width: 270, height: 290, padding: 10} }
-                cover={<img alt={value.bitcoin_fullname} id='hoverImage'  src={value.bitcoin_imageurl} style={{ width: 210, height: 190} } />}>
-            <Meta title={value.bitcoin_fullname}/>
+                cover={ <img alt={ value.bitcoin_fullname } id='hoverImage'  src={ value.bitcoin_imageurl } style={ { width: 210, height: 190 } } /> }>
+            <Meta title={ value.bitcoin_fullname }/>
           
-            <Button style={{ margin: 3} } 
+            <Button style={ { margin: 3 } } 
                     type='dashed' 
                     onClick={ () => { this.handelChange(index);
                                       this.openNotification()
                             } }>Add to Fav</Button>
 
-            <Popover content={ content } title={value.bitcoin_fullname}>
+            <Popover content={ content } title={ value.bitcoin_fullname }>
               <Button >More Info</Button>
             </Popover>
           </Card>
-       
         </div>
       )
-    })
+    });
 
-    
-
-    return ( 
-     
+    return (      
       <div>
- 
-     
-
-       
-
-         
-        
         <NavBarHeader/>
-
-        { displayCoinList }
-
+         { displayCoinList }
         <BackTop></BackTop>
       </div>
      );
   }
 }
 
- 
 // IMPORT Charts REDUCER SINCE WE HAVE MULT REDUCER SET-UP
 const mapStateToProps = (state) => ({ ...state.allCoinList })
 

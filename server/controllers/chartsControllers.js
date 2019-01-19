@@ -10,8 +10,7 @@ let getCharts = (req, res, next) => {
   .catch((error) => {
     res.status(500).send('Oop, Something have Happen unable to complete this request')
     // console.log(error);
-  })
-
+  });
 }
 
 module.exports = {

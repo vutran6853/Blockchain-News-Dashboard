@@ -12,29 +12,23 @@ import css from './charts.css'
 class Charts extends Component {
   constructor(props) {
     super(props);
-
-    this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false
     };
+    this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
+    this.setState({ dropdownOpen: !this.state.dropdownOpen });
   }
   
   render() { 
-
     return ( 
       <div className='container-fluid m-0 p-0'>
         <NavBarHeader/>
           <Container>
               <LineChart/>
-
               <TopCoinChart/>
-
               <BitcoinVolume24/>
           </Container>
       </div>

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { HorizontalBar, Bar, Doughnut,Line } from 'react-chartjs-2';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
-
 import css from './charts.css'
-var _ = require('lodash');
+
+let lodash = require('lodash');
 
 class TopCoinChart extends Component {
   constructor(props) {
@@ -38,10 +38,7 @@ class TopCoinChart extends Component {
 
   //  FUNCTION FOR BAR GRAPH INFO .../// 
   bitcoinPrice2Bar() {
-    // console.log(this.state.bitcoinInfo2)
-    let { bitcoinInfo2 } = this.state;
-    let { data5 } = this.state;
-    let { label5 } = this.state;
+    let { bitcoinInfo2, data5, label5 } = this.state;
     let { data } = this.state.data2.datasets[0];
     let { labels } = this.state.data2
     let displayLayerBitcoinInfo = bitcoinInfo2.RAW;
@@ -50,7 +47,7 @@ class TopCoinChart extends Component {
 
     ////// THIS SECTION OF CODE WILL CREATE NEW OJBECT WITH DATA,LABELS    //////
     // console.log(displayLayerBitcoinInfo)
-    let lodashMap = _.map(displayLayerBitcoinInfo)
+    let lodashMap = lodash.map(displayLayerBitcoinInfo)
     // console.log(lodashMap)
     lodashMap.forEach((element, index) => {
       // console.log('VALUE', element.USD, 'INDEX', index)
@@ -59,7 +56,7 @@ class TopCoinChart extends Component {
       label5.forEach((key, index) => {    // <= CREATE NEW OJBECT WITH DATA,LABELS
         matchData[key] = data5[index]
       })
-    })
+    });
     // console.log(matchData)
 
     //// THIS SECTION OF CODE WILL FIND ONLY TOP 10 COIN FROM LIST IS >= 10  ////
@@ -71,16 +68,14 @@ class TopCoinChart extends Component {
         // console.log('VALUE: ' , value)
         top11Coin.push(value)
       }
-    })
+    });
     
-    // console.log(top11Coin)
+
     top11Coin.map((value, index) => {
       // console.log('VALUE', value, 'INDEX',  index)
       data.push(value[1])
       labels.push(value[0])
-    })
-    // console.log(data)
-    // console.log(labels)
+    });
   }
 
   render() {

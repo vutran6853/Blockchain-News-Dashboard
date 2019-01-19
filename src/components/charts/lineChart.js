@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 import css from './charts.css'
 
-var _ = require('lodash');
+let lodash = require('lodash');
 
 class LineChart extends Component {
   constructor(props) {
@@ -50,7 +50,6 @@ class LineChart extends Component {
   }
 
   render() { 
-
     let { allHistoryData } = this.state;
     let { data } = this.state.data.datasets[0]
     let { labels } = this.state.data;
@@ -61,16 +60,14 @@ class LineChart extends Component {
       labels.push(allHistoryData[key].time.replace(/\s\d\d\:\d\d\:\d\d/g, ''))
       // data.sort()
       // labels.sort()
-
     }
 
     return ( 
       <div className='lineBox jello-horizontal m-2'>
       <p className=' h3'>BITCOIN(BTC) High Point Ever in History of Cypro</p>
-        <Line data={this.state.data} 
-        width={2}
-        height={1}
-        
+        <Line data={ this.state.data } 
+              width={ 2 }
+              height={ 1 }
         />
       </div>
      );

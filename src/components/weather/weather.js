@@ -5,7 +5,8 @@ import Mist from './image/Mist.png';
 import Rain from './image/rain.png';
 import Thunderstorm from './image/cloud_thunderStorm.png';
 import css from './weather.css';
-let _ = require('lodash');
+
+let lodash = require('lodash');
 
 // console.log(process.env.REACT_APP_WEATHER_API_KEY)
 const WEATHER_KEY = process.env.REACT_APP_WEATHER_API_KEY;
@@ -29,10 +30,9 @@ class Weather extends Component {
        this.setState({ weatherData: response.data })
     })
   };
-  
 
   render() { 
-    let {weatherData} = this.state;
+    let { weatherData } = this.state;
     let mainLayerWeather = weatherData.main
     let mainLayerWeather1 = _.map(mainLayerWeather)
     let temp =  (((mainLayerWeather1[0]-273.15)*1.8)+32)     // <= CONVERT KELVIN TO FAHRENHEIT
@@ -47,46 +47,43 @@ class Weather extends Component {
      const imgageOfTheWeatherFN = () => {
       // console.log(finaldescription)
       switch (finaldescription) {
-        
         case 'Clouds': 
         return(
-          <img src={cloud} alt='Cloud_Rain'></img>
+          <img src={ cloud } alt='Cloud_Rain'></img>
         )
         break;
         case 'Mist':
         return(
-          <img src={Mist} alt='Mist'></img>
+          <img src={ Mist } alt='Mist'></img>
         )
         break;
         case 'Clear':
         return(
-          <img src={cloud} alt='Clear'></img>
+          <img src={ cloud } alt='Clear'></img>
         )
         break;
         case 'Haze':
         return(
-          <img src={cloud} alt='Haze'></img>
+          <img src={ cloud } alt='Haze'></img>
         )
         break;
         case 'Rain':
         return(
-          <img src={Rain} alt='Rain'></img>
+          <img src={ Rain } alt='Rain'></img>
         )
         break;
         case 'Drizzle':
         return(
-          <img src={Rain} alt='Drizzle'></img>
+          <img src={ Rain } alt='Drizzle'></img>
         )
         break;
         case 'Thunderstorm':
         return(
-          <img src={Thunderstorm} alt='Thunderstorm'></img>
+          <img src={ Thunderstorm } alt='Thunderstorm'></img>
         )
         break;
       }
-
      }
-    // console.log(imgageOfTheWeatherFN())
 
     return ( 
       <div>
@@ -99,8 +96,8 @@ class Weather extends Component {
           <br/> 
             { imgageOfTheWeatherFN() }
           <p>weather: {finaldescription} </p>
-          <p>City: {weatherData.name}</p>
-          <p>Temp: {fahrenheitTemp} °</p>
+          <p>City: { weatherData.name }</p>
+          <p>Temp: { fahrenheitTemp } °</p>
         </div>
       </div>
      );

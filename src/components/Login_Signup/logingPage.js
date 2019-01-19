@@ -11,7 +11,6 @@ class LoginSignUp extends Component {
       this.state = {
         email: '',
         password: ''
-
       }
   } 
 
@@ -21,7 +20,7 @@ class LoginSignUp extends Component {
       if(!error) {
         console.log(`Fail to submit form: `, value)
       }
-    }) 
+    });
   }
 
   handleChangeSumit() {
@@ -30,42 +29,39 @@ class LoginSignUp extends Component {
     .then((response) => {
       console.log(response)
     })
-
   }
+
   handleEmail(value) {
     this.setState({ email: value })
   }
+
   handlePassword(value) {
     this.setState({ password: value })
   }
 
   render() {
-    // console.log(this.state)
-
-    // let FormGroup = Form.Item
     return(
-
       <div>
         <div className='container text-center'>
-          <label sm={2} className='text-center'><strong>Login Page </strong></label>
+          <label sm={ 2 } className='text-center'><strong>Login Page </strong></label>
         </div>
 
         <Form className='formBox container '>
-          <label sm={2}><strong>Email:</strong></label>
+          <label sm={ 2 }><strong>Email:</strong></label>
             <Input type='text' 
                     placeholder='Email..:'
                     value={ this.state.email }
                     onChange={ (e) => this.handleEmail(e.target.value) }
-                    required={true}
+                    required={ true }
             ></Input>
 
-          <label sm={2}><strong>Password:</strong></label>
+          <label sm={ 2 }><strong>Password:</strong></label>
           <FormGroup>  
             <Input type='password' 
                     placeholder='Enter Last Name:'
                     value={ this.state.password }
                     onChange={ (e) => this.handlePassword(e.target.value) }
-                    required={true}
+                    required={ true }
             ></Input>
           </FormGroup>
 
@@ -82,7 +78,6 @@ class LoginSignUp extends Component {
             </Link>
           </FormGroup>
         </Form>
-
       </div>
     )
   }

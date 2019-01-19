@@ -14,11 +14,11 @@ import BtcTrendingPrice from './btcTrendingPrice';
 import EthTrendingPrice from './ethTrendingPrice';
 import ZecTrendingPrice from './zecTrendingPrice';
 import { Row, Col, Jumbotron, ListGroup, ListGroupItem } from 'reactstrap';
-
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import css from './dashboard.css'
 import axios from 'axios';
+
 class DashBoard extends Component {
   constructor(props) {
     super(props);
