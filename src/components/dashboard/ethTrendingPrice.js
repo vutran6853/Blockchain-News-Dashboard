@@ -14,19 +14,14 @@ class EthTrendingPrice extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log('prevProps', prevProps, 'prevState', prevState )
     if(prevProps != this.props && prevProps.data.ETH) {
-      // console.log('true')
+
       let prevPropsData = prevProps.data.ETH;
       let propsData = this.props.data.ETH;
-      // console.log('prevPropsData: ', prevPropsData)
-      // console.log('propsData:', propsData)
-
       let prevPropsDataValue = []
       let propsDataValue = []
+
       for(let key in prevPropsData) {
-        // console.log('prevPropsData: ', prevPropsData[key])
-        // console.log('KEY: ', key)
         prevPropsDataValue.push(prevPropsData[key])
         propsDataValue.push(propsData[key])
       }
@@ -46,7 +41,7 @@ class EthTrendingPrice extends Component {
           finalResult.push(false)
         
         }
-        console.log(finalResult)
+        // console.log(finalResult)
         this.setState({ isHighPrice: finalResult })
       }
     } else {
