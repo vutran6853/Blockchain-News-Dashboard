@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import {Line } from 'react-chartjs-2';
-import css from './dashboard.css'
+import { Line } from 'react-chartjs-2';
+import './dashboard.css'
 
 class EthTrendingPrice extends Component {
   constructor(props) {
@@ -10,12 +9,10 @@ class EthTrendingPrice extends Component {
     this.state = {
       isHighPrice: []
     }
-
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevProps != this.props && prevProps.data.ETH) {
-
       let prevPropsData = prevProps.data.ETH;
       let propsData = this.props.data.ETH;
       let prevPropsDataValue = []
@@ -25,23 +22,16 @@ class EthTrendingPrice extends Component {
         prevPropsDataValue.push(prevPropsData[key])
         propsDataValue.push(propsData[key])
       }
-      // console.log('prevPropsDataValue: ', prevPropsDataValue)
-      // console.log('propsDataValue: ', propsDataValue)
 
       let finalResult = [];
       for(let i = 0; i < prevPropsDataValue.length; i++) {
         if(propsDataValue[i] > prevPropsDataValue[i] ) {
-          // console.log('HIGH','propsDataValue:', propsDataValue[i],'prevPropsDataValue: ', prevPropsDataValue[i])
           finalResult.push(true)
         } else if (propsDataValue[i] === prevPropsDataValue[i]) {
-          // console.log('SAME', 'propsDataValue:',  propsDataValue[i], 'prevPropsDataValue: ', prevPropsDataValue[i])
           finalResult.push('')
         } else {
-          // console.log('LOW','propsDataValue:',  propsDataValue[i], 'prevPropsDataValue: ',prevPropsDataValue[i])
           finalResult.push(false)
-        
         }
-        // console.log(finalResult)
         this.setState({ isHighPrice: finalResult })
       }
     } else {
@@ -50,21 +40,14 @@ class EthTrendingPrice extends Component {
   }
 
   handlePriceChangeindex0(num) {
-    // console.log('VALUE', num) 
-    let { isHighPrice } = this.state
-    // console.log(isHighPrice)
+    let { isHighPrice } = this.state;
+
     for(let i = 0; i < isHighPrice.length; i++) {
-      // console.log(isHighPrice[i])
       if(isHighPrice[i] === true) {
-        // console.log('highPriceBox')
         return 'highPriceBox';
-
       } else if(isHighPrice[i] === false) {
-        // console.log('lowPriceBox')
         return 'lowPriceBox'
-
       } else {
-        // console.log('same')
         return ''
       }
      }
@@ -72,42 +55,28 @@ class EthTrendingPrice extends Component {
   }
 
   handlePriceChangeindex1(num) {
-    // console.log('VALUE', num) 
-    let { isHighPrice } = this.state
-    // console.log(isHighPrice)
+    let { isHighPrice } = this.state;
+
     for(let i = 1; i < isHighPrice.length; i++) {
-      console.log('index', i, 'value:', isHighPrice[i])
       if(isHighPrice[i] === true) {
-        // console.log('highPriceBox')
         return 'highPriceBox';
-
       } else if(isHighPrice[i] === false) {
-        // console.log('lowPriceBox')
         return 'lowPriceBox'
-
       } else {
-        // console.log('same')
         return ''
       }
     }
   }
 
   handlePriceChangeindex2(num) {
-    // console.log('VALUE', num) 
-    let { isHighPrice } = this.state
-    // console.log(isHighPrice)
+    let { isHighPrice } = this.state;
+
     for(let i = 2; i < isHighPrice.length; i++) {
-      console.log('index', i, 'value:', isHighPrice[i])
       if(isHighPrice[i] === true) {
-        // console.log('highPriceBox')
         return 'highPriceBox';
-
       } else if(isHighPrice[i] === false) {
-        // console.log('lowPriceBox')
         return 'lowPriceBox'
-
       } else {
-        // console.log('same')
         return ''
       }
     }
@@ -115,19 +84,13 @@ class EthTrendingPrice extends Component {
 
   handleIronChange0(num) {
     let { isHighPrice } = this.state
-    // console.log(isHighPrice)
+    
     for(let i = 0; i < isHighPrice.length; i++) {
-      console.log('index', i, 'value:', isHighPrice[i])
       if(isHighPrice[i] === true) {
-        // console.log('highPriceBox')
         return 'arrow-up'
-
       } else if(isHighPrice[i] === false) {
-        // console.log('lowPriceBox')
         return 'arrow-down'
-
       } else {
-        // console.log('same')
         return ''
       }
     }
@@ -135,19 +98,13 @@ class EthTrendingPrice extends Component {
 
   handleIronChange1(num) {
     let { isHighPrice } = this.state
-    // console.log(isHighPrice)
+
     for(let i = 1; i < isHighPrice.length; i++) {
-      console.log('index', i, 'value:', isHighPrice[i])
       if(isHighPrice[i] === true) {
-        // console.log('highPriceBox')
         return 'arrow-up'
-
       } else if(isHighPrice[i] === false) {
-        // console.log('lowPriceBox')
         return 'arrow-down'
-
       } else {
-        // console.log('same')
         return ''
       }
     }
@@ -155,53 +112,44 @@ class EthTrendingPrice extends Component {
 
   handleIronChange2(num) {
     let { isHighPrice } = this.state
-    // console.log(isHighPrice)
+
     for(let i = 2; i < isHighPrice.length; i++) {
-      console.log('index', i, 'value:', isHighPrice[i])
       if(isHighPrice[i] === true) {
-        // console.log('highPriceBox')
         return 'arrow-up'
-
       } else if(isHighPrice[i] === false) {
-        // console.log('lowPriceBox')
         return 'arrow-down'
-
       } else {
-        // console.log('same')
         return ''
       }
     }
   }
 
   render() { 
-    // console.log(this.props.data.displayTrendingPrice)
     let trendingCryptoETH  = this.props.data;
-      // console.log(trendingCryptoETH.ETH)
-    let singleObjectETH = trendingCryptoETH.ETH
-    
+    let singleObjectETH = trendingCryptoETH.ETH;
     let displayName = [];
-    let displayETH = []
+    let displayETH = [];
+
     for(let key in singleObjectETH) {
-      // console.log(key, singleObjectETH[key])
       displayName.push(key)
       displayETH.push(singleObjectETH[key])
     }
-    // console.log(displayName, displayETH)
+
     return ( 
       <div  className='displayTrendingCoinBox d-flex flex-column'>
         <div>
-          <span className={'coinapi' + this.handlePriceChangeindex0(displayETH) } >{displayName[0]} $ : {displayETH[0]}</span>
-          <span className={this.handleIronChange0(displayETH)} ></span>
+          <span className={ 'coinapi' + this.handlePriceChangeindex0(displayETH) } >{ displayName[0] } $ : { displayETH[0] }</span>
+          <span className={ this.handleIronChange0(displayETH) } ></span>
         </div>
 
         <div>
-        <span className={'coinapi' + this.handlePriceChangeindex1(displayETH) } >{displayName[1]} € : {displayETH[1]}</span>
-          <span className={this.handleIronChange1(displayETH)} ></span>
+        <span className={ 'coinapi' + this.handlePriceChangeindex1(displayETH) } >{ displayName[1] } € : { displayETH[1] }</span>
+          <span className={ this.handleIronChange1(displayETH) } ></span>
         </div>
 
         <div>
-          <span className={'coinapi' + this.handlePriceChangeindex2(displayETH)} >{displayName[2]} ¥ : {displayETH[2]}</span>
-          <span className={this.handleIronChange2(displayETH)}></span>
+          <span className={ 'coinapi' + this.handlePriceChangeindex2(displayETH) } >{ displayName[2] } ¥ : { displayETH[2] }</span>
+          <span className={ this.handleIronChange2(displayETH) }></span>
         </div>
        
       </div>

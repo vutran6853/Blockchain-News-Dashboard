@@ -18,8 +18,7 @@ class SignUp extends Component{
 
   handleSumit() {
     let { firstName, lastName, email, password } = this.state;
-    //  let fullInfo = {firstName, lastName, email, password}
-    // console.log(fullInfo)
+
     axios.post(`/api/user`, { firstName, lastName, email, password })
   };
   

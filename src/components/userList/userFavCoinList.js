@@ -28,50 +28,42 @@ class UserFavCoinList extends Component {
   // GET FAVORITE COIN FROM USER ID
   handleGetFav(id) {
     axios.get(`/api/user2/${id + 1}`)
-    .then((response) => {
-      // console.log(response)
-      this.setState({ favListData: response.data })
-    })
+    .then((response) => this.setState({ favListData: response.data }))
+    .catch((error) => console.log('Front End error', error));
   }
 
   // FUNCTION TO REMOVE COIN FROM UNIQUE USER   
   //  AND RENDER LOCAL STATE UPDATE LIST
   handleDeleteFavCoin(coinindex, userid ) {
     // console.log('COIN INDEX: ', coinindex, 'USER INDEX: ', userid)
-    axios.delete(`/api/favorite/${coinindex}/${userid + 1}`)
+    axios.delete(`/api/favorite/${ coinindex }/${ userid + 1 }`)
     .then((response) => {
       // console.log(response)
     })
-    .catch((error) => {
-      console.log('Oh Fail to Delete', error)
-      // toast.error('Fail to remove Coin from list')
-    })
+    .catch((error) => console.log('Oh Fail to Delete', error));
 
     axios.get(`/api/user2/${userid + 1}`)
-    .then((response) => {
-      // console.log(response)
-      this.setState({ favListData: response.data })
-    })
+    .then((response) => this.setState({ favListData: response.data }))
+    .catch((error) => console.log('Oh Fail', error));
   }
 
   render() { 
     let { favListData } = this.state
 
     let displayFavCoinList = favListData.map((value, index) => {
-      // console.log('value', value, 'index', index)
       return(   
         <div className='favCoinListBox'>
-          <p><strong>Name: </strong>{value.bitcoin_fullname}</p>
+          <p><strong>Name: </strong>{ value.bitcoin_fullname }</p>
           <div className='imageBox'>
-            <img src={value.bitcoin_imageurl}></img>
+            <img src={ value.bitcoin_imageurl }></img>
               <Button color="success" 
-                      style={{height: '5px', paddingBottom: '20px' }}
-                      onClick={() => {this.handleDeleteFavCoin(value.bitcoinlist_id,this.props.handleGetFavId)
-                                      {this.openNotification()}
-                      }} >Delete Coin
+                      style={ { height: '5px', paddingBottom: '20px' } }
+                      onClick={ () => { this.handleDeleteFavCoin(value.bitcoinlist_id,this.props.handleGetFavId)
+                                      { this.openNotification() }
+                      } }>Delete Coin
               </Button>
           </div>
-          <p><strong>Algorithm: </strong>{value.bitcoin_algorithm}</p>
+          <p><strong>Algorithm: </strong>{ value.bitcoin_algorithm }</p>
         </div>
       )
     });

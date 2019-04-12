@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup,  Input, Button } from 'reactstrap';
-import css from './login_SignUp.css';
+import './login_SignUp.css';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
@@ -18,7 +18,7 @@ class LoginSignUp extends Component {
     e.preventDefault();
     this.props.form.validation((error, value) => {
       if(!error) {
-        console.log(`Fail to submit form: `, value)
+        console.log(`Fail to submit form: ${ value }`)
       }
     });
   }

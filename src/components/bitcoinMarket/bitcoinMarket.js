@@ -6,7 +6,7 @@ import { Table } from 'reactstrap';
 import BitcoinMarketTableNav from './bitcoinMarketTableNav';
 import { Switch } from 'antd'
 import NavBarHeader from '../dashboard/navBarHeader';
-import css from './bitcoinMarket.css';
+import './bitcoinMarket.css';
 
 let lodash = require('lodash');
 
@@ -32,7 +32,6 @@ class BitcoinMarket extends Component {
    this.timerID = setInterval( () => 
       this.props.getBitcoinData()
       .then((response) => {
-        //  console.log('ME', response.value.data.DISPLAY)
         this.setState({ allBitcoinPrice: response.value.data.DISPLAY })
       }), 3000);
 
@@ -113,7 +112,6 @@ class BitcoinMarket extends Component {
   }
 
   handleClick(e) {
-    console.log('event')
     this.setState({ current: e.key })
   }
 
@@ -121,29 +119,19 @@ class BitcoinMarket extends Component {
     let rand = Math.random();
 
     if(rand > .666) {
-      // console.log('VALUE2:', float +0.1);
       return float + 0.1;
     } else if ( rand < .333) {
-      // console.log('VALUE2:', float -0.1);
       return float - 0.1;
     } else {
-      // console.log('VALUE2:', float);
       return float;
     }
-
   }
 
   render() {
-    let { allBitcoinPrice, sevenDayBitcoinData, allbitcoinImageArray } = this.state
-
+    let { allBitcoinPrice, allbitcoinImageArray } = this.state
     let mapDisplay = lodash.map(allBitcoinPrice)
-    //  console.log(mapDisplay)
-
     let mapImage = lodash.map(allbitcoinImageArray)
-      // console.log(mapImage)
-
     let singleObjectCoinInfo = []             // <- ALL SINGLE OBJECT ARRAY STORE
-    //  console.log(singleObjectCoinInfo) 
     let singleObjectImage = [] 
 
    let loopMainCyproList = mapDisplay.forEach((value, index) => {       // LOOP EACH OBJECT INTO SINGLE OBJECT
@@ -151,7 +139,6 @@ class BitcoinMarket extends Component {
     });
 
    let displayCyproList = singleObjectCoinInfo.map((value, index) => {
-          // console.log('VALUE: ', value, 'INDEX: ', index)  
       return(
         <tbody>
           <tr key={ index }>
@@ -159,7 +146,7 @@ class BitcoinMarket extends Component {
             <td><img src={ this.state.allbitcoinImageArray[index] } ></img></td>
             <td>{ value.FROMSYMBOL }</td>
             <td>
-              <span className={'priceBox ' + this.handlePriceChange(index)}>{ value.PRICE }</span>
+              <span className={ 'priceBox ' + this.handlePriceChange(index) }>{ value.PRICE }</span>
               <span className={ this.handleIronChange(index) } ></span>
             </td>
             <td>{ value.HIGH24HOUR }</td>
@@ -174,13 +161,13 @@ class BitcoinMarket extends Component {
     return ( 
       <div >
         <NavBarHeader/>
-           <Table className='cryptoMarketTable m-0' responsive size="sm" bordered hover id={this.state.id} onClick={this.handleClick}   selectedKeys={[this.state.current]}  >
+           <Table className='cryptoMarketTable m-0' responsive size="sm" bordered hover id={ this.state.id } onClick={ this.handleClick }   selectedKeys={ [this.state.current] }  >
               <BitcoinMarketTableNav/>
                 { displayCyproList }
           </Table>
           <div className='switchToggleBackgroundColor'>
-              <Switch checked={this.state.id === 'Turn_Lights_On'}
-                      onChange={this.changeTheme}
+              <Switch checked={ this.state.id === 'Turn_Lights_On'}
+                      onChange={ this.changeTheme }
                       checkedChildren="Turn Lights On"
                       unCheckedChildren="Turn Lights off"/>
           </div>

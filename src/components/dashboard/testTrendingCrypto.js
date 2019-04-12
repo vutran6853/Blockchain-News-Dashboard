@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Line, Pie, Bar, Polar, Bubble } from 'react-chartjs-2';
-var _ = require('lodash');
+import { Bubble } from 'react-chartjs-2';
+
 const moment = require('moment');
 
 class TestTrendingCrypto extends Component {
@@ -13,38 +13,25 @@ class TestTrendingCrypto extends Component {
      }
   }
   componentDidMount() {
-
     this.timerID = setInterval( () => 
-    axios.get(`https://min-api.cryptocompare.com/data/histominute?fsym=ZEC&tsym=GBP&limit=10`)
-    .then((response) => {
-      // console.log(response)
-      this.setState({ currentPrice: response.data.Data })
-    })
-    .catch((error) => {
-      console.log(`Fail to Fetch Data`, error)
-    })
-     , 11000 );
+    axios.get('https://min-api.cryptocompare.com/data/histominute?fsym=ZEC&tsym=GBP&limit=10')
+    .then((response) => this.setState({ currentPrice: response.data.Data }))
+    .catch((error) => console.log(`Fail to Fetch Data`, error))
+     , 11000);
      
   }
 
   render() { 
     let { currentPrice } = this.state;
-    // console.log(currentPrice)
     let displayCryptoDate = [];   // STORE CRYPTODATE DATA
     let displayCrtptoPrice = []   // STORE CRYPTODATE PRICE
 
-    // console.log(displayCrtptoPrice)
     let time = currentPrice.forEach((value, index) => {
-      //  console.log(moment.unix(value.time).format('MMMM Do, h:mm a'), index)
        displayCryptoDate.push(moment.unix(value.time).format('h:mm a'))
-    })
-    // console.log(moment.unix(displaycryptoDate[0]).format('MMMM Do, h:mm a'))
-
-    // console.log(displayCryptoDate)
+    });
 
     let displayCurrentTrending = currentPrice.map((value, index) => {
       displayCrtptoPrice.push(value.close)
-      // console.log('VALUE: ', value, 'INDEX:', index)
       return(
         <div key={index} className='topTrendingCryproBox'>
           
@@ -99,9 +86,7 @@ class TestTrendingCrypto extends Component {
     return ( 
       <div className='topTrendingCryptoZECBox'>
         { displayCurrentTrending }
-       
-        
-          <Bubble  data={data} width="700" id='btcLineGraphBox' />
+        <Bubble data={ data } width="700" id='btcLineGraphBox'/>
         
       </div>
      );

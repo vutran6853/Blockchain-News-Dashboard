@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-
 
 class TopTrendingBTCPie extends Component {
   constructor(props) {
@@ -9,13 +7,8 @@ class TopTrendingBTCPie extends Component {
 
      }
   }
-  componentDidMount() {
-    Axios.get('')
-  }
 
   render() { 
-  // console.log(this.state)
-  // console.log(this.props)
     return ( 
       <div>
         <p>TopTrendingBTCPie</p>

@@ -4,11 +4,9 @@ import cloud from './image/cloud.png';
 import Mist from './image/Mist.png';
 import Rain from './image/rain.png';
 import Thunderstorm from './image/cloud_thunderStorm.png';
-import css from './weather.css';
+import './weather.css';
 
 let lodash = require('lodash');
-
-// console.log(process.env.REACT_APP_WEATHER_API_KEY)
 const WEATHER_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 class Weather extends Component {
@@ -25,27 +23,20 @@ class Weather extends Component {
   updateNewWeather() {
     let { zipCode } = this.state;
     axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${ zipCode },us&APPID=${WEATHER_KEY}`)
-    .then((response) => {
-      // console.log(response.data)
-       this.setState({ weatherData: response.data })
-    })
+    .then((response) => this.setState({ weatherData: response.data }))
   };
 
   render() { 
     let { weatherData } = this.state;
     let mainLayerWeather = weatherData.main
-    let mainLayerWeather1 = _.map(mainLayerWeather)
-    let temp =  (((mainLayerWeather1[0]-273.15)*1.8)+32)     // <= CONVERT KELVIN TO FAHRENHEIT
+    let mainLayerWeather1 = lodash.map(mainLayerWeather)
+    let temp = (((mainLayerWeather1[0]-273.15)*1.8)+32)     // <= CONVERT KELVIN TO FAHRENHEIT
     let fahrenheitTemp = Math.round(temp);    // <= ROUND MATH
-
     let descriptionLayerWeather = weatherData.weather;
-    // console.log(descriptionLayerWeather)
-    let descriptionLayerWeatherIndex =   _.map(descriptionLayerWeather, 'main')
+    let descriptionLayerWeatherIndex = lodash.map(descriptionLayerWeather, 'main')
     let finaldescription = descriptionLayerWeatherIndex[0]
-    // console.log(descriptionLayerWeatherIndex[0])
-  
-     const imgageOfTheWeatherFN = () => {
-      // console.log(finaldescription)
+
+    const imgageOfTheWeatherFN = () => {
       switch (finaldescription) {
         case 'Clouds': 
         return(
@@ -95,7 +86,7 @@ class Weather extends Component {
           <button onClick={ () => this.updateNewWeather() } >Search</button>
           <br/> 
             { imgageOfTheWeatherFN() }
-          <p>weather: {finaldescription} </p>
+          <p>weather: { finaldescription } </p>
           <p>City: { weatherData.name }</p>
           <p>Temp: { fahrenheitTemp } °</p>
         </div>

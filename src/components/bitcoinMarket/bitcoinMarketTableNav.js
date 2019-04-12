@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 
-let lodash = require('lodash');
-
 class BitcoinMarketTableNav extends Component {
   constructor(props) {
     super(props)
@@ -14,9 +12,7 @@ class BitcoinMarketTableNav extends Component {
 
   componentDidMount() {
     this.props.getBitcoinData()
-    .then((response) => {
-      this.setState({ sortBitcoinInfo: response.value.data.DISPLAY })      
-    });
+    .then((response) => this.setState({ sortBitcoinInfo: response.value.data.DISPLAY }))
   }
 
   render() {

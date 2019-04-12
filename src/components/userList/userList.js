@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import  { getUserData } from '../../ducks/userReducer';
+import { getUserData } from '../../ducks/userReducer';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
 import { connect } from 'react-redux';
-import css from './user.css';
+import './user.css';
 import NavBarHeader from '../dashboard/navBarHeader';
 import UserFavCoinList from './userFavCoinList';
 import { Table } from 'reactstrap';
@@ -26,11 +26,7 @@ class UserList extends Component {
     this.setState({ userData:  this.props.getUserData() })
 
     this.props.getAllCoinData()
-    .then((response) => {
-      // console.log(response)
-      this.setState({ allCoinListData: this.props.getAllCoinData() })
-    })
-
+    .then((response) => this.setState({ allCoinListData: this.props.getAllCoinData() }))
   } 
 
   // handleGetFav(id) {

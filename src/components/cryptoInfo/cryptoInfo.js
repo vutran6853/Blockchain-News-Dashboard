@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
-import css from './cryptoInfo.css'
-import { Card, Button, Popover, notification, BackTop, Icon } from 'antd';
+import './cryptoInfo.css';
+import { Card, Button, Popover, notification, BackTop } from 'antd';
 import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
 
@@ -21,10 +21,8 @@ class CryptoInfo extends Component {
   // GET DATA FROM REDUX AND STORE TO LOCAL STATE
   componentDidMount() {
     this.props.getAllCoinData()
-    .then((response) => {
-      // console.log(response)
-      this.setState({ allCoinListData: response.value.data })
-    })
+    .then((response) => this.setState({ allCoinListData: response.value.data }))
+    .catch((error) => console.log(`Danger Front End fetch ${ error }`));
   }
 
   handleChangeStar(value) {
@@ -33,8 +31,7 @@ class CryptoInfo extends Component {
 
   // POST ID TO FAVORITE DB
   handelChange(id) {
-    console.log('INDEX', id)
-    axios.post(`/api/favorite/${id}/1`)
+    axios.post(`/api/favorite/${ id }/1`)
     .then((response) => {
       // console.log(response)
     })
@@ -48,7 +45,7 @@ class CryptoInfo extends Component {
   };
 
   render() {
-    let { allCoinListData } = this.state 
+    let { allCoinListData } = this.state;
     let { Meta } = Card;
 
     let displayCoinList = allCoinListData.map((value, index) => {
@@ -60,15 +57,15 @@ class CryptoInfo extends Component {
       )
 
       return(
-        <div className='coinListBox' id="coinBox" key={ value.id }>
+        <div className='coinListBox' id='coinBox' key={ value.id }>
             <Card 
-                style={{ width: 270, height: 290, padding: 10} }
-                cover={ <img alt={ value.bitcoin_fullname } id='hoverImage'  src={ value.bitcoin_imageurl } style={ { width: 210, height: 190 } } /> }>
+                style={ { width: 270, height: 290, padding: 10} }
+                cover={ <img alt={ value.bitcoin_fullname } id='hoverImage'  src={ value.bitcoin_imageurl } style={ { width: 210, height: 190 } }/> }>
             <Meta title={ value.bitcoin_fullname }/>
           
             <Button style={ { margin: 3 } } 
                     type='dashed' 
-                    onClick={ () => { this.handelChange(index);
+                    onClick={ () => { this.handelChange(index)
                                       this.openNotification()
                             } }>Add to Fav</Button>
 

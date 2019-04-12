@@ -7,7 +7,7 @@ import BitcoinVolume24 from './BitcoinVolume24';
 import { Container} from 'reactstrap';
 import NavBarHeader from '../dashboard/navBarHeader';
 import LineChart from './lineChart';
-import css from './charts.css'
+import './charts.css'
 
 class Charts extends Component {
   constructor(props) {

@@ -12,11 +12,9 @@
   color: white;
 }
 
-
 .missionSectionBox, .header, .row {
   background-color: #1c1f21;
 }
-
 
 #card {
   border: 1px solid blue;
@@ -26,7 +24,6 @@
   display: inline-block;
   background-color: #1c1f21;
 }
-
 
 .card-body {
   padding: 0px;
@@ -57,10 +54,6 @@
   margin-left: 85px;
 }
 
-
-
-
-
 .headerBox > p {
   text-align: center;
   color: white;
@@ -68,7 +61,6 @@
   font-size: 20px;
   background-color: darkslategrey;
 }
-
 
 .mainBox {
   background-color: #1c1f21;
@@ -80,7 +72,6 @@
   padding: 10px;
   margin: 10px;
 }
-
 
 .topTrendingCryptoBTCBox {
   border: 1px solid  rgb(186, 182, 182);
@@ -101,7 +92,6 @@
   border: 1px solid  rgb(186, 182, 182);
   
 }
-
 
 .coinapihighPriceBox {
   animation-name: arrowuphighPriceBox;

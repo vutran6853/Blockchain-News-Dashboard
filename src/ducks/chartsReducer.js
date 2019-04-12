@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-//  INITAL VALUE
+// Inital Value
 let GET_BITCOININFO = 'GET_BITCOININFO';
 let GET_HISTORYCOIN = 'GET_HISTORYCOIN';
 
-//  INITIAL STATE
+// Initial State
 let initialState = {
   chartsbitcoinData: [],
   historyCoinData: []
 }
 
-//  INITIAL ACTION CREATOR FOR PAYLOAD
+// Initial Action Creator For Payload
 export function getChartsData() {
   return {
     type: GET_BITCOININFO,
@@ -25,16 +25,14 @@ export function getHistoryCoinData() {
   }
 }
 
-// HANDLE STATE CHANGES
+// Handle State Changes
 export default function getChartsReducer(state = initialState, action) {
   switch(action.type) {
     case `${GET_BITCOININFO}_FULFILLED`:
-    // console.log(`${GET_BITCOININFO}_FULFILLED`, action.payload.data)
     return {
       ...state,
       chartsbitcoinData: action.payload
     }
-    // console.log(`${GET_HISTORYCOIN}_FULFILLED`, action.payload)
     case `${ GET_HISTORYCOIN }_FULFILLED`:
     return {
       ...state,

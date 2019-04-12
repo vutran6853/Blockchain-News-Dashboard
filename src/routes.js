@@ -8,8 +8,6 @@ import CryptoInfo from './components/cryptoInfo/cryptoInfo';
 import LoginPage from './components/Login_Signup/logingPage';
 import SignUp from './components/Login_Signup/SignUpPage';
 
-// import App from './App';
-
 export default (
   <div>
     <Switch>

@@ -14,11 +14,9 @@ class EditUser extends Component {
   }
 
   handleGetUser(id) {
-    axios.get(`/api/user/${id}`)
-    .then((response) => {
-      // console.log(response)
-      this.setState({ userData: response.data })
-    })
+    axios.get(`/api/user/${ id }`)
+    .then((response) => this.setState({ userData: response.data }))
+    .catch((error) => console.log(`Fail to Fetch Data ${ error }`));
   }
 
   handleChangeName(value) {
@@ -30,30 +28,27 @@ class EditUser extends Component {
   }
   
   postNewInfo(id) {
-    let { newName } = this.state
+    let { newName } = this.state;
 
     axios.put(`/api/user?id=${ id }&newname=${ newName }`)
     .then((response) => {
       console.log(response)
       // this.setState({ userData: response.data })
     })
-    .catch((error) => {
-      console.log(error)
-    });
+    .catch((error) => console.log(error));
   }
 
   render() { 
     let { userData } = this.state;
 
     let displayEditInfo =  userData.map((value, index) => {
-      // console.log(value.user_firstname, index)
       return(
         <div>
           <p>Name</p>
-          <input placeholder='New Name:' onChange={ (e) => this.handleChangeName(e.target.value) } ></input>
+          <input placeholder='New Name:' onChange={ (e) => this.handleChangeName(e.target.value) }></input>
           <p>Email</p>
-          <input placeholder='New Email:' onChange={ (e) => this.handleChangeEmail(e.target.value) } ></input>
-          <button  onClick={ () => this.postNewInfo(this.props.handleGetUserID) } >Submit </button>
+          <input placeholder='New Email:' onChange={ (e) => this.handleChangeEmail(e.target.value) }></input>
+          <button onClick={ () => this.postNewInfo(this.props.handleGetUserID) }>Submit </button>
         </div>
       )
     });
@@ -64,7 +59,7 @@ class EditUser extends Component {
                   style={ { height: '5px', paddingBottom: '20px' } } 
                   onClick={ () => { this.handleGetUser(this.props.handleGetUserID)
                                     // this.handleEditUser()
-                  } } >Edit User
+                  } }>Edit User
         </button>
         { displayEditInfo }
       </div>

@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-// INITAL VALUE
+// Inital Value
 const MASTERCOINLIST = 'MASTERCOINLIST';
 const BITCOINIMAGE = 'BITCOINIMAGE';
 
-//  INITIAL STATE
+// Initial State
 const initialState = {
   allCoinList: [],
   favCoinId: [],
   bitcoinImage: []
 }
 
-//  INITIAL ACTION CREATOR FOR PAYLOAD
+// Initial Action Creator For Payload
 export function getAllCoinData() {
   return {
     type: MASTERCOINLIST,
@@ -26,12 +26,10 @@ export function getBitcoinImageData() {
   }
 }
 
-// HANDLE STATE CHANGES
+// Handle State Changes
 export default function allBitcoinListReducer(state = initialState, action) {
   switch(action.type) {
     case `${MASTERCOINLIST}_FULFILLED`:
-  
-    // console.log(`${MASTERCOINLIST}_FULFILLED`, action.payload)
     return {
       ...state,
       allCoinList: action.payload

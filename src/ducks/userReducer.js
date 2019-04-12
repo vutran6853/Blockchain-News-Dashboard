@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-//  INITAL VALUE
+// Inital Value
 let GET_USER = 'GET_USER';
 
-//  INITIAL STATE
+// Initial State
 let initialState = {
   userData: []
 }
 
-//  INITIAL ACTION CREATOR FOR PAYLOAD
+// Initial Action Creator For Payload
 export function getUserData() {
   return {
     type: GET_USER,
@@ -16,15 +16,13 @@ export function getUserData() {
   }
 }
 
-// HANDLE STATE CHANGES
+// Handle State Changes
 export default function getUserReducer(state = initialState, action) {
   switch(action.type) {
     case `${GET_USER}_FULFILLED`:
-    // console.log(`${GET_USER}_FULFILLED`, action.payload.data)
     return {
       ...state,
-      userData: action.payload
-      
+      userData: action.payload      
     }
     default: 
     return state;

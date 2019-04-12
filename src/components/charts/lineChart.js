@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import { getHistoryCoinData } from '../../ducks/chartsReducer';
 import axios from 'axios';
 import { Line } from 'react-chartjs-2';
-import css from './charts.css'
-
-let lodash = require('lodash');
+import './charts.css'
 
 class LineChart extends Component {
   constructor(props) {
@@ -44,9 +42,8 @@ class LineChart extends Component {
 
   componentDidMount() {
     axios.get('https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=alltime&?format=json')
-    .then((response) => {
-      this.setState({ allHistoryData: response.data.slice(247, 320) })
-    })
+    .then((response) => this.setState({ allHistoryData: response.data.slice(247, 320) }))
+    .catch((error) => console.log(`Danger Front End fetch ${ error }`));
   }
 
   render() { 
@@ -55,20 +52,14 @@ class LineChart extends Component {
     let { labels } = this.state.data;
 
     for(let key in allHistoryData) {
-      // console.log('VALUE: ', allHistoryData[key], 'KEY:', key)
       data.push(allHistoryData[key].high)
       labels.push(allHistoryData[key].time.replace(/\s\d\d\:\d\d\:\d\d/g, ''))
-      // data.sort()
-      // labels.sort()
     }
 
     return ( 
       <div className='lineBox jello-horizontal m-2'>
-      <p className=' h3'>BITCOIN(BTC) High Point Ever in History of Cypro</p>
-        <Line data={ this.state.data } 
-              width={ 2 }
-              height={ 1 }
-        />
+        <p className='h3'>BITCOIN(BTC) High Point Ever in History of Cypro</p>
+        <Line data={ this.state.data } width={ 2 } height={ 1 }/>
       </div>
      );
   }
