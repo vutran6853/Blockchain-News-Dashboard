@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
-import Charts from '../charts/charts';
-import BitcoinMarket from '../bitcoinMarket/bitcoinMarket';
-import cryptoInfo from '../cryptoInfo/cryptoInfo';
 import NavBarHeader from './navBarHeader'
 import DashBoardNews from './dashboardNews';
 import BtcTrendingCrypto from './btcTrendingCrypto';
 import ZecTrendingCrypto from './zecTrendingCrypto';
 import EthTrendingCrypto from './ethTrendingCrypto';
-import TopTrendingBTCPie from './topTrendingBTC';
-import TestTrendingCrypto from './testTrendingCrypto';
 import BtcTrendingPrice from './btcTrendingPrice';
 import EthTrendingPrice from './ethTrendingPrice';
 import ZecTrendingPrice from './zecTrendingPrice';
@@ -20,7 +15,6 @@ import axios from 'axios';
 class DashBoard extends Component {
   constructor(props) {
     super(props);
-    
     this.state = {
       currentTrendingBTCPrice: [],
       currentTrendingETHPrice: [],
@@ -31,13 +25,12 @@ class DashBoard extends Component {
   }
 
   componentDidMount() {
-
     this.timerID = setInterval( () => 
     axios.get('https://min-api.cryptocompare.com/data/histominute?fsym=ETH&tsym=GBP&limit=30')
     .then((response) => this.setState({ currentTrendingETHPrice: response.data.Data }))
     .catch((error) => console.log(`Fail to Fetch Data ${ error }`))
      , 1000);
-////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
  
     this.timerID = setInterval( () => 
     axios.get('https://min-api.cryptocompare.com/data/histominute?fsym=BTC&tsym=GBP&limit=30')
@@ -45,7 +38,7 @@ class DashBoard extends Component {
     .catch((error) => console.log(`Fail to Fetch Data ${ error }`))
      , 1000);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     let { NameTrendingPrice } = this.state
     
     this.timerID = setInterval( () => 
@@ -56,10 +49,10 @@ class DashBoard extends Component {
 
   }
   
-  render() { 
+  render() {
      return ( 
       <div>
-        <NavBarHeader/>
+        {/* <NavBarHeader/> */}
           <div className='d-flex flex-row m-1'>
             <Col xs='8'>
               <BtcTrendingCrypto data={ this.state.currentTrendingBTCPrice }/>
@@ -71,7 +64,7 @@ class DashBoard extends Component {
           
           <div className='d-flex flex-row'>
             <Col xs='8'>
-            <EthTrendingCrypto data={ this.state.currentTrendingETHPrice } />
+              <EthTrendingCrypto data={ this.state.currentTrendingETHPrice } />
             </Col>
             <Col xs='4'>
               <EthTrendingPrice data={ this.state.displayTrendingPrice }/>
@@ -80,7 +73,7 @@ class DashBoard extends Component {
 
           <div className='d-flex flex-row'>
             <Col xs='8'>
-            <ZecTrendingCrypto/>
+              <ZecTrendingCrypto/>
             </Col>
             <Col xs='4'>
               <ZecTrendingPrice data={ this.state.displayTrendingPrice }/>
@@ -93,7 +86,6 @@ class DashBoard extends Component {
           </div>
            
           <DashBoardNews/>
-
       </div>
      );
   }

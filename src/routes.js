@@ -9,7 +9,6 @@ import LoginPage from './components/Login_Signup/logingPage';
 import SignUp from './components/Login_Signup/SignUpPage';
 
 export default (
-  <div>
     <Switch>
       <Route exact path='/' component={ DashBoard } ></Route>
       <Route path='/bitcoinMarket' component={ BitcoinMarket } ></Route>
@@ -19,6 +18,5 @@ export default (
       <Route path='/LoginSignUp' component={ LoginPage } ></Route>
       <Route path='/SignUp' component={ SignUp } ></Route>
     </Switch>
-  </div>
 )
 

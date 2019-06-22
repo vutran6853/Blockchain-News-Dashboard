@@ -1,8 +1,16 @@
 .coinListBox {
   border: 1px solid lightblue;
-  display: inline-block;
-  margin-left: 40px;
-  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#coinBox {
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 0px !important;
 }
 
 .wobble-hor-bottom {

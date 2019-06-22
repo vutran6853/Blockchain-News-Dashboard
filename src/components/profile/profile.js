@@ -12,7 +12,7 @@ class ProfileUser extends Component {
     return ( 
       <div className='container profileBox'>
         <Link to='/'>
-                <Button>Home</Button>
+          <Button>Home</Button>
         </Link>
 
         <Link to='/bitcoinNews'>

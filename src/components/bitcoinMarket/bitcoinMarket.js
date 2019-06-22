@@ -160,7 +160,7 @@ class BitcoinMarket extends Component {
 
     return ( 
       <div >
-        <NavBarHeader/>
+        {/* <NavBarHeader/> */}
            <Table className='cryptoMarketTable m-0' responsive size="sm" bordered hover id={ this.state.id } onClick={ this.handleClick }   selectedKeys={ [this.state.current] }  >
               <BitcoinMarketTableNav/>
                 { displayCyproList }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCoinData } from '../../ducks/allBitcoinListReducer';
-import './cryptoInfo.css';
 import { Card, Button, Popover, notification, BackTop } from 'antd';
-import NavBarHeader from '../dashboard/navBarHeader';
 import axios from 'axios';
+import './cryptoInfo.css';
 
 class CryptoInfo extends Component {
   constructor(props) {
@@ -12,25 +11,19 @@ class CryptoInfo extends Component {
 
     this.state = { 
       allCoinListData: [],
-      modal: false,
-      favoriteID: [],
+      favoriteID: []
      }
-     this.handelChange = this.handelChange.bind(this);
   }
   
   // GET DATA FROM REDUX AND STORE TO LOCAL STATE
   componentDidMount() {
     this.props.getAllCoinData()
     .then((response) => this.setState({ allCoinListData: response.value.data }))
-    .catch((error) => console.log(`Danger Front End fetch ${ error }`));
-  }
-
-  handleChangeStar(value) {
-    this.setState({ valueOfStar: value })
+    .catch((err) => console.log(`Unable to fetch data at getAllCoinData() ${ err }`));
   }
 
   // POST ID TO FAVORITE DB
-  handelChange(id) {
+  postFavCoin = (id) => {
     axios.post(`/api/favorite/${ id }/1`)
     .then((response) => {
       // console.log(response)
@@ -46,43 +39,43 @@ class CryptoInfo extends Component {
 
   render() {
     let { allCoinListData } = this.state;
-    let { Meta } = Card;
 
     let displayCoinList = allCoinListData.map((value, index) => {
       let content = (
         <div>
           <p><strong>Description: </strong> { value.bitcoin_description }</p>
           <p><strong>Algorithm: </strong> { value.bitcoin_algorithm }</p>
-        </div>
+        </div> 
       )
 
-      return(
-        <div className='coinListBox' id='coinBox' key={ value.id }>
-            <Card 
-                style={ { width: 270, height: 290, padding: 10} }
-                cover={ <img alt={ value.bitcoin_fullname } id='hoverImage'  src={ value.bitcoin_imageurl } style={ { width: 210, height: 190 } }/> }>
-            <Meta title={ value.bitcoin_fullname }/>
-          
+      return (
+        <div id="coinBox" key={ value.id }>
+            <Card style={ { width: 270, height: 290, padding: 10 } }
+                  cover={ <img alt={ value.bitcoin_fullname }
+                          id='hoverImage'  
+                          src={ value.bitcoin_imageurl } 
+                          style={ { width: 210, height: 190 } }/> }
+            >
+            <p>{ value.bitcoin_fullname }</p>
             <Button style={ { margin: 3 } } 
-                    type='dashed' 
-                    onClick={ () => { this.handelChange(index)
-                                      this.openNotification()
-                            } }>Add to Fav</Button>
+                    type="dashed"
+                    onClick={ () => { this.postFavCoin(index)
+                                      this.openNotification()} }>Add to Fav
+            </Button>
 
             <Popover content={ content } title={ value.bitcoin_fullname }>
-              <Button >More Info</Button>
+              <Button>More Info</Button>
             </Popover>
           </Card>
         </div>
       )
     });
 
-    return (      
-      <div>
-        <NavBarHeader/>
-         { displayCoinList }
-        <BackTop></BackTop>
-      </div>
+    return (
+        <div className="coinListBox">
+          { displayCoinList }
+          <BackTop></BackTop>
+        </div>
      );
   }
 }

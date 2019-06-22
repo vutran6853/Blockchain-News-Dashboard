@@ -13,27 +13,24 @@ import './dashboard.css';
 class NavBarHeader extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
     };
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
-  render() { 
-
+  render() {
     return ( 
           <Navbar className='navbarBox' expand="md">
-          <NavbarBrand href="/">
+          {/* <NavbarBrand href="/">
             <div id='logo1' >
               <img src={ image } ></img>
-
             </div>
 
-          </NavbarBrand>
+          </NavbarBrand> */}
           <NavbarToggler onClick={ this.toggle }/>
             <Collapse isOpen={ this.state.isOpen } navbar>
               <Nav className="justify-content-md-center container" navbar  color="dark" >
@@ -76,7 +73,6 @@ class NavBarHeader extends Component {
               </Nav>
             </Collapse>
           </Navbar>
-        
     );
   }
 }

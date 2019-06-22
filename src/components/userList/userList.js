@@ -61,7 +61,7 @@ class UserList extends Component {
 
     return ( 
       <div>
-        <NavBarHeader/>
+        {/* <NavBarHeader/> */}
           <Table bordered >
             <thead>
               <tr>

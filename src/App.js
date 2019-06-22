@@ -4,20 +4,19 @@ import { Provider } from 'react-redux';
 import store from './ducks/store';
 import routes from './routes';
 import 'antd/dist/antd.css';
-import css from './index.css'
+import Navbar from './components/navbar/navBar';
+
 class App extends Component {
   render() {
-    
     return (
-
       <Provider store={ store }>
         <HashRouter>
-          <div className="App">
-            { routes }
+          <div>
+            <Navbar/>
+              { routes }
           </div>
         </HashRouter>
       </Provider>
-
     );
   }
 }
