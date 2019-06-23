@@ -1,20 +1,21 @@
-import React, { Component } from 'react'
-import NavBarHeader from './navBarHeader'
-import DashBoardNews from './dashboardNews';
-import BtcTrendingCrypto from './btcTrendingCrypto';
-import ZecTrendingCrypto from './zecTrendingCrypto';
-import EthTrendingCrypto from './ethTrendingCrypto';
-import BtcTrendingPrice from './btcTrendingPrice';
-import EthTrendingPrice from './ethTrendingPrice';
-import ZecTrendingPrice from './zecTrendingPrice';
+import React, { Component } from 'react';
+import Navbar from '../navbar/Navbar';
+import DashBoardNews from './DashBoardNews';
+import BtcTrendingCrypto from './BtcTrendingCrypto';
+import ZecTrendingCrypto from './ZecTrendingCrypto';
+import EthTrendingCrypto from './EthTrendingCrypto';
+import BtcTrendingPrice from './BtcTrendingPrice';
+import EthTrendingPrice from './EthTrendingPrice';
+import ZecTrendingPrice from './ZecTrendingPrice';
 import { Col } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './dashboard.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './dashboard.css';
 import axios from 'axios';
 
 class DashBoard extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       currentTrendingBTCPrice: [],
       currentTrendingETHPrice: [],
@@ -52,7 +53,7 @@ class DashBoard extends Component {
   render() {
      return ( 
       <div>
-        {/* <NavBarHeader/> */}
+        {/* <Navbar/> */}
           <div className='d-flex flex-row m-1'>
             <Col xs='8'>
               <BtcTrendingCrypto data={ this.state.currentTrendingBTCPrice }/>
@@ -73,7 +74,7 @@ class DashBoard extends Component {
 
           <div className='d-flex flex-row'>
             <Col xs='8'>
-              <ZecTrendingCrypto/>
+              {/* <ZecTrendingCrypto/> */}
             </Col>
             <Col xs='4'>
               <ZecTrendingPrice data={ this.state.displayTrendingPrice }/>

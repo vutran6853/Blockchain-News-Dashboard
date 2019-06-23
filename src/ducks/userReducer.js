@@ -22,7 +22,7 @@ export default function getUserReducer(state = initialState, action) {
     case `${GET_USER}_FULFILLED`:
     return {
       ...state,
-      userData: action.payload      
+      userData: action.payload.data
     }
     default: 
     return state;

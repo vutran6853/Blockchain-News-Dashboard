@@ -1,5 +1,5 @@
 .navBar-container {
-  background-color: rgb(17, 15, 14);
+  background-color: #1c1f21;
   display: flex;
   /* width: 50%; */
   margin: auto;
@@ -9,13 +9,13 @@
   align-items: center;
 }
 
-a {
+.navbar-item {
   /* background-color: red; */
   width: auto;
   text-align: center;
   font-size: 14px;
 }
 
-a:hover {
+.navbar-item:hover {
   background-color: red;
 }

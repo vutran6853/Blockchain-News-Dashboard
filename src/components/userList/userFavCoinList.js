@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import UserList from './userList';
+// import UserList from './userList';
 import axios from 'axios';
-import {  notification, Switch  } from 'antd';
-import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { notification } from 'antd';
+import { Button } from 'reactstrap';
 
 class UserFavCoinList extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class UserFavCoinList extends Component {
   };
 
   // GET FAVORITE COIN FROM USER ID
-  handleGetFav(id) {
+  handleGetFav = (id) => {
     axios.get(`/api/user2/${id + 1}`)
     .then((response) => this.setState({ favListData: response.data }))
     .catch((error) => console.log('Front End error', error));
@@ -34,7 +34,7 @@ class UserFavCoinList extends Component {
 
   // FUNCTION TO REMOVE COIN FROM UNIQUE USER   
   //  AND RENDER LOCAL STATE UPDATE LIST
-  handleDeleteFavCoin(coinindex, userid ) {
+  handleDeleteFavCoin = (coinindex, userid ) => {
     // console.log('COIN INDEX: ', coinindex, 'USER INDEX: ', userid)
     axios.delete(`/api/favorite/${ coinindex }/${ userid + 1 }`)
     .then((response) => {
@@ -48,11 +48,11 @@ class UserFavCoinList extends Component {
   }
 
   render() { 
-    let { favListData } = this.state
+    // let { favListData } = this.state
 
-    let displayFavCoinList = favListData.map((value, index) => {
-      return(   
-        <div className='favCoinListBox'>
+    let displayFavCoinList = this.state.favListData.map((value, index) => {
+      return (
+        <div className='favCoinListBox' key={ index }>
           <p><strong>Name: </strong>{ value.bitcoin_fullname }</p>
           <div className='imageBox'>
             <img src={ value.bitcoin_imageurl }></img>
@@ -74,9 +74,9 @@ class UserFavCoinList extends Component {
                   style={ { height: '5px', paddingBottom: '20px' } } 
                   onClick={ () => { this.handleGetFav(this.props.handleGetFavId) } }>Get Fav
           </Button>
-          <span >{ displayFavCoinList }</span>        
+          <span>{ displayFavCoinList }</span>        
         </div>
-     );
+    );
   }
 }
  

@@ -5,8 +5,8 @@ import { getBitcoinData } from '../../ducks/bitcoinNewReducer';
 import TopCoinChart from './horizontalChart';
 import BitcoinVolume24 from './BitcoinVolume24';
 import { Container} from 'reactstrap';
-import NavBarHeader from '../dashboard/navBarHeader';
-import LineChart from './lineChart';
+import NavBarHeader from '../dashboard/NavBarHeader';
+import LineChart from './LineChart';
 import './charts.css'
 
 class Charts extends Component {

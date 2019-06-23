@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import cloud from './image/cloud.png';
 import Mist from './image/Mist.png';

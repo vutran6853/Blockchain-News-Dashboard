@@ -33,7 +33,7 @@ class CryptoInfo extends Component {
   openNotification = () => {
     notification.open({
       message: 'Complete',
-      description: 'Add to Fav List ^.^',
+      description: 'Add to Fav List ^.^'
     });
   };
 
@@ -42,14 +42,14 @@ class CryptoInfo extends Component {
 
     let displayCoinList = allCoinListData.map((value, index) => {
       let content = (
-        <div>
+        <div key={ index }>
           <p><strong>Description: </strong> { value.bitcoin_description }</p>
           <p><strong>Algorithm: </strong> { value.bitcoin_algorithm }</p>
         </div> 
       )
 
       return (
-        <div id="coinBox" key={ value.id }>
+        <div id="coinBox" key={ value.bitcoin_fullname }>
             <Card style={ { width: 270, height: 290, padding: 10 } }
                   cover={ <img alt={ value.bitcoin_fullname }
                           id='hoverImage'  

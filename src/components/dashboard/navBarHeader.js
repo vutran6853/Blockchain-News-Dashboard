@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Charts from '../charts/charts';
-import bitcoinMarket from '../bitcoinMarket/bitcoinMarket';
-import Profile from '../profile/profile';
-import Weather from '../weather/weather';
-import cryptoInfo from '../cryptoInfo/cryptoInfo';
+import React, { Component } from 'react';
+import Charts from '../charts/Charts';
+import bitcoinMarket from '../bitcoinMarket/BitcoinMarket';
+// import Profile from '../profile/ProfileUser';
+import Weather from '../weather/Weather';
+import cryptoInfo from '../cryptoInfo/CryptoInfo';
 import { Link } from 'react-router-dom';
-import image from './cryptozone1.png'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import image from './cryptozone1.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, ListGroupItem } from 'reactstrap';
 import './dashboard.css';
 

@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { getBitcoinData, getSevenDayInfo } from '../../ducks/bitcoinNewReducer';
 import { getAllCoinData, getBitcoinImageData } from '../../ducks/allBitcoinListReducer';
 import { Table } from 'reactstrap';
-import BitcoinMarketTableNav from './bitcoinMarketTableNav';
+import BitcoinMarketTableNav from './BitcoinMarketTableNav';
 import { Switch } from 'antd'
-import NavBarHeader from '../dashboard/navBarHeader';
+import Navbar from '../navbar/Navbar';
 import './bitcoinMarket.css';
 
 let lodash = require('lodash');
@@ -160,7 +160,7 @@ class BitcoinMarket extends Component {
 
     return ( 
       <div >
-        {/* <NavBarHeader/> */}
+        {/* <Navbar/> */}
            <Table className='cryptoMarketTable m-0' responsive size="sm" bordered hover id={ this.state.id } onClick={ this.handleClick }   selectedKeys={ [this.state.current] }  >
               <BitcoinMarketTableNav/>
                 { displayCyproList }

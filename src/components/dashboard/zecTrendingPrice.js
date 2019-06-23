@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './dashboard.css'
+import './dashboard.css';
 
 class ZecTrendingPrice extends Component {
   constructor(props) {

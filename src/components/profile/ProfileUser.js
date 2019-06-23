@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './profile.css';
 import { Link } from 'react-router-dom';
-import {Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class ProfileUser extends Component {
   constructor(props) {

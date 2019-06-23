@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
-class EditUser extends Component {
+class UserProfile extends Component {
   constructor(props) {
     super(props);
 
     this.state = { 
       userData: [],
-      toggleEditButton: false,
+      // toggleEditButton: false,
       newName: '',
       newEmail: ''
      }
 
   }
 
-  getUserByID = (id) => {
-    axios.get(`/api/user/${ id }`)
+  componentDidMount() {
+    axios.get(`/api/user/${ this.props.match.params.id }`)
     .then((response) => this.setState({ userData: response.data }))
     .catch((err) => console.log(`Unable to fetch data at getUserByID() ${ err }`));
   }
@@ -27,19 +28,11 @@ class EditUser extends Component {
   setNewEmail = (passValue) => {
     this.setState({ newEmail: passValue })
   }
-  
-  postUpdateInfo = (id) => {
-    let { newName } = this.state;
 
-    axios.put(`/api/user?id=${ id }&newname=${ newName }`)
-    .then((response) => {
-      console.log(response)
-      // this.setState({ userData: response.data })
-    })
-    .catch((err) => console.log(err));
-  }
 
-  render() { 
+  render() {
+    console.log('this', this)
+
     let { userData } = this.state;
 
     let displayEditInfo = userData.map((value, index) => {
@@ -55,17 +48,16 @@ class EditUser extends Component {
     });
 
     return (
-        <div>
-          <button color='success' 
-                  style={ { height: '5px', paddingBottom: '20px' } }
-                  onClick={ () => { this.getUserByID(this.props.handleGetUserID)
-                                    // this.handleEditUser()
-                  } }>Edit User
-          </button>
-          { displayEditInfo }
-        </div>
-    );
+      <div>
+        <p>UserProfile</p>
+        { displayEditInfo }
+
+      </div>
+    )
   }
 }
- 
-export default EditUser;
+
+// const mapStateToProps = function(state) {
+//   return state
+// }
+export default connect()(UserProfile);
