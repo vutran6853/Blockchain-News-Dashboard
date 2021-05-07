@@ -24,7 +24,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "gsap": "^2.0.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "massive": "^5.11.0",
     "moment": "^2.22.2",
     "node-fetch": "^2.2.0",
