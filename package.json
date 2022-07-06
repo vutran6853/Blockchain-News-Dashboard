@@ -26,7 +26,7 @@
     "gsap": "^2.0.2",
     "lodash": "^4.17.11",
     "massive": "^5.11.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "node-fetch": "^2.2.0",
     "nodemon": "^1.18.4",
     "passport": "^0.4.0",
